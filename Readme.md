@@ -16,7 +16,7 @@ This repository contains an application that demonstrates the capabilities of th
 
 ## What's in This Repository
 
-An example in this repository allows you to get started with the Collection View component and explore its basic functionality. It demonstrates how to bind the view to a data source, apply an item template, sort and group data items.
+An example in this repository allows you to get started with the Collection View component and explore its basic functionality. It demonstrates how to bind the view to a data source, apply an item template, sort, and group data items.
 
 ![Collection View](Images/step-4.png)
 
