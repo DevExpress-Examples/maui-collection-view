@@ -16,7 +16,7 @@ This repository contains an application that demonstrates the capabilities of th
 
 ## What's in This Repository
 
-An example in this repository allows you to get started with the Collection View component and explore its basic functionality. It demonstrates how to bind the view to a data source, apply an item template, sort, and group data items.
+An example in this repository allows you to get started with the Collection View component and explore its basic functionality. It demonstrates how to bind the view to a data source, apply an item template, sort and group data items.
 
 ![Collection View](Images/step-4.png)
 
@@ -129,10 +129,10 @@ Do the following in the *MainPage.xaml* file:
 
 1. Define the **dxcv** XAML namespace that refers to the **DevExpress.Maui.Charts** CLR namespace.
 1. Define the **local** XML namespace that refers to the **CollectionViewExample** CLR namespace.
-1. Remove the default content and add an instance of the @DevExpress.Maui.CollectionView.DXCollectionView class to the page. You may also need to remove the default content's event handlers in the code-behind.
+1. Remove the default content and add an instance of the **DXCollectionView** class to the page. You may also need to remove the default content's event handlers in the code-behind.
 1. Assign a **ViewModel** instance to the **ContentPage.BindingContext** property.
-1. Bind the [DXCollectionView.ItemsSource](xref:DevExpress.Maui.CollectionView.DXCollectionView.ItemsSource) property to the view model's **Data** property.
-1. Use the @DevExpress.Maui.CollectionView.DXCollectionView.DisplayMember property to specify the data field that contains item captions. The [DisplayFormat](xref:DevExpress.Maui.CollectionView.DXCollectionView.DisplayFormat) allows you to format captions.
+1. Bind the **DXCollectionView.ItemsSource** property to the view model's **Data** property.
+1. Use the **DisplayMember** property to specify the data field that contains item captions. The **DisplayFormat** allows you to format captions.
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
