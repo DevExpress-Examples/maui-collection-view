@@ -12,13 +12,13 @@ This repository contains an application that demonstrates the capabilities of th
 - Multiple Item Selection
 - Themes
 
-![Collection View](images/collection-view-class.png)
+![Collection View](Images/collection-view-class.png)
 
 ## What's in This Repository
 
 An example in this repository allows you to get started with the Collection View component and explore its basic functionality. It demonstrates how to bind the view to a data source, apply an item template, sort, and group data items.
 
-![Collection View](images/step-4.png)
+![Collection View](Images/step-4.png)
 
 ### Prerequisites
 
@@ -223,7 +223,7 @@ Do the following to add contact photos to the solution:
 
 Run the application. The Collection View now displays a photo, name, and phone number for each contact.
 
-![Collection View - Item Template](images/step-2.png)
+![Collection View - Item Template](Images/step-2.png)
 
 ### Sort Data Items
 
@@ -245,7 +245,7 @@ Make the following changes in the *MainPage.xaml* file to sort data items:
 
 Run the application. Contacts are now sorted by name in descending order.
 
-![Collection View - Sort Data Items](images/step-3.png)
+![Collection View - Sort Data Items](Images/step-3.png)
 
 You can also sort list items by multiple data fields. To do this, create a **DevExpress.Maui.CollectionView.SortDescription** object for each field that should be sorted. The order of these objects in the **DXCollectionView.SortDescriptions** collection defines the sort order in the view.
 
@@ -283,4 +283,4 @@ Make the following changes in the *MainPage.xaml* file to group data items:
 
 Run the application. Contacts whose first name starts with the same letter are now arranged into groups. Each group is identified by a header. Users can tap group headers to expand or collapse groups.
 
-![Collection View - Group Data Items](images/step-4.png)
+![Collection View - Group Data Items](Images/step-4.png)
