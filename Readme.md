@@ -154,6 +154,8 @@ Do the following in the *MainPage.xaml* file:
 
 Run the application. You can now see a Collection View on the start screen. The view displays a list of items from the bound data source.
 
+![Collection View - Data Source](Images/step-1.png)
+
 ### Item Template
 
 The **DXCollectionView** supports *item templates*, which allow you to specify how each item appears in the view. Make the following changes in the *MainPage.xaml* file to define an item template:
