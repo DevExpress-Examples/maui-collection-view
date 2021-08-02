@@ -158,7 +158,7 @@ Run the application. You can now see a Collection View on the start screen. The 
 
 ### Item Template
 
-The **DXCollectionView** supports *item templates*, which allow you to specify how each item appears in the view. Make the following changes in the *MainPage.xaml* file to define an item template:
+The **DXCollectionView** supports *item templates*. These templates allow you to specify how each item appears in the view. Make the following changes in the *MainPage.xaml* file to define an item template:
 
 1. Assign a **DataTemplate** to the **DXCollectionView.ItemTemplate** property.
 1. Populate the template with controls and bind them to data source fields as the markup below demonstrates.
@@ -233,7 +233,7 @@ Run the application. The Collection View now displays a photo, name, and phone n
 
 Make the following changes in the *MainPage.xaml* file to sort data items:
 
-1. Create a **SortDescription** object and specify its **FieldName** and **SortOrder** properties.
+1. Create a **SortDescription** object, and specify its **FieldName** and **SortOrder** properties.
 1. Add this object to the **DXCollectionView.SortDescriptions** collection.
 
 ```xaml
@@ -258,7 +258,7 @@ You can also sort list items by multiple data fields. To do this, create a **Dev
 Make the following changes in the *MainPage.xaml* file to group data items:
 
 1. Set the **DXCollectionView.GroupDescription** property to a **GroupDescription** object with the **FieldName** property set to **Name** and **GroupDescription.GroupInterval** set to **Alphabetical**.
-1. Use the **DXCollectionView.GroupHeaderTemplate** property to specify the appearance of group headers.
+1. Use the **DXCollectionView.GroupHeaderTemplate** property to specify group header appearance.
 
 ```xaml
 <dxcv:DXCollectionView ItemsSource="{Binding Data}">
@@ -285,6 +285,6 @@ Make the following changes in the *MainPage.xaml* file to group data items:
 </dxcv:DXCollectionView>
 ```
 
-Run the application. Contacts whose first name starts with the same letter are now arranged into groups. Each group is identified by a header. Users can tap group headers to expand or collapse groups.
+Run the application. Contacts whose first name begins with the same letter are now arranged into groups. Each group is identified by a header. Users can tap group headers to expand or collapse groups.
 
 ![Collection View - Group Data Items](Images/step-4.png)
