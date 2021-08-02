@@ -37,7 +37,7 @@ The step-by-step instructions below describe how to create the same application.
     > dotnet new maui -ap com.devexpress.CollectionViewExample
     > ```
 1. Register the following NuGet feed in Visual Studio: **https://nuget.devexpress.com/free/api**.
-    > If you are an active DevExpress Universal customer, this MAUI preview will be available in your personal NuGet feed
+    > If you are an active DevExpress Universal customer, DevExpress Controls for .NET MAUI are available in your personal NuGet feed.
 1. Install the **DevExpress.Maui.CollectionView** package from this feed.
 
 > DevExpress Controls for .NET MAUI support iOS and Android. If the wizard also created a WinUI project, remove it.
