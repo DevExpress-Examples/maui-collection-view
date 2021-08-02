@@ -4,7 +4,7 @@ This repository contains an application that demonstrates the capabilities of th
 
 - Templates for Data Items and Group Headers
 - Data Sorting, Filtering, and Grouping
-- Vertical and Horizontal Scroll
+- Vertical and Horizontal Scrolling
 - Drag-and-Drop Editing
 - Pull-to-Refresh
 - Infinite Scroll
