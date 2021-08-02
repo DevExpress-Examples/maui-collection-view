@@ -37,6 +37,7 @@ The step-by-step instructions below describe how to create the same application.
     > dotnet new maui -ap com.devexpress.CollectionViewExample
     > ```
 1. Register the following NuGet feed in Visual Studio: **https://nuget.devexpress.com/free/api**.
+    > If you are an active DevExpress Universal customer, this MAUI preview will be available in your personal NuGet feed
 1. Install the **DevExpress.Maui.CollectionView** package from this feed.
 
 > DevExpress Controls for .NET MAUI support iOS and Android. If the wizard also created a WinUI project, remove it.
@@ -127,7 +128,7 @@ namespace CollectionViewExample {
 
 Do the following in the *MainPage.xaml* file:
 
-1. Define the **dxcv** XAML namespace that refers to the **DevExpress.Maui.Charts** CLR namespace.
+1. Define the **dxcv** XAML namespace that refers to the **DevExpress.Maui.CollectionView** CLR namespace.
 1. Define the **local** XML namespace that refers to the **CollectionViewExample** CLR namespace.
 1. Remove the default content and add an instance of the **DXCollectionView** class to the page. You may also need to remove the default content's event handlers in the code-behind.
 1. Assign a **ViewModel** instance to the **ContentPage.BindingContext** property.
