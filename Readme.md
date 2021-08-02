@@ -7,7 +7,7 @@ This repository contains an application that demonstrates the capabilities of th
 - Vertical and Horizontal Scrolling
 - Drag-and-Drop Editing
 - Pull-to-Refresh
-- Infinite Scroll
+- Infinite Scrolling
 - Swipe Gestures
 - Multiple Item Selection
 - Themes
