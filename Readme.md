@@ -233,7 +233,7 @@ Run the application. The Collection View now displays a photo, name, and phone n
 
 Make the following changes in the *MainPage.xaml* file to sort data items:
 
-1. Create a **SortDescription** object, and specify its **FieldName** and **SortOrder** properties.
+1. Create a **DevExpress.Maui.CollectionView.SortDescription** object, and specify its **FieldName** and **SortOrder** properties.
 1. Add this object to the **DXCollectionView.SortDescriptions** collection.
 
 ```xaml
@@ -251,7 +251,7 @@ Run the application. Contacts are now sorted by name in descending order.
 
 ![Collection View - Sort Data Items](Images/step-3.png)
 
-You can also sort list items by multiple data fields. To do this, create a **DevExpress.Maui.CollectionView.SortDescription** object for each field that should be sorted. The order of these objects in the **DXCollectionView.SortDescriptions** collection defines the sort order in the view.
+You can also sort list items by multiple data fields. To do this, create a **SortDescription** object for each field that should be sorted. The order of these objects in the **DXCollectionView.SortDescriptions** collection defines the sort order in the view.
 
 ### Group Data Items
 
