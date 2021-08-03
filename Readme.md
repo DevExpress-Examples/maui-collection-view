@@ -24,7 +24,7 @@ An example in this repository allows you to get started with the Collection View
 
 1. Install Visual Studio 2022 Preview and .NET 6 Preview 6. See the following topic on docs.microsoft.com for more information: [.NET MAUI Installation](https://docs.microsoft.com/en-gb/dotnet/maui/get-started/installation).
 1. Register the following NuGet feed in Visual Studio: **https://nuget.devexpress.com/free/api**.
-    > If you are an active DevExpress Universal customer, DevExpress Controls for .NET MAUI are available in your personal NuGet feed.
+    > If you are an active [DevExpress Universal](https://www.devexpress.com/subscriptions/universal.xml) customer, DevExpress Controls for .NET MAUI are available in your [personal NuGet feed](https://nuget.devexpress.com/).
 
 ## How to Create This Application
 
@@ -38,7 +38,7 @@ The step-by-step instructions below describe how to create an application simila
     > dotnet new maui -ap com.devexpress.CollectionViewExample
     > ```
 1. Register the following NuGet feed in Visual Studio: **https://nuget.devexpress.com/free/api**.
-    > If you are an active DevExpress Universal customer, DevExpress Controls for .NET MAUI are available in your personal NuGet feed.
+    > If you are an active [DevExpress Universal](https://www.devexpress.com/subscriptions/universal.xml) customer, DevExpress Controls for .NET MAUI are available in your [personal NuGet feed](https://nuget.devexpress.com/).
 1. Install the **DevExpress.Maui.CollectionView** package from this feed.
 
 > DevExpress Controls for .NET MAUI support iOS and Android. If the wizard also created a WinUI project, remove it.
