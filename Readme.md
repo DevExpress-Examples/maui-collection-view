@@ -28,7 +28,7 @@ An example in this repository allows you to get started with the Collection View
 
 ## How to Create This Application
 
-The step-by-step instructions below describe how to create the same application.
+The step-by-step instructions below describe how to create an application similar to the application in this repository.
 
 ## Create a New Project
 
