@@ -30,7 +30,7 @@ An example in this repository allows you to get started with the Collection View
 
 The step-by-step instructions below describe how to create an application similar to the application in this repository.
 
-## Create a New Project
+### Create a New Project
 
 1. In Visual Studio 2022 Preview, create a new .NET MAUI project. Name it *CollectionViewExample*.
     > If the wizard does not propose a template for .NET MAUI projects, you can call the following command in the CLI to create a new .NET MAUI project:
@@ -43,7 +43,7 @@ The step-by-step instructions below describe how to create an application simila
 
 > DevExpress Controls for .NET MAUI support iOS and Android. If the wizard also created a WinUI project, remove it.
 
-## View Model
+### View Model
 
 Create the **ViewModel** and **Contact** classes as shown below. The **ViewModel** class exposes the **Data** property that provides access to the data source. Items in this collection are **Contact** objects that expose the **Name**, **Photo**, and **Phone** properties.
 
@@ -100,7 +100,7 @@ namespace CollectionViewExample {
 }
 ```
 
-## View
+### View
 
 In the *Startup.cs* file, [register a handler](https://docs.microsoft.com/en-us/dotnet/maui/fundamentals/app-startup#register-handlers) for the **DevExpress.Maui.CollectionView.DXCollectionView** class.
 
