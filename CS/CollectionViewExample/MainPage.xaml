@@ -7,7 +7,59 @@
     <ContentPage.BindingContext>
         <local:ViewModel/>
     </ContentPage.BindingContext>
-    <dxcv:DXCollectionView ItemsSource="{Binding Data}"
-                           DisplayMember="Name"
-                           DisplayFormat="Contact: {0}"/>
+    <dxcv:DXCollectionView ItemsSource="{Binding Data}">
+        <!--Define the item template.-->
+        <dxcv:DXCollectionView.ItemTemplate>
+            <DataTemplate>
+                <Grid Padding="10, 8, 18, 7">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Frame Grid.Column="0"
+                       HasShadow="False"
+                       BackgroundColor="LightGray"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"
+                       CornerRadius="25"
+                       WidthRequest="50"
+                       HeightRequest="50"
+                       Padding="1">
+                        <Frame BackgroundColor="White"
+                           Padding="0"
+                           HeightRequest="48"
+                           WidthRequest="48"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           HasShadow="False"
+                           IsClippedToBounds="True"
+                           CornerRadius="24">
+                            <Image Source="{Binding Photo}">
+                                <Image.VerticalOptions>
+                                    <OnPlatform x:TypeArguments="LayoutOptions">
+                                        <On Platform="Android">FillAndExpand</On>
+                                        <On Platform="iOS">EndAndExpand</On>
+                                    </OnPlatform>
+                                </Image.VerticalOptions>
+                            </Image>
+                        </Frame>
+                    </Frame>
+                    <StackLayout Grid.Column="1"
+                             Padding="18,1,18,7"
+                             Orientation="Vertical">
+                        <Label Text="{Binding Name}"
+                           Margin="0,2"
+                           TextColor="#55575c"/>
+                        <Label Text="{Binding Phone}"
+                               TextColor="#959aa0"/>
+                    </StackLayout>
+                </Grid>
+            </DataTemplate>
+        </dxcv:DXCollectionView.ItemTemplate>
+
+        <!--Specify margins.-->
+        <dxcv:DXCollectionView.Margin>
+            <OnIdiom x:TypeArguments="Thickness" Phone="16,0,0,0" Tablet="71,0,0,0"/>
+        </dxcv:DXCollectionView.Margin>
+    </dxcv:DXCollectionView>
 </ContentPage>
