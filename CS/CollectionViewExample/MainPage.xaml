@@ -61,5 +61,10 @@
         <dxcv:DXCollectionView.Margin>
             <OnIdiom x:TypeArguments="Thickness" Phone="16,0,0,0" Tablet="71,0,0,0"/>
         </dxcv:DXCollectionView.Margin>
+
+        <!--Sort items.-->
+        <dxcv:DXCollectionView.SortDescriptions>
+            <dxcv:SortDescription FieldName="Name" SortOrder="Descending"/>
+        </dxcv:DXCollectionView.SortDescriptions>
     </dxcv:DXCollectionView>
 </ContentPage>
