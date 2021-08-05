@@ -35,7 +35,7 @@ The step-by-step instructions below describe how to create an application simila
 1. In Visual Studio 2022 Preview, create a new .NET MAUI project. Name it *CollectionViewExample*.
     > If the wizard does not propose a template for .NET MAUI projects, you can call the following command in the CLI to create a new .NET MAUI project:
     > ```
-    > dotnet new maui -ap com.devexpress.CollectionViewExample
+    > dotnet new maui -n CollectionViewExample
     > ```
 1. Register the following NuGet feed in Visual Studio: **https://nuget.devexpress.com/free/api**.
     > If you are an active DevExpress Universal customer, DevExpress Controls for .NET MAUI are available in your personal NuGet feed.
