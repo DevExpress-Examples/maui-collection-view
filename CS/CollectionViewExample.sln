@@ -1,11 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31220.234
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31521.260
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CollectionViewExample", "CollectionViewExample\CollectionViewExample.csproj", "{E61BC6C3-83BE-456F-8C59-3DC25F178BF7}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CollectionViewExample.WinUI", "CollectionViewExample.WinUI\CollectionViewExample.WinUI.csproj", "{04ECB3B3-4DCA-47D0-9CBE-13B3CA3FFE20}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,12 +17,6 @@ Global
 		{E61BC6C3-83BE-456F-8C59-3DC25F178BF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E61BC6C3-83BE-456F-8C59-3DC25F178BF7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E61BC6C3-83BE-456F-8C59-3DC25F178BF7}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{04ECB3B3-4DCA-47D0-9CBE-13B3CA3FFE20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{04ECB3B3-4DCA-47D0-9CBE-13B3CA3FFE20}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{04ECB3B3-4DCA-47D0-9CBE-13B3CA3FFE20}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{04ECB3B3-4DCA-47D0-9CBE-13B3CA3FFE20}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{04ECB3B3-4DCA-47D0-9CBE-13B3CA3FFE20}.Release|Any CPU.Build.0 = Release|Any CPU
-		{04ECB3B3-4DCA-47D0-9CBE-13B3CA3FFE20}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
