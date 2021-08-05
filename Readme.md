@@ -1,3 +1,11 @@
+<!-- default file list -->
+*Files to look at*:
+
+* [Startup.cs](./CollectionViewExample/Startup.cs)
+* [MainPage.xaml](./CollectionViewExample/MainPage.xaml)
+* [ViewModel.cs](./CollectionViewExample/ViewModel.cs)
+<!-- default file list end -->
+
 # DevExpress Collection View for .NET MAUI
 
 This repository contains an application that demonstrates the capabilities of the **DevExpress Collection View for .NET MAUI** library. The **DevExpress.Maui.CollectionView.DXCollectionView** component uses a template to display a collection of data items in a single column or row. The component features include the following:
@@ -14,17 +22,17 @@ This repository contains an application that demonstrates the capabilities of th
 
 ![Collection View](Images/collection-view-class.png)
 
+## Prerequisites
+
+1. Install Visual Studio 2022 Preview and .NET 6 Preview 6. See the following topic on docs.microsoft.com for more information: [.NET MAUI Installation](https://docs.microsoft.com/en-gb/dotnet/maui/get-started/installation).
+1. Register the following NuGet feed in Visual Studio: **https://nuget.devexpress.com/free/api**.
+    > If you are an active [DevExpress Universal](https://www.devexpress.com/subscriptions/universal.xml) customer, DevExpress Controls for .NET MAUI are available in your [personal NuGet feed](https://nuget.devexpress.com/).
+
 ## What's in This Repository
 
 An example in this repository allows you to get started with the Collection View component and explore its basic functionality. It demonstrates how to bind the view to a data source, apply an item template, sort, and group data items.
 
 ![Collection View](Images/step-4.png)
-
-### Prerequisites
-
-1. Install Visual Studio 2022 Preview and .NET 6 Preview 6. See the following topic on docs.microsoft.com for more information: [.NET MAUI Installation](https://docs.microsoft.com/en-gb/dotnet/maui/get-started/installation).
-1. Register the following NuGet feed in Visual Studio: **https://nuget.devexpress.com/free/api**.
-    > If you are an active [DevExpress Universal](https://www.devexpress.com/subscriptions/universal.xml) customer, DevExpress Controls for .NET MAUI are available in your [personal NuGet feed](https://nuget.devexpress.com/).
 
 ## How to Create This Application
 
@@ -37,11 +45,9 @@ The step-by-step instructions below describe how to create an application simila
     > ```
     > dotnet new maui -n CollectionViewExample
     > ```
-1. Register the following NuGet feed in Visual Studio: **https://nuget.devexpress.com/free/api**.
-    > If you are an active [DevExpress Universal](https://www.devexpress.com/subscriptions/universal.xml) customer, DevExpress Controls for .NET MAUI are available in your [personal NuGet feed](https://nuget.devexpress.com/).
-1. Install the **DevExpress.Maui.CollectionView** package from this feed.
+1. Install the **DevExpress.Maui.CollectionView** package from the **https://nuget.devexpress.com/free/api** NuGet package source.
 
-> DevExpress Controls for .NET MAUI support iOS and Android. If the wizard also created a WinUI project, remove it.
+> DevExpress Collection View for .NET MAUI supports iOS and Android. The project should only contain these platforms.
 
 ### View Model
 
@@ -117,7 +123,8 @@ namespace CollectionViewExample {
 	public class Startup : IStartup {
 		public void Configure(IAppHostBuilder appBuilder) {
 			appBuilder
-				.ConfigureMauiHandlers((_, handlers) => handlers.AddHandler<IDXCollectionView, DXCollectionViewHandler>())
+				.ConfigureMauiHandlers((_, handlers) => 
+                    handlers.AddHandler<IDXCollectionView, DXCollectionViewHandler>())
 				.UseMauiApp<App>()
 				.ConfigureFonts(fonts => {
 					fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -131,7 +138,7 @@ Do the following in the *MainPage.xaml* file:
 
 1. Define the **dxcv** XAML namespace that refers to the **DevExpress.Maui.CollectionView** CLR namespace.
 1. Define the **local** XML namespace that refers to the **CollectionViewExample** CLR namespace.
-1. Remove the default content and add an instance of the **DXCollectionView** class to the page. You may also need to remove the default content's event handlers in the code-behind.
+1. Remove the default content and add an instance of the **DXCollectionView** class to the page. Remove the default content's event handlers in the code-behind. We recommend that you remove the default styles (fonts, colors, and other settings) in the *App.xaml* file.
 1. Assign a **ViewModel** instance to the **ContentPage.BindingContext** property.
 1. Bind the **DXCollectionView.ItemsSource** property to the view model's **Data** property.
 1. Use the **DisplayMember** property to specify the data field that contains item captions. The **DisplayFormat** allows you to format captions.
