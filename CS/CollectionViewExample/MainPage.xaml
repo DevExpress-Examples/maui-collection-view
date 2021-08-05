@@ -66,5 +66,24 @@
         <dxcv:DXCollectionView.SortDescriptions>
             <dxcv:SortDescription FieldName="Name" SortOrder="Descending"/>
         </dxcv:DXCollectionView.SortDescriptions>
+
+        <!--Group items.-->
+        <dxcv:DXCollectionView.GroupDescription>
+            <dxcv:GroupDescription FieldName="Name" GroupInterval="Alphabetical"/>
+        </dxcv:DXCollectionView.GroupDescription>
+
+        <!--Define the group header template.-->
+        <dxcv:DXCollectionView.GroupHeaderTemplate>
+            <DataTemplate>
+                <StackLayout Margin="2, 0, 18, 10">
+                    <Label FontFamily="Roboto-Medium"
+                       Margin="0,20,0,1"
+                       TextColor="#55575c"
+                       Text="{Binding Value}"/>
+                    <BoxView BackgroundColor="#ebebeb" 
+                         HeightRequest="1"/>
+                </StackLayout>
+            </DataTemplate>
+        </dxcv:DXCollectionView.GroupHeaderTemplate>
     </dxcv:DXCollectionView>
 </ContentPage>
