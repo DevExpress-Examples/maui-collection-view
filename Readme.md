@@ -254,7 +254,7 @@ Make the following changes in the *MainPage.xaml* file to sort data items:
 </dxcv:DXCollectionView>
 ```
 
-Run the application. Contacts are now sorted by name in descending order.
+Run the application. Contacts are now sorted by first name in descending order.
 
 ![Collection View - Sort Data Items](Images/step-3.png)
 
@@ -264,7 +264,7 @@ You can also sort list items by multiple data fields. To do this, create a **Sor
 
 Make the following changes in the *MainPage.xaml* file to group data items:
 
-1. Set the **DXCollectionView.GroupDescription** property to a **GroupDescription** object with the **FieldName** property set to **Name** and **GroupDescription.GroupInterval** set to **Alphabetical**.
+1. Assign a **GroupDescription** object to the **DXCollectionView.GroupDescription** property. Set the **GroupDescription.FieldName** property to **Name** and **GroupDescription.GroupInterval** to **Alphabetical**.
 1. Use the **DXCollectionView.GroupHeaderTemplate** property to specify group header appearance.
 
 ```xaml
