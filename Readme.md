@@ -20,11 +20,9 @@ This repository contains an application that demonstrates the capabilities of th
 - Multiple Item Selection
 - Themes
 
-![Collection View](Images/collection-view-class.png)
-
 ## Prerequisites
 
-1. Install Visual Studio 2022 Preview and .NET 6 Preview 6. See the following topic on docs.microsoft.com for more information: [.NET MAUI Installation](https://docs.microsoft.com/en-gb/dotnet/maui/get-started/installation).
+1. Install Visual Studio 2022 and the latest .NET MAUI version. See the following topic on docs.microsoft.com for more information: [.NET MAUI Installation](https://docs.microsoft.com/en-gb/dotnet/maui/get-started/installation).
 1. Register the following NuGet feed in Visual Studio: **https://nuget.devexpress.com/free/api**.
     > If you are an active [DevExpress Universal](https://www.devexpress.com/subscriptions/universal.xml) customer, DevExpress Controls for .NET MAUI are available in your [personal NuGet feed](https://nuget.devexpress.com/).
 
@@ -32,7 +30,7 @@ This repository contains an application that demonstrates the capabilities of th
 
 An example in this repository allows you to get started with the Collection View component and explore its basic functionality. It demonstrates how to bind the view to a data source, apply an item template, sort, and group data items.
 
-![Collection View](Images/step-4.png)
+![Collection View](Images/step-4.png) ![Collection View](Images/step-4-ios.png)
 
 ## How to Create This Application
 
@@ -40,7 +38,7 @@ The step-by-step instructions below describe how to create an application simila
 
 ### Create a New Project
 
-1. In Visual Studio 2022 Preview, create a new .NET MAUI project. Name it *CollectionViewExample*.
+1. In Visual Studio 2022, create a new .NET MAUI project. Name it *CollectionViewExample*.
     > If the wizard does not propose a template for .NET MAUI projects, you can call the following command in a CLI to create a new .NET MAUI project:
     > ```
     > dotnet new maui -n CollectionViewExample
@@ -166,15 +164,9 @@ Do the following in the *MainPage.xaml* file:
     <ContentPage.BindingContext>
         <local:ViewModel/>
     </ContentPage.BindingContext>
-    <dxcv:DXCollectionView ItemsSource="{Binding Data}"
-                           DisplayMember="Name"
-                           DisplayFormat="Contact: {0}"/>
+    <dxcv:DXCollectionView ItemsSource="{Binding Data}"/>
 </ContentPage>
 ```
-
-Run the application. You can now see a Collection View on the start screen. The view displays a list of items from the bound data source.
-
-![Collection View - Data Source](Images/step-1.png)
 
 ### Create an Item Template
 
@@ -193,34 +185,33 @@ The [DXCollectionView](https://docs.devexpress.com/MAUI/DevExpress.Maui.Collecti
                         <ColumnDefinition Width="50"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Frame Grid.Column="0"
-                       HasShadow="False"
-                       BackgroundColor="LightGray"
-                       VerticalOptions="Center"
-                       HorizontalOptions="Center"
-                       CornerRadius="25"
-                       WidthRequest="50"
-                       HeightRequest="50"
-                       Padding="1">
+                    <Grid Margin="0" Padding="0" ColumnSpacing="0" RowSpacing="0">
                         <Frame BackgroundColor="White"
-                           Padding="0"
-                           HeightRequest="48"
-                           WidthRequest="48"
-                           VerticalOptions="Center"
-                           HorizontalOptions="Center"
-                           HasShadow="False"
-                           IsClippedToBounds="True"
-                           CornerRadius="24">
-                            <Image Source="{Binding Photo}">
-                                <Image.VerticalOptions>
-                                    <OnPlatform x:TypeArguments="LayoutOptions">
-                                        <On Platform="Android">FillAndExpand</On>
-                                        <On Platform="iOS">EndAndExpand</On>
-                                    </OnPlatform>
-                                </Image.VerticalOptions>
-                            </Image>
+                                   Padding="0" Margin="0"
+                                   HeightRequest="48"
+                                   WidthRequest="48"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Center"
+                                   HasShadow="False"   
+                                   CornerRadius="24">
+                            <Frame.IsClippedToBounds>
+                                <OnPlatform x:TypeArguments="x:Boolean">
+                                    <On Platform="iOS">true</On>
+                                    <On Platform="Android">false</On>
+                                </OnPlatform>
+                            </Frame.IsClippedToBounds>
+                            <Image Source="{Binding Photo}"/>
                         </Frame>
-                    </Frame>
+                        <Ellipse Margin="0"
+                                 Fill="Transparent"
+                                 Stroke="LightGray" 
+                                 StrokeThickness="1"
+                                 HeightRequest="50"
+                                 WidthRequest="50"
+                                 VerticalOptions="Center"
+                                 HorizontalOptions="Center">
+                        </Ellipse>
+                    </Grid>
                     <StackLayout Grid.Column="1"
                              Padding="18,1,18,7"
                              Orientation="Vertical">
@@ -247,7 +238,7 @@ Do the following to add contact photos to the solution:
 
 Run the application. The Collection View now displays a photo, name, and phone number for each contact.
 
-![Collection View - Item Template](Images/step-2.png)
+![Collection View - Item Template](Images/step-2.png) ![Collection View - Item Template](Images/step-2-ios.png)
 
 ### Sort Data Items
 
@@ -269,7 +260,7 @@ Make the following changes in the *MainPage.xaml* file to sort data items:
 
 Run the application. Contacts are now sorted by first name in descending order.
 
-![Collection View - Sort Data Items](Images/step-3.png)
+![Collection View - Sort Data Items](Images/step-3.png) ![Collection View - Sort Data Items](Images/step-3-ios.png)
 
 You can also sort list items by multiple data fields. To do this, create a [SortDescription](https://docs.devexpress.com/MAUI/DevExpress.Maui.CollectionView.SortDescription) object for each field that should be sorted. The order of these objects in the [DXCollectionView.SortDescriptions](https://docs.devexpress.com/MAUI/DevExpress.Maui.CollectionView.DXCollectionView.SortDescriptions) collection defines the sort order in the view.
 
@@ -307,4 +298,8 @@ Make the following changes in the *MainPage.xaml* file to group data items:
 
 Run the application. Contacts whose first name begins with the same letter are now arranged into groups. Each group is identified by a header. Users can tap group headers to expand or collapse groups.
 
-![Collection View - Group Data Items](Images/step-4.png)
+![Collection View - Group Data Items](Images/step-4.png) ![Collection View - Group Data Items](Images/step-4-ios.png)
+
+## Known Issues
+
+* [Frame is not rendered if the Frame.IsClippedToBounds property is set to true](https://github.com/dotnet/maui/issues/2135)

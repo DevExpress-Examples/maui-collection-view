@@ -16,34 +16,33 @@
                         <ColumnDefinition Width="50"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Frame Grid.Column="0"
-                       HasShadow="False"
-                       BackgroundColor="LightGray"
-                       VerticalOptions="Center"
-                       HorizontalOptions="Center"
-                       CornerRadius="25"
-                       WidthRequest="50"
-                       HeightRequest="50"
-                       Padding="1">
+                    <Grid Margin="0" Padding="0" ColumnSpacing="0" RowSpacing="0">
                         <Frame BackgroundColor="White"
-                           Padding="0"
-                           HeightRequest="48"
-                           WidthRequest="48"
-                           VerticalOptions="Center"
-                           HorizontalOptions="Center"
-                           HasShadow="False"
-                           IsClippedToBounds="True"
-                           CornerRadius="24">
-                            <Image Source="{Binding Photo}">
-                                <Image.VerticalOptions>
-                                    <OnPlatform x:TypeArguments="LayoutOptions">
-                                        <On Platform="Android">FillAndExpand</On>
-                                        <On Platform="iOS">EndAndExpand</On>
-                                    </OnPlatform>
-                                </Image.VerticalOptions>
-                            </Image>
+                                   Padding="0" Margin="0"
+                                   HeightRequest="48"
+                                   WidthRequest="48"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Center"
+                                   HasShadow="False"   
+                                   CornerRadius="24">
+                            <Frame.IsClippedToBounds>
+                                <OnPlatform x:TypeArguments="x:Boolean">
+                                    <On Platform="iOS">true</On>
+                                    <On Platform="Android">false</On>
+                                </OnPlatform>
+                            </Frame.IsClippedToBounds>
+                            <Image Source="{Binding Photo}"/>
                         </Frame>
-                    </Frame>
+                        <Ellipse Margin="0"
+                                 Fill="Transparent"
+                                 Stroke="LightGray" 
+                                 StrokeThickness="1"
+                                 HeightRequest="50"
+                                 WidthRequest="50"
+                                 VerticalOptions="Center"
+                                 HorizontalOptions="Center">
+                        </Ellipse>
+                    </Grid>
                     <StackLayout Grid.Column="1"
                              Padding="18,1,18,7"
                              Orientation="Vertical">

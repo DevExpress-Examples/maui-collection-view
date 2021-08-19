@@ -34,7 +34,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="DevExpress.Maui.CollectionView" Version="21.2.1-pre-21217" />
+	  <PackageReference Include="DevExpress.Maui.CollectionView" Version="21.2.1-pre-21231" />
 	</ItemGroup>
 
 	<PropertyGroup>
