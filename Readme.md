@@ -6,7 +6,7 @@
 <!-- default file list -->
 *Files to look at*:
 
-* [Startup.cs](./CS/CollectionViewExample/Startup.cs)
+* [MauiProgram.cs](./CS/CollectionViewExample/MauiProgram.cs)
 * [MainPage.xaml](./CS/CollectionViewExample/MainPage.xaml)
 * [ViewModel.cs](./CS/CollectionViewExample/ViewModel.cs)
 <!-- default file list end -->
@@ -57,10 +57,10 @@ The step-by-step instructions below describe how to create an application simila
 In the *MauiProgram.cs* file, [register a handler](https://docs.microsoft.com/en-us/dotnet/maui/fundamentals/app-startup#register-handlers) for the [DXCollectionView](https://docs.devexpress.com/MAUI/DevExpress.Maui.CollectionView.DXCollectionView) class.
 
 ```cs
-using DevExpress.Maui.CollectionView;
 using Microsoft.Maui;
 using Microsoft.Maui.Controls.Hosting;
 using Microsoft.Maui.Hosting;
+using DevExpress.Maui.CollectionView;
 
 namespace CollectionViewExample {
     public static class MauiProgram {
@@ -68,11 +68,11 @@ namespace CollectionViewExample {
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .ConfigureMauiHandlers(handlers => handlers.AddHandler<IDXCollectionView, DXCollectionViewHandler>())
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-                })
-                .ConfigureMauiHandlers(handlers => handlers.AddHandler<IDXCollectionView, DXCollectionViewHandler>());
+                });
             return builder.Build();
         }
     }
