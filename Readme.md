@@ -6,7 +6,7 @@
 <!-- default file list -->
 *Files to look at*:
 
-* [Startup.cs](./CS/CollectionViewExample/Startup.cs)
+* [MauiProgram.cs](./CS/CollectionViewExample/MauiProgram.cs)
 * [MainPage.xaml](./CS/CollectionViewExample/MainPage.xaml)
 * [ViewModel.cs](./CS/CollectionViewExample/ViewModel.cs)
 <!-- default file list end -->
@@ -64,7 +64,6 @@ using Microsoft.Maui.Controls.Xaml;
 using DevExpress.Maui.CollectionView;
 
 [assembly: XamlCompilationAttribute(XamlCompilationOptions.Compile)]
-
 namespace CollectionViewExample {
     public class Startup : IStartup {
         public void Configure(IAppHostBuilder appBuilder) {
@@ -72,9 +71,12 @@ namespace CollectionViewExample {
                 .ConfigureMauiHandlers((_, handlers) => 
                     handlers.AddHandler<IDXCollectionView, DXCollectionViewHandler>())
                 .UseMauiApp<App>()
-                .ConfigureFonts(fonts => {
+                .ConfigureMauiHandlers(handlers => handlers.AddHandler<IDXCollectionView, DXCollectionViewHandler>())
+                .ConfigureFonts(fonts =>
+                {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                 });
+            return builder.Build();
         }
     }
 }
