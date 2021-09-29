@@ -54,27 +54,26 @@ The step-by-step instructions below describe how to create an application simila
 
 ### Add a Collection View to the Main Page
 
-In the *Startup.cs* file, [register a handler](https://docs.microsoft.com/en-us/dotnet/maui/fundamentals/app-startup#register-handlers) for the [DXCollectionView](https://docs.devexpress.com/MAUI/DevExpress.Maui.CollectionView.DXCollectionView) class.
+In the *MauiProgram.cs* file, [register a handler](https://docs.microsoft.com/en-us/dotnet/maui/fundamentals/app-startup#register-handlers) for the [DXCollectionView](https://docs.devexpress.com/MAUI/DevExpress.Maui.CollectionView.DXCollectionView) class.
 
 ```cs
-using Microsoft.Maui;
-using Microsoft.Maui.Hosting;
-using Microsoft.Maui.Controls.Hosting;
-using Microsoft.Maui.Controls.Xaml;
 using DevExpress.Maui.CollectionView;
-
-[assembly: XamlCompilationAttribute(XamlCompilationOptions.Compile)]
+using Microsoft.Maui;
+using Microsoft.Maui.Controls.Hosting;
+using Microsoft.Maui.Hosting;
 
 namespace CollectionViewExample {
-    public class Startup : IStartup {
-        public void Configure(IAppHostBuilder appBuilder) {
-            appBuilder
-                .ConfigureMauiHandlers((_, handlers) => 
-                    handlers.AddHandler<IDXCollectionView, DXCollectionViewHandler>())
+    public static class MauiProgram {
+        public static MauiApp CreateMauiApp() {
+            var builder = MauiApp.CreateBuilder();
+            builder
                 .UseMauiApp<App>()
-                .ConfigureFonts(fonts => {
+                .ConfigureFonts(fonts =>
+                {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-                });
+                })
+                .ConfigureMauiHandlers(handlers => handlers.AddHandler<IDXCollectionView, DXCollectionViewHandler>());
+            return builder.Build();
         }
     }
 }
