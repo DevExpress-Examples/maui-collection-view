@@ -1,6 +1,7 @@
 ﻿using Microsoft.Maui;
 using Microsoft.Maui.Controls.Hosting;
 using Microsoft.Maui.Hosting;
+using DevExpress.Maui;
 using DevExpress.Maui.CollectionView;
 
 namespace CollectionViewExample {
@@ -9,7 +10,7 @@ namespace CollectionViewExample {
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
-                .ConfigureMauiHandlers(handlers => handlers.AddHandler<IDXCollectionView, DXCollectionViewHandler>())
+                .UseDevExpress()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
