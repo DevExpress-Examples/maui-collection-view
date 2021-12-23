@@ -222,22 +222,12 @@ The [DXCollectionView](https://docs.devexpress.com/MAUI/DevExpress.Maui.Collecti
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Grid Margin="0" Padding="0" ColumnSpacing="0" RowSpacing="0">
-                        <Frame BackgroundColor="White"
-                                   Padding="0" Margin="0"
-                                   HeightRequest="48"
-                                   WidthRequest="48"
-                                   VerticalOptions="Center"
-                                   HorizontalOptions="Center"
-                                   HasShadow="False"   
-                                   CornerRadius="24">
-                            <Frame.IsClippedToBounds>
-                                <OnPlatform x:TypeArguments="x:Boolean">
-                                    <On Platform="iOS">true</On>
-                                    <On Platform="Android">false</On>
-                                </OnPlatform>
-                            </Frame.IsClippedToBounds>
-                            <Image Source="{Binding Photo}"/>
-                        </Frame>
+                        <Image Source="{Binding Photo}" VerticalOptions="Center"
+                                    HorizontalOptions="Center" WidthRequest="48" HeightRequest="48">
+                            <Image.Clip>
+                                <EllipseGeometry RadiusX="24" RadiusY="24" Center="24, 24" />
+                            </Image.Clip>
+                        </Image>
                         <Ellipse Margin="0"
                                  Fill="Transparent"
                                  Stroke="LightGray" 
@@ -338,4 +328,4 @@ Run the application. Contacts whose first name begins with the same letter are n
 
 ## Known Issues
 
-* [Frame is not rendered if the Frame.IsClippedToBounds property is set to true](https://github.com/dotnet/maui/issues/2135)
+* [[Bug] Android: Elements are clipped incorrectly if Element.Clip is set to EllipseGeometry](https://github.com/dotnet/maui/issues/3843)
