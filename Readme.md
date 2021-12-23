@@ -100,7 +100,7 @@ namespace CollectionViewExample {
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
-                .ConfigureMauiHandlers(handlers => handlers.AddHandler<IDXCollectionView, DXCollectionViewHandler>())
+                .UseDevExpress()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -263,7 +263,7 @@ The [DXCollectionView](https://docs.devexpress.com/MAUI/DevExpress.Maui.Collecti
         
         <!--Specify margins.-->
         <dxcv:DXCollectionView.Margin>
-            <OnIdiom x:TypeArguments="Thickness" Phone="16,0,0,0" Tablet="71,0,0,0"/>
+            <x:OnIdiom Phone="16,0,0,0" Tablet="71,0,0,0"/>
         </dxcv:DXCollectionView.Margin>
 </dxcv:DXCollectionView>
 ```
