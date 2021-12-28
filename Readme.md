@@ -66,7 +66,7 @@ An example in this repository allows you to get started with the Collection View
 ## How to Run This Application
 
 1. Install Visual Studio 2022 and the latest .NET MAUI version. See the following topic on docs.microsoft.com for more information: [.NET MAUI Installation](https://docs.microsoft.com/en-gb/dotnet/maui/get-started/installation).
-1. Register the following NuGet feed in Visual Studio: **https://nuget.devexpress.com/free/api**.
+1. Register the following NuGet feed in Visual Studio: `https://nuget.devexpress.com/free/api`.
     > If you are an active [DevExpress Universal](https://www.devexpress.com/subscriptions/universal.xml) customer, DevExpress Controls for .NET MAUI are available in your [personal NuGet feed](https://nuget.devexpress.com/).
 
 ## How to Reproduce This Application
@@ -80,13 +80,13 @@ The following step-by-step tutorial details how to reproduce this application.
     > ```
     > dotnet new maui -n CollectionViewExample
     > ```
-1. Install the **DevExpress.Maui.CollectionView** package from the **https://nuget.devexpress.com/free/api** NuGet package source.
+1. Install the **DevExpress.Maui.CollectionView** package from the `https://nuget.devexpress.com/free/api` NuGet package source.
 
 > DevExpress Collection View for .NET MAUI supports iOS and Android. The project should only contain these platforms.
 
 ### Add a Collection View to the Main Page
 
-In the *MauiProgram.cs* file, [register a handler](https://docs.microsoft.com/en-us/dotnet/maui/fundamentals/app-startup#register-handlers) for the [DXCollectionView](https://docs.devexpress.com/MAUI/DevExpress.Maui.CollectionView.DXCollectionView) class.
+In the *MauiProgram.cs* file, call the `UseDevExpress` method to [register handlers](https://docs.microsoft.com/en-us/dotnet/maui/fundamentals/app-startup#register-handlers) for the [DXCollectionView](https://docs.devexpress.com/MAUI/DevExpress.Maui.CollectionView.DXCollectionView) and other DevExpress controls.
 
 ```cs
 using Microsoft.Maui;
