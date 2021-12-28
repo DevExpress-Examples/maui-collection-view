@@ -66,7 +66,7 @@ An example in this repository allows you to get started with the Collection View
 ## How to Run This Application
 
 1. Install Visual Studio 2022 and the latest .NET MAUI version. See the following topic on docs.microsoft.com for more information: [.NET MAUI Installation](https://docs.microsoft.com/en-gb/dotnet/maui/get-started/installation).
-1. Register the following NuGet feed in Visual Studio: **https://nuget.devexpress.com/free/api**.
+1. Register the following NuGet feed in Visual Studio: `https://nuget.devexpress.com/free/api`.
     > If you are an active [DevExpress Universal](https://www.devexpress.com/subscriptions/universal.xml) customer, DevExpress Controls for .NET MAUI are available in your [personal NuGet feed](https://nuget.devexpress.com/).
 
 ## How to Reproduce This Application
@@ -80,13 +80,13 @@ The following step-by-step tutorial details how to reproduce this application.
     > ```
     > dotnet new maui -n CollectionViewExample
     > ```
-1. Install the **DevExpress.Maui.CollectionView** package from the **https://nuget.devexpress.com/free/api** NuGet package source.
+1. Install the **DevExpress.Maui.CollectionView** package from the `https://nuget.devexpress.com/free/api` NuGet package source.
 
 > DevExpress Collection View for .NET MAUI supports iOS and Android. The project should only contain these platforms.
 
 ### Add a Collection View to the Main Page
 
-In the *MauiProgram.cs* file, [register a handler](https://docs.microsoft.com/en-us/dotnet/maui/fundamentals/app-startup#register-handlers) for the [DXCollectionView](https://docs.devexpress.com/MAUI/DevExpress.Maui.CollectionView.DXCollectionView) class.
+In the *MauiProgram.cs* file, call the `UseDevExpress` method to [register handlers](https://docs.microsoft.com/en-us/dotnet/maui/fundamentals/app-startup#register-handlers) for the [DXCollectionView](https://docs.devexpress.com/MAUI/DevExpress.Maui.CollectionView.DXCollectionView) and other DevExpress controls.
 
 ```cs
 using Microsoft.Maui;
@@ -100,7 +100,7 @@ namespace CollectionViewExample {
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
-                .ConfigureMauiHandlers(handlers => handlers.AddHandler<IDXCollectionView, DXCollectionViewHandler>())
+                .UseDevExpress()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -222,22 +222,12 @@ The [DXCollectionView](https://docs.devexpress.com/MAUI/DevExpress.Maui.Collecti
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Grid Margin="0" Padding="0" ColumnSpacing="0" RowSpacing="0">
-                        <Frame BackgroundColor="White"
-                                   Padding="0" Margin="0"
-                                   HeightRequest="48"
-                                   WidthRequest="48"
-                                   VerticalOptions="Center"
-                                   HorizontalOptions="Center"
-                                   HasShadow="False"   
-                                   CornerRadius="24">
-                            <Frame.IsClippedToBounds>
-                                <OnPlatform x:TypeArguments="x:Boolean">
-                                    <On Platform="iOS">true</On>
-                                    <On Platform="Android">false</On>
-                                </OnPlatform>
-                            </Frame.IsClippedToBounds>
-                            <Image Source="{Binding Photo}"/>
-                        </Frame>
+                        <Image Source="{Binding Photo}" VerticalOptions="Center"
+                                    HorizontalOptions="Center" WidthRequest="48" HeightRequest="48">
+                            <Image.Clip>
+                                <EllipseGeometry RadiusX="24" RadiusY="24" Center="24, 24" />
+                            </Image.Clip>
+                        </Image>
                         <Ellipse Margin="0"
                                  Fill="Transparent"
                                  Stroke="LightGray" 
@@ -263,7 +253,7 @@ The [DXCollectionView](https://docs.devexpress.com/MAUI/DevExpress.Maui.Collecti
         
         <!--Specify margins.-->
         <dxcv:DXCollectionView.Margin>
-            <OnIdiom x:TypeArguments="Thickness" Phone="16,0,0,0" Tablet="71,0,0,0"/>
+            <x:OnIdiom Phone="16,0,0,0" Tablet="71,0,0,0"/>
         </dxcv:DXCollectionView.Margin>
 </dxcv:DXCollectionView>
 ```
@@ -338,4 +328,4 @@ Run the application. Contacts whose first name begins with the same letter are n
 
 ## Known Issues
 
-* [Frame is not rendered if the Frame.IsClippedToBounds property is set to true](https://github.com/dotnet/maui/issues/2135)
+* [[Bug] Android: Elements are clipped incorrectly if Element.Clip is set to EllipseGeometry](https://github.com/dotnet/maui/issues/3843)
