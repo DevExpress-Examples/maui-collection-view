@@ -325,7 +325,3 @@ Make the following changes in the *MainPage.xaml* file to group data items:
 Run the application. Contacts whose first name begins with the same letter are now arranged into groups. Each group is identified by a header. Users can tap group headers to expand or collapse groups.
 
 ![Collection View - Group Data Items](Images/step-4.png) ![Collection View - Group Data Items](Images/step-4-ios.png)
-
-## Known Issues
-
-* [[Bug] Android: Elements are clipped incorrectly if Element.Clip is set to EllipseGeometry](https://github.com/dotnet/maui/issues/3843)
