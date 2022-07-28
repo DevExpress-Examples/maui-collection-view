@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
+             xmlns:local="clr-namespace:CollectionViewSelection"
+             x:Class="CollectionViewSelection.MainPage">
+    <ContentPage.BindingContext>
+        <local:ViewModel/>
+    </ContentPage.BindingContext>
+    <dxcv:DXCollectionView ItemsSource="{Binding Contacts}"
+                           SelectionMode="Multiple"
+                           SelectedItems="{Binding SelectedContacts}">
+        <!--Define the item template.-->
+        <dxcv:DXCollectionView.ItemTemplate>
+            <DataTemplate>
+                <Grid Padding="10, 8, 18, 7">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Ellipse Margin="0"
+                                Fill="White"
+                                Stroke="{DynamicResource AvatarBorderColor}" 
+                                StrokeThickness="1"
+                                HeightRequest="50"
+                                WidthRequest="50"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center">
+                    </Ellipse>
+                    <Image Source="{Binding Photo}" VerticalOptions="Center"
+                                    HorizontalOptions="Center" WidthRequest="48" HeightRequest="48">
+                        <Image.Clip>
+                            <EllipseGeometry RadiusX="24" RadiusY="24" Center="24, 24" />
+                        </Image.Clip>
+                    </Image>
+                    <StackLayout Grid.Column="1"
+                             Padding="18,1,18,7"
+                             Orientation="Vertical">
+                        <Label Text="{Binding Name}"
+                           Margin="0,2"
+                           TextColor="#55575c"/>
+                        <Label Text="{Binding Phone}"
+                               TextColor="#959aa0"/>
+                    </StackLayout>
+                </Grid>
+            </DataTemplate>
+        </dxcv:DXCollectionView.ItemTemplate>
+
+        <dxcv:DXCollectionView.SelectedItemTemplate>
+            <DataTemplate>
+                <Frame Margin="10, 1" Padding="0" BorderColor="Orange" HasShadow="True">
+                    <Grid Padding="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Ellipse Margin="0"
+                                Fill="White"
+                                Stroke="{DynamicResource AvatarBorderColor}" 
+                                StrokeThickness="1"
+                                HeightRequest="50"
+                                WidthRequest="50"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center">
+                        </Ellipse>
+                        <Image Source="{Binding Photo}" VerticalOptions="Center"
+                                    HorizontalOptions="Center" WidthRequest="48" HeightRequest="48">
+                            <Image.Clip>
+                                <EllipseGeometry RadiusX="24" RadiusY="24" Center="24, 24" />
+                            </Image.Clip>
+                        </Image>
+                        <StackLayout Grid.Column="1"
+                                 Padding="18,1,18,7"
+                                 Orientation="Vertical">
+                            <Label Text="{Binding Name}"
+                               Margin="0,2"
+                               TextColor="#55575c"/>
+                            <Label Text="{Binding Phone}"
+                               TextColor="#959aa0"/>
+                        </StackLayout>
+                    </Grid>
+                </Frame>
+            </DataTemplate>
+        </dxcv:DXCollectionView.SelectedItemTemplate>
+
+        <!--Specify margins.-->
+        <dxcv:DXCollectionView.Margin>
+            <OnIdiom x:TypeArguments="Thickness" Phone="10,0,10,0" Tablet="71,0,0,0"/>
+        </dxcv:DXCollectionView.Margin>
+    </dxcv:DXCollectionView>
+</ContentPage>
