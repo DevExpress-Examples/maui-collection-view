@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
+             xmlns:local="clr-namespace:CollectionViewSwipe"
+             x:Class="CollectionViewSwipe.MainPage">
+    <ContentPage.BindingContext>
+        <local:ViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <Style TargetType="dxcv:SwipeItem">
+            <Setter Property="FontColor" Value="White"/>
+            <Setter Property="FontSize" Value="Medium"/>
+        </Style>
+        <Style x:Key="SeparatorStyle" TargetType="BoxView">
+            <Setter Property="BackgroundColor" Value="DarkGray"/>
+            <Setter Property="HeightRequest" Value="1"/>
+        </Style>
+    </ContentPage.Resources>
+
+    <dxcv:DXCollectionView x:Name="collectionView" ItemsSource="{Binding Data}">
+        <dxcv:DXCollectionView.ItemTemplate>
+            <DataTemplate>
+                <dxcv:SwipeContainer>
+                    <dxcv:SwipeContainer.ItemView>
+                        <StackLayout Margin="0" Spacing="0" BackgroundColor="{Binding ItemColor}">
+                            <Label Margin="20" Text="{Binding Description}"/>
+                            <BoxView Style="{StaticResource SeparatorStyle}"/>
+                        </StackLayout>
+                    </dxcv:SwipeContainer.ItemView>
+
+                    <dxcv:SwipeContainer.StartSwipeItems>
+                        <dxcv:SwipeItem Caption="{Binding ActionText}"
+                                        BackgroundColor="Green"
+                                        Image="{Binding ActionIcon}"
+                                        Command="{Binding ChangeStateCommand}"/>
+                    </dxcv:SwipeContainer.StartSwipeItems>
+
+                    <dxcv:SwipeContainer.EndSwipeItems>
+                        <dxcv:SwipeItem Caption="Delete"
+                                        BackgroundColor="Red"
+                                        Image="deletetask"
+                                        Invoked="SwipeItem_Invoked"/>
+                    </dxcv:SwipeContainer.EndSwipeItems>
+                </dxcv:SwipeContainer>
+            </DataTemplate>
+        </dxcv:DXCollectionView.ItemTemplate>
+    </dxcv:DXCollectionView>
+</ContentPage>
