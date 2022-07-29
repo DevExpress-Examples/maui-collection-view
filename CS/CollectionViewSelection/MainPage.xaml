@@ -48,7 +48,13 @@
 
         <dxcv:DXCollectionView.SelectedItemTemplate>
             <DataTemplate>
-                <Frame Margin="10, 1" Padding="0" BorderColor="Orange" HasShadow="True">
+                <Border Margin="10, 1"
+                        Padding="0"
+                        Stroke="Orange"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="{AppThemeBinding Light=White, Dark=Black}"
+                        StrokeThickness="2"
+                        StrokeShape="RoundRectangle 10">
                     <Grid Padding="10">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="50"/>
@@ -79,7 +85,7 @@
                                TextColor="#959aa0"/>
                         </StackLayout>
                     </Grid>
-                </Frame>
+                </Border>
             </DataTemplate>
         </dxcv:DXCollectionView.SelectedItemTemplate>
 
