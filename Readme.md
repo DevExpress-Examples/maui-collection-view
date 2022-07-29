@@ -23,7 +23,7 @@ Samples in this repository demonstrate how to get started with the [DXCollection
 
 ### Get Started
 
-The *CollectionViewExample* project demostrates how to populate the view with items, apply data templates, sort and group items.
+The *CollectionViewExample* project demonstrates how to populate the view with items, apply data templates, sort and group items.
 
 ![DevExpress Mobile UI for .NET MAUI](./Images/get-started.png)
 
@@ -36,7 +36,7 @@ The *CollectionViewExample* project demostrates how to populate the view with it
 
 ### Selection
 
-The *CollectionViewSelection* project demostrates how to enable multiple item selection and apply a custom data template to selected items.
+The *CollectionViewSelection* project demonstrates how to enable multiple item selection and apply a custom data template to selected items.
 
 ![DevExpress Mobile UI for .NET MAUI](./Images/selection.png)
 
@@ -49,7 +49,7 @@ The *CollectionViewSelection* project demostrates how to enable multiple item se
 
 ### Swipe
 
-The *CollectionViewSwipe* project demostrates item-related commands that a user can access with a swipe gesture.
+The *CollectionViewSwipe* project demonstrates item-related commands that a user can access with a swipe gesture.
 
 ![DevExpress Mobile UI for .NET MAUI](./Images/swipe.png)
 
@@ -61,7 +61,7 @@ The *CollectionViewSwipe* project demostrates item-related commands that a user 
 
 ### Load-More
 
-The *CollectionViewLoadMore* project demostrates a list that is automatically updated when a user scrolls to the end.
+The *CollectionViewLoadMore* project demonstrates a list that is automatically updated when a user scrolls to the end.
 
 ![DevExpress Mobile UI for .NET MAUI](./Images/load-more.png)
 
@@ -74,7 +74,7 @@ The *CollectionViewLoadMore* project demostrates a list that is automatically up
 
 ### Pull-to-Refresh
 
-The *CollectionViewPullToRefresh* project demostrates a list that is updated with a pull-down gesture.
+The *CollectionViewPullToRefresh* project demonstrates a list that is updated with a pull-down gesture.
 
 ![DevExpress Mobile UI for .NET MAUI](./Images/pull-to-refresh.png)
 
