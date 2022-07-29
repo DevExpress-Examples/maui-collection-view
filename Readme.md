@@ -36,7 +36,7 @@ The *CollectionViewExample* project demonstrates how to populate the view with i
 
 ### Selection
 
-The *CollectionViewSelection* project demonstrates how to enable multiple item selection and apply a custom data template to selected items.
+The *CollectionViewSelection* project demonstrates how to enable multiple item selection and apply a custom data template to selected items. See the following help topic for more information: [Item Selection](https://docs.devexpress.devx/MAUI/403377/collection-view/item-selection).
 
 ![DevExpress Mobile UI for .NET MAUI](./Images/selection.png)
 
@@ -49,7 +49,7 @@ The *CollectionViewSelection* project demonstrates how to enable multiple item s
 
 ### Swipe
 
-The *CollectionViewSwipe* project demonstrates item-related commands that a user can access with a swipe gesture.
+The *CollectionViewSwipe* project demonstrates item-related commands that a user can access with a swipe gesture. See the following topic for more information: [Swipe Gestures](https://docs.devexpress.devx/MAUI/403333/collection-view/swipe).
 
 ![DevExpress Mobile UI for .NET MAUI](./Images/swipe.png)
 
@@ -59,9 +59,9 @@ The *CollectionViewSwipe* project demonstrates item-related commands that a user
 * [MainPage.xaml](./CS/CollectionViewSwipe/MainPage.xaml)
 * [ViewModel.cs](./CS/CollectionViewSwipe/ViewModel.cs)
 
-### Load-More
+### Infinite Scrolling
 
-The *CollectionViewLoadMore* project demonstrates a list that is automatically updated when a user scrolls to the end.
+The *CollectionViewLoadMore* project demonstrates a list that is automatically updated when a user scrolls to the end. See the following topic for more information: [Infinite Scrolling](https://docs.devexpress.devx/MAUI/403331/collection-view/infinite-scrolling).
 
 ![DevExpress Mobile UI for .NET MAUI](./Images/load-more.png)
 
@@ -74,7 +74,7 @@ The *CollectionViewLoadMore* project demonstrates a list that is automatically u
 
 ### Pull-to-Refresh
 
-The *CollectionViewPullToRefresh* project demonstrates a list that is updated with a pull-down gesture.
+The *CollectionViewPullToRefresh* project demonstrates a list that is updated with a pull-down gesture. See the following topic for more information: [Pull-to-Refresh](https://docs.devexpress.devx/MAUI/403332/collection-view/pull-to-refresh).
 
 ![DevExpress Mobile UI for .NET MAUI](./Images/pull-to-refresh.png)
 
