@@ -70,7 +70,7 @@ The *CollectionViewLoadMore* project demostrates a list that is automatically up
 <!-- default file list -->
 * [MainPage.xaml](./CS/CollectionViewLoadMore/MainPage.xaml)
 * [ViewModel.cs](./CS/CollectionViewLoadMore/ViewModel.cs)
-* [ViewModel.cs](./CS/CollectionViewLoadMore/MailMessageRepository.cs)
+* [MailMessageRepository.cs](./CS/CollectionViewLoadMore/MailMessageRepository.cs)
 
 ### Pull-to-Refresh
 
@@ -83,7 +83,7 @@ The *CollectionViewPullToRefresh* project demostrates a list that is updated wit
 <!-- default file list -->
 * [MainPage.xaml](./CS/CollectionViewPullToRefresh/MainPage.xaml)
 * [ViewModel.cs](./CS/CollectionViewPullToRefresh/ViewModel.cs)
-* [ViewModel.cs](./CS/CollectionViewPullToRefresh/MailMessageRepository.cs)
+* [MailMessageRepository.cs](./CS/CollectionViewPullToRefresh/MailMessageRepository.cs)
 <!-- default file list end -->
 
 ## Documentation
