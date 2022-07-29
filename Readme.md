@@ -51,7 +51,7 @@ The *CollectionViewSelection* project demostrates how to enable multiple item se
 
 The *CollectionViewSwipe* project demostrates item-related commands that a user can access with a swipe gesture.
 
-![DevExpress Mobile UI for .NET MAUI](./Images/load-more.png)
+![DevExpress Mobile UI for .NET MAUI](./Images/swipe.png)
 
 #### Files to Look At
 
