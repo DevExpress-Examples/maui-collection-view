@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
+             x:Class="CollectionViewPullToRefresh.MainPage">
+    <dxcv:DXCollectionView x:Name="collectionView"
+                           ItemsSource="{Binding ItemSource}"
+                           IsPullToRefreshEnabled="True"
+                           IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
+                           PullToRefreshCommand="{Binding PullToRefreshCommand}"
+                           IndicatorColor="Lime">
+        <dxcv:DXCollectionView.ItemTemplate>
+            <DataTemplate>
+                <Grid ColumnSpacing="16" Padding="16, 14">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <StackLayout Grid.Column="0"
+                                 Orientation="Vertical"
+                                 VerticalOptions="StartAndExpand">
+                        <Label Text="{Binding SenderName}"
+                               MaxLines="1"
+                               FontAttributes="Bold"
+                               TextColor="#55575c"/>
+                        <Label Text="{Binding Subject}"
+                               MaxLines="1"
+                               TextColor="#55575c"/>
+                        <Label Text="{Binding Body}"
+                               MaxLines="7"
+                               TextColor="#959aa0"/>
+                    </StackLayout>
+                    <Label Grid.Column="1"
+                           Text="{Binding MailTime, StringFormat='{0:HH:mm}'}"
+                           TextColor="#959aa0"
+                           VerticalOptions="StartAndExpand" />
+                </Grid>
+            </DataTemplate>
+        </dxcv:DXCollectionView.ItemTemplate>
+    </dxcv:DXCollectionView>
+
+</ContentPage>
