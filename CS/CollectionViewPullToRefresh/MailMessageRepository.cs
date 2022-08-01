@@ -32,7 +32,7 @@ namespace CollectionViewPullToRefresh {
                     "on staying with a PPO Health Plan or we plan on switching to an HMO. " +
                     "We cannot proceed with compliance with the Affordable Health Act " +
                     "until we make this decision. " +
-                    "John Heart: Samantha, I&#39;m still reviewing costs. " +
+                    "John Heart: Samantha, I'm still reviewing costs. " +
                     "I am not in a position to make a final decision at this point.",
                 }
             );
