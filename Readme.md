@@ -101,6 +101,5 @@ The *CollectionViewPullToRefresh* project demonstrates a list that is updated wi
 * [Data Grid](https://github.com/DevExpress-Examples/maui-data-grid-get-started)
 * [Data Form](https://github.com/DevExpress-Examples/maui-data-form-get-started)
 * [Data Editors](https://github.com/DevExpress-Examples/maui-editors-get-started)
-* [Pie Chart](https://github.com/DevExpress-Examples/maui-pie-chart-get-started)
-* [Scatter Chart](https://github.com/DevExpress-Examples/maui-scatter-chart-get-started)
+* [Charts](https://github.com/DevExpress-Examples/maui-charts)
 * [Tab View](https://github.com/DevExpress-Examples/maui-tab-view-get-started)
