@@ -27,7 +27,7 @@ The *CollectionViewExample* project demonstrates how to populate the view with i
 
 ![DevExpress Mobile UI for .NET MAUI](./Images/get-started.png)
 
-#### Files to Look At
+#### Files to Review
 
 <!-- default file list -->
 * [MainPage.xaml](./CS/CollectionViewExample/MainPage.xaml)
@@ -40,7 +40,7 @@ The *CollectionViewSelection* project demonstrates how to enable multiple item s
 
 ![DevExpress Mobile UI for .NET MAUI](./Images/selection.png)
 
-#### Files to Look At
+#### Files to Review
 
 <!-- default file list -->
 * [MainPage.xaml](./CS/CollectionViewSelection/MainPage.xaml)
@@ -53,7 +53,7 @@ The *CollectionViewSwipe* project demonstrates item-related commands that a user
 
 ![DevExpress Mobile UI for .NET MAUI](./Images/swipe.png)
 
-#### Files to Look At
+#### Files to Review
 
 <!-- default file list -->
 * [MainPage.xaml](./CS/CollectionViewSwipe/MainPage.xaml)
@@ -65,7 +65,7 @@ The *CollectionViewLoadMore* project demonstrates a list that is automatically u
 
 ![DevExpress Mobile UI for .NET MAUI](./Images/load-more.png)
 
-#### Files to Look At
+#### Files to Review
 
 <!-- default file list -->
 * [MainPage.xaml](./CS/CollectionViewLoadMore/MainPage.xaml)
@@ -78,7 +78,7 @@ The *CollectionViewPullToRefresh* project demonstrates a list that is updated wi
 
 ![DevExpress Mobile UI for .NET MAUI](./Images/pull-to-refresh.png)
 
-#### Files to Look At
+#### Files to Review
 
 <!-- default file list -->
 * [MainPage.xaml](./CS/CollectionViewPullToRefresh/MainPage.xaml)
