@@ -15,76 +15,24 @@ The **DevExpress Mobile UI for Xamarin.Forms and .NET MAUI** is free of charge. 
 
 Please register the DevExpress NuGet Gallery in Visual Studio to restore the NuGet packages used in this solution. See the following topic for more information: [Get Started with DevExpress Mobile UI for .NET MAUI](https://docs.devexpress.com/MAUI/403249/get-started).
 
+You can also refer to the following YouTube videos for more information on how to get started with the DevExpress .NET MAUI Controls and DevExpress Collection View for MAUI: 
+
+* [Setting up a .NET MAUI Project](https://www.youtube.com/watch?v=juJvl5UicIQ)
+* [Displaying Lists in Your .NET MAUI App with DevExpress controls](https://youtu.be/2TC-933eGEU)
+
 ## What's in This Repository
 
-The [DXCollectionView](https://docs.devexpress.com/MAUI/DevExpress.Maui.CollectionView.DXCollectionView) component uses a template to display a collection of data items in a vertical or horizontal list. See the following help topic for more information: [Collection View](https://docs.devexpress.com/MAUI/403324/collection-view/index).
+The [DXCollectionView](https://docs.devexpress.com/MAUI/DevExpress.Maui.CollectionView.DXCollectionView) component allows you to display a collection of data items in a horizontal or vertical list.
 
-Samples in this repository demonstrate how to get started with the [DXCollectionView](https://docs.devexpress.com/MAUI/DevExpress.Maui.CollectionView.DXCollectionView) component and how to use its features.
+![DevExpress Mobile UI for .NET MAUI](/Images/get-started.png)
 
-### Get Started
+Samples in this repository demonstrate how to get started with the [DXCollectionView](https://docs.devexpress.com/MAUI/DevExpress.Maui.CollectionView.DXCollectionView) component and how to use its features:
 
-The *CollectionViewExample* project demonstrates how to populate the view with items, apply data templates, sort and group items.
-
-![DevExpress Mobile UI for .NET MAUI](./Images/get-started.png)
-
-#### Files to Review
-
-<!-- default file list -->
-* [MainPage.xaml](./CS/CollectionViewExample/MainPage.xaml)
-* [ViewModel.cs](./CS/CollectionViewExample/ViewModel.cs)
-<!-- default file list end -->
-
-### Selection
-
-The *CollectionViewSelection* project demonstrates how to enable multiple item selection and apply a custom data template to selected items. See the following help topic for more information: [Item Selection](https://docs.devexpress.devx/MAUI/403377/collection-view/item-selection).
-
-![DevExpress Mobile UI for .NET MAUI](./Images/selection.png)
-
-#### Files to Review
-
-<!-- default file list -->
-* [MainPage.xaml](./CS/CollectionViewSelection/MainPage.xaml)
-* [ViewModel.cs](./CS/CollectionViewSelection/ViewModel.cs)
-<!-- default file list end -->
-
-### Swipe
-
-The *CollectionViewSwipe* project demonstrates item-related commands that a user can access with a swipe gesture. See the following topic for more information: [Swipe Gestures](https://docs.devexpress.devx/MAUI/403333/collection-view/swipe).
-
-![DevExpress Mobile UI for .NET MAUI](./Images/swipe.png)
-
-#### Files to Review
-
-<!-- default file list -->
-* [MainPage.xaml](./CS/CollectionViewSwipe/MainPage.xaml)
-* [ViewModel.cs](./CS/CollectionViewSwipe/ViewModel.cs)
-
-### Infinite Scrolling
-
-The *CollectionViewLoadMore* project demonstrates a list that is automatically updated when a user scrolls to the end. See the following topic for more information: [Infinite Scrolling](https://docs.devexpress.devx/MAUI/403331/collection-view/infinite-scrolling).
-
-![DevExpress Mobile UI for .NET MAUI](./Images/load-more.png)
-
-#### Files to Review
-
-<!-- default file list -->
-* [MainPage.xaml](./CS/CollectionViewLoadMore/MainPage.xaml)
-* [ViewModel.cs](./CS/CollectionViewLoadMore/ViewModel.cs)
-* [MailMessageRepository.cs](./CS/CollectionViewLoadMore/MailMessageRepository.cs)
-
-### Pull-to-Refresh
-
-The *CollectionViewPullToRefresh* project demonstrates a list that is updated with a pull-down gesture. See the following topic for more information: [Pull-to-Refresh](https://docs.devexpress.devx/MAUI/403332/collection-view/pull-to-refresh).
-
-![DevExpress Mobile UI for .NET MAUI](./Images/pull-to-refresh.png)
-
-#### Files to Review
-
-<!-- default file list -->
-* [MainPage.xaml](./CS/CollectionViewPullToRefresh/MainPage.xaml)
-* [ViewModel.cs](./CS/CollectionViewPullToRefresh/ViewModel.cs)
-* [MailMessageRepository.cs](./CS/CollectionViewPullToRefresh/MailMessageRepository.cs)
-<!-- default file list end -->
+* [Get Started with a Collection View](./CS/CollectionViewExample/)
+* [Implement Infinite Scrolling Functionality](./CS/CollectionViewLoadMore/)
+* [Pull to Refresh the Item List](./CS/CollectionViewPullToRefresh/)
+* [Select Collection View Items](./CS/CollectionViewSelection/)
+* [Add Custom Actions on Swipe Gestures](./CS/CollectionViewSwipe/)
 
 ## Documentation
 
