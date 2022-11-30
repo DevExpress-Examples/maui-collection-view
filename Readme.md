@@ -17,7 +17,7 @@ Please register the DevExpress NuGet Gallery in Visual Studio to restore the NuG
 You can also refer to the following YouTube videos for more information on how to get started with the DevExpress .NET MAUI Controls and DevExpress Collection View for MAUI: 
 
 * [Setting up a .NET MAUI Project](https://www.youtube.com/watch?v=juJvl5UicIQ)
-* [Displaying Lists in Your .NET MAUI App with DevExpress controls](https://youtu.be/2TC-933eGEU)
+* [Displaying Lists in Your .NET MAUI App with DevExpress controls](https://www.youtube.com/watch?v=2TC-933eGEU)
 
 ## What's in This Repository
 
