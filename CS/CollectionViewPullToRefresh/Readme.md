@@ -1,7 +1,3 @@
-<!-- default badges list -->
-Automatically generated badges
-<!-- default badges end -->
-
 # Pull to Refresh the Item List
 
 This example shows how to allow users to request content updates with a pull-down gesture in the [DXCollectionView](https://docs.devexpress.com/MAUI/DevExpress.Maui.CollectionView.DXCollectionView).

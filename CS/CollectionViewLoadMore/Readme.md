@@ -1,7 +1,3 @@
-<!-- default badges list -->
-Automatically generated badges
-<!-- default badges end -->
-
 # Implement Infinite Scrolling Functionality
 
 This example shows how to implement the load-more functionality - when a user scrolls to the bottom (or right, if the [DXCollectionView.Orientation](https://docs.devexpress.com/MAUI/DevExpress.Maui.CollectionView.DXCollectionView.Orientation) property is set to `Horizontal`) of the list, a set of new data items is added to the end of the list.

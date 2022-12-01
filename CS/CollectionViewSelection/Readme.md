@@ -1,7 +1,3 @@
-<!-- default badges list -->
-Automatically generated badges
-<!-- default badges end -->
-
 # Select Collection View Items
 
 This example shows how to allow item selection in the DX Collection View and configure selected item appearance.

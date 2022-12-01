@@ -1,7 +1,3 @@
-<!-- default badges list -->
-Automatically generated badges
-<!-- default badges end -->
-
 # Add Custom Actions on Swipe Gestures
 
 You can extend CollectionView's UI with additional elements that appear when a user swipes an item from left to right or from right to left and perform custom actions on tap. For the [Horizontal](https://docs.devexpress.com/MAUI/DevExpress.Maui.CollectionView.DXCollectionView.Orientation) orientation, the CollectionView supports top-to-bottom and bottom-to-top swipe gestures for items. For more information about swipe actions, refer to the following help topic: [Swipe Gestures](https://docs.devexpress.com/MAUI/403333/collection-view/swipe).
