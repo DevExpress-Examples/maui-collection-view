@@ -4,7 +4,7 @@ Automatically generated badges
 
 # Get Started with a Collection View
 
-This example shows how to add a [DXCollectionView](https://docs.devexpress.com/MAUI/DevExpress.Maui.CollectionView.DXCollectionView) control to a MAUI app, populate it with items, configure item appearance, sort and group items.
+This example shows how to add a [DXCollectionView](https://docs.devexpress.com/MAUI/DevExpress.Maui.CollectionView.DXCollectionView) control to a MAUI app, populate it with items, configure item appearance, and sort and group items.
 
 ![DevExpress Mobile UI for .NET MAUI](/Images/get-started.png)
 
