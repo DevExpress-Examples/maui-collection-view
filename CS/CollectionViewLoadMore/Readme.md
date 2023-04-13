@@ -26,7 +26,6 @@ This example demonstrates how to implement infinite scrolling in [CollectionView
 * [MainPage.xaml](MainPage.xaml)
 * [MainPage.xaml.cs](MainPage.xaml.cs)
 * [MainViewModel.cs](MainViewModel.cs)
-* [Styles.xaml](Resources/Styles/Styles.xaml)
 
 ## Documentation
 
