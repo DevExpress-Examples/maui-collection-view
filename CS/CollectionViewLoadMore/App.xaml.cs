@@ -1,4 +1,4 @@
-﻿namespace CollectionViewLoadMore {
+﻿namespace InfiniteScrollingExample {
     public partial class App : Application {
         public App() {
             InitializeComponent();
