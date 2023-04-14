@@ -33,6 +33,7 @@ Samples in this repository demonstrate how to get started with the [DXCollection
 * [Pull to Refresh the Item List](./CS/CollectionViewPullToRefresh/)
 * [Select Collection View Items](./CS/CollectionViewSelection/)
 * [Add Custom Actions on Swipe Gestures](./CS/CollectionViewSwipe/)
+* [Context Menu Actions in Popup](./CS/ContextMenuPopup/)
 
 ## Documentation
 
