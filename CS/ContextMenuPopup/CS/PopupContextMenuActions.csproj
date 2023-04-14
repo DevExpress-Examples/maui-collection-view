@@ -1,0 +1,60 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net7.0-ios;net7.0-android</TargetFrameworks>
+    	<OutputType>Exe</OutputType>
+		<UseMaui>true</UseMaui>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<SingleProject>true</SingleProject>
+		<RootNamespace>PopupContextMenuActions</RootNamespace>
+
+		<!-- Display name -->
+		<ApplicationTitle>Popup ContextMenu Actions</ApplicationTitle>
+
+		<!-- App Identifier -->
+		<ApplicationId>com.companyname.PopupContextMenuActions1</ApplicationId>
+		<ApplicationIdGuid>E3B6E16D-A806-4827-AE62-E0A0E2D60C75</ApplicationIdGuid>
+		<!-- Versions -->
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationVersion>1</ApplicationVersion>
+
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+		<UseInterpreter Condition="$(TargetFramework.Contains('-ios')) AND '$(Configuration)' == 'Release'">True</UseInterpreter>
+	</PropertyGroup>
+	<ItemGroup>
+		<!-- App Icon -->
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#6750A4" />
+
+		<!-- Splash Screen -->
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#6750A4" BaseSize="128,128" />
+
+		<!-- Images -->
+		<MauiImage Include="Resources\Images\*" />
+
+		<!-- Custom Fonts -->
+		<MauiFont Include="Resources\Fonts\*" />
+	</ItemGroup>
+	<ItemGroup>
+	  <None Remove="EmployeeTasks.json" />
+	</ItemGroup>
+	<ItemGroup>
+	  <EmbeddedResource Include="EmployeeTasks.json" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+		<PackageReference Include="DevExpress.Maui.CollectionView" Version="22.2.3" />
+		<PackageReference Include="DevExpress.Maui.Controls" Version="22.2.3" />
+		<PackageReference Include="DevExpress.Maui.Core" Version="22.2.3" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+		<TrimmableAssembly Include="DevExpress.Data.v22.2" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+	  <MauiXaml Update="AppShell.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+</Project>
