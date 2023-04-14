@@ -1,9 +1,4 @@
-<!-- default badges list -->
-![](https://img.shields.io/endpoint?url=https://codecentral.devexpress.com/api/v1/VersionRange/626815528/22.2.3%2B)
-[![](https://img.shields.io/badge/Open_in_DevExpress_Support_Center-FF7200?style=flat-square&logo=DevExpress&logoColor=white)](https://supportcenter.devexpress.com/ticket/details/T1159596)
-[![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
-<!-- default badges end -->
-## CollectionView for .NET MAUI - Context Menu Actions in Popup
+# CollectionView for .NET MAUI - Context Menu Actions in Popup
 
 This example demonstrates how to implement context menu actions for [CollectionView](https://docs.devexpress.com/MAUI/DevExpress.Maui.CollectionView.DXCollectionView) items. To create a context menu, we used the [DXPopup Control](https://docs.devexpress.com/MAUI/DevExpress.Maui.Controls.DXPopup) that contains [SimpleButtons](https://docs.devexpress.com/MAUI/DevExpress.Maui.Controls.SimpleButton). These buttons can invoke different actions.  
 
