@@ -2,6 +2,8 @@
 
 This example demonstrates how to add chips with predefined filters that you can apply to the [CollectionView](https://docs.devexpress.com/MAUI/403324) control.
 
+<img src="https://github.com/DevExpress-Examples/maui-collection-view/assets/12169834/17c8eb59-f0fd-4d65-a16d-b36d09eb12a3" width="30%"/>
+
 **Related Controls and Their Properties**: 
 * [FilterChipGroup](https://docs.devexpress.com/MAUI/DevExpress.Maui.Editors.FilterChipGroup): [ItemsSource](https://docs.devexpress.com/MAUI/DevExpress.Maui.Editors.ChipGroup.ItemsSource), [SelectedItems](https://docs.devexpress.com/MAUI/DevExpress.Maui.Editors.FilterChipGroup.SelectedItems), [DisplayMember](https://docs.devexpress.com/MAUI/DevExpress.Maui.Editors.ChipGroup.DisplayMember)
 * [DXCollectionView](https://docs.devexpress.com/MAUI/403324): [ItemsSource](https://docs.devexpress.com/MAUI/DevExpress.Maui.CollectionView.DXCollectionView.ItemsSource), [FilterString](https://docs.devexpress.com/MAUI/DevExpress.Maui.CollectionView.DXCollectionView.FilterString), [ItemTemplate](https://docs.devexpress.com/MAUI/DevExpress.Maui.CollectionView.DXCollectionView.ItemTemplate)
