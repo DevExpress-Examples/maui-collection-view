@@ -18,7 +18,7 @@ This example shows how to implement a filtering form. In this form, users can sp
 
 ## Files to Review
 
-- [MainPage.xaml](./CollectionViewFilteringUI/MainPage.xaml)
+- [MainPage.xaml](MainPage.xaml)
 
 ## Documentation
 
