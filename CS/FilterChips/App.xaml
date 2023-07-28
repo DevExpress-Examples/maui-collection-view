@@ -1,0 +1,74 @@
+﻿<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+             xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
+             xmlns:local="clr-namespace:FilterChips"
+             x:Class= "FilterChips.App">
+    <Application.Resources>
+        <Color x:Key="Primary">#6750A4</Color>
+        <Color x:Key="SecondaryContainer">#E8DEF8</Color>
+        <Color x:Key="SecondaryContainerDark">#F4EFF4</Color>
+        <Color x:Key="textColorDark">#4A4458</Color>
+        <Color x:Key="OnSecondaryContainer">#1D192B</Color>
+        <Color x:Key="TitleBackgroundDark">#25232A</Color>
+        <Color x:Key="Selection">#E8DEF8</Color>
+        <Color x:Key="SelectedChipBackgroundLight">#E6E0E9</Color>
+        <Color x:Key="SelectedChipBackgroundDark">#7A7289</Color>
+        <Color x:Key="SelectedChipBorderLight">#79747E</Color>
+        <Color x:Key="SelectedChipBorderDark">#938F99</Color>
+        <Color x:Key="Card_Background_Dark">#322F37</Color>
+        <Color x:Key="paleTextColor">#605D66</Color>
+        <Color x:Key="paleTextColorDark">#CAC4D0</Color>
+        <Color x:Key="White">White</Color>
+        <Color x:Key="Black">Black</Color>
+        <Color x:Key="TitleLight">White</Color>
+        <Color x:Key="TitleDark">#E6E1E5</Color>
+        <Color x:Key="Gray50">#F2F2F7</Color>
+        <Color x:Key="Gray100">#E1E1E1</Color>
+        <Color x:Key="Gray200">#C8C8C8</Color>
+        <Color x:Key="Gray300">#ACACAC</Color>
+        <Color x:Key="Gray600">#404040</Color>
+        <Color x:Key="Gray900">#212121</Color>
+        <Color x:Key="Gray925">#1C1B1F</Color>
+        <Color x:Key="Gray950">#141414</Color>
+
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource paleTextColorDark}}" />
+        </Style>
+
+        <Style x:Key="paleLabelStyle" TargetType="Label" >
+            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource paleTextColor}, Dark=White}" />
+        </Style>
+
+        <Style x:Key="CardHeader" TargetType="Label" >
+            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource paleTextColor}, Dark=#F4EFF4}" />
+        </Style>
+
+        <Style x:Key="CardSubHeader" TargetType="Label" >
+            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource paleTextColor}, Dark=#CAC4D0}" />
+        </Style>
+
+        <Style TargetType="dxcv:DXCollectionView">
+            <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Gray50}, Dark={StaticResource Gray950}}" />
+        </Style>
+        <Style TargetType="dxe:FilterChipGroup">
+            <Setter Property="ChipSelectedBackgroundColor" Value="{AppThemeBinding Light={StaticResource SecondaryContainer}, Dark={StaticResource SelectedChipBackgroundDark}}" />
+            <Setter Property="ChipCheckIconColor" Value="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource SecondaryContainer}}" />
+            <Setter Property="ChipTextColor" Value="{AppThemeBinding Light={StaticResource Gray600}, Dark=White}" />
+            <Setter Property="ChipSelectedBorderColor" Value="{AppThemeBinding Light={StaticResource SelectedChipBorderLight}, Dark={StaticResource SelectedChipBorderDark}}" />
+            <Setter Property="ChipBorderThickness" Value="2" />
+            <Setter Property="ChipSelectedTextColor" Value="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource SecondaryContainer}}" />
+            <Setter Property="ChipFontAttributes" Value="None" />
+        </Style>
+        <Style x:Key="cardStyle" TargetType="Border">
+            <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Card_Background_Dark}}" />
+            <Setter Property="StrokeThickness" Value="1" />
+            <Setter Property="StrokeShape" Value="RoundRectangle 10" />
+        </Style>
+        <Style TargetType="Shell" ApplyToDerivedTypes="True">
+            <Setter Property="Shell.BackgroundColor" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource TitleBackgroundDark}}" />
+            <Setter Property="Shell.ForegroundColor" Value="{OnPlatform WinUI={StaticResource Primary}, Default={StaticResource White}}" />
+            <Setter Property="Shell.TitleColor" Value="{AppThemeBinding Light={StaticResource TitleLight}, Dark={StaticResource TitleDark}}" />
+        </Style>
+    </Application.Resources>
+</Application>
