@@ -1,0 +1,190 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
+             xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
+             xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             xmlns:local="clr-namespace:CollectionViewFilteringUI"
+             xmlns:utils="clr-namespace:CollectionViewFilteringUI.Utils"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             ios:Page.UseSafeArea="true"
+             x:Name="page"
+             Title="Houses" Shell.TitleColor="{AppThemeBinding Light={StaticResource TextThemeColor}, Dark={StaticResource TextThemeColorDark}}" 
+             Background="{StaticResource ThemeBackgroundBrush}"
+             x:Class= "CollectionViewFilteringUI.MainPage">
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="{AppThemeBinding Light={StaticResource BackgroundThemeColor}, Dark={StaticResource BackgroundThemeColorDark}}" StatusBarStyle="{AppThemeBinding Light=DarkContent, Dark=LightContent}" />
+    </ContentPage.Behaviors>
+    <ContentPage.Resources>
+        <utils:EnumToDescriptionConverter x:Key="enumToDesriptionConverter"/>
+        <DataTemplate x:Key="houseCardTemplate">
+            <Border Margin="{OnIdiom Phone='18,9,18,9', Tablet='40,20,40,20'}"
+                    StrokeShape="RoundRectangle 10,10,10,10"
+                    BackgroundColor="{AppThemeBinding Light={StaticResource HouseCardBackgroundColor}, Dark={StaticResource HouseCardBackgroundColorDark}}">
+                <Border.Shadow>
+                    <OnPlatform x:TypeArguments="Shadow">
+                        <On Platform="iOS">
+                            <On.Value>
+                                <Shadow Brush="Black"
+                                        Offset="0,2"
+                                        Radius="2"
+                                        Opacity="0.22" />
+                            </On.Value>
+                        </On>
+                        <On Platform="Android" >
+                            <On.Value>
+                                <Shadow Brush="Black"
+                                        Offset="0,4"
+                                        Radius="2"
+                                        Opacity="0.15" />
+                            </On.Value>
+                        </On>
+                    </OnPlatform>
+                </Border.Shadow>
+                <utils:DockLayout RowSpacing="0">
+                    <Grid utils:DockLayout.Dock="Top"
+                          RowSpacing="0"
+                          ColumnSpacing="0"
+                          Padding="0">
+                        <Image HeightRequest="{OnIdiom Phone=150, Tablet=350}"
+                               Source="{Binding ImageSource}"
+                               Margin="0,0,0,25"
+                               Aspect="AspectFill"/>
+                        <Border StrokeShape="Ellipse"
+                                WidthRequest="50"
+                                HeightRequest="50"
+                                VerticalOptions="End"
+                                HorizontalOptions="End"
+                                Margin="0,0,22,0"
+                                BackgroundColor="{AppThemeBinding Light={StaticResource FavoriteIconBackgroundColor}, Dark={StaticResource FavoriteIconBackgroundColorDark}}">
+                            <Border.Triggers>
+                                <DataTrigger Binding="{Binding IsFavorite}" Value="True" TargetType="Border">
+                                    <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource ToogleFavoriteIconBackgroundColor}, Dark={StaticResource ToogleFavoriteIconBackgroundColorDark}}"/>
+                                </DataTrigger>
+                            </Border.Triggers>
+                            <dxco:DXImage
+                                Margin="12"
+                                Source="filteringui_like"
+                                TintColor="{AppThemeBinding Light={StaticResource FavoriteIconStrokeColor}, Dark={StaticResource FavoriteIconStrokeColorDark}}">
+                                <dxco:DXImage.Triggers>
+                                    <DataTrigger Binding="{Binding IsFavorite}" Value="True" TargetType="dxco:DXImage">
+                                        <Setter Property="TintColor" Value="{AppThemeBinding Light={StaticResource ToogleFavoriteIconStrokeColor}, Dark={StaticResource ToogleFavoriteIconStrokeColorDark}}"/>
+                                    </DataTrigger>
+                                </dxco:DXImage.Triggers>
+                            </dxco:DXImage>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    NumberOfTapsRequired="1"
+                                    Command="{Binding Source={Reference page}, Path=BindingContext.AddToFavoritesCommand}"
+                                    CommandParameter="{Binding}"/>
+                            </Border.GestureRecognizers>
+                        </Border>
+                    </Grid>
+                    <utils:DockLayout Padding="14,0,14,14" RowSpacing="8" ColumnSpacing="8">
+                        <Label utils:DockLayout.Dock="Top"
+                               Text="{Binding Type, Converter={StaticResource enumToDesriptionConverter}}"
+                               TextColor="{AppThemeBinding Light={StaticResource HouseTypeTextColor}, Dark={StaticResource HouseTypeTextColorDark}}"
+                               FontAttributes="Bold"
+                               FontSize="{OnIdiom Phone=16, Tablet=18}"/>
+                        <dxco:DXImage utils:DockLayout.Dock="Left"
+                            Margin="0,0,0,2"
+                            VerticalOptions="Start"
+                            Source="filteringui_location_small"
+                            TintColor="{AppThemeBinding Light={StaticResource AccentColor}, Dark={StaticResource AccentColorDark}}"/>
+                        <Grid utils:DockLayout.Dock="Left" 
+                            Padding="0"
+                            Margin="0"
+                            ColumnDefinitions="*,Auto">
+                            <Label 
+                                Text="{Binding Address}"
+                                VerticalOptions="Start"
+                                LineBreakMode="WordWrap"
+                                VerticalTextAlignment="Start"
+                                TextColor="{AppThemeBinding Light={StaticResource HouseAddressTextColor}, Dark={StaticResource HouseAddressTextColorDark}}"
+                                FontSize="{OnIdiom Phone=12, Tablet=14}"/>
+                            <Label Grid.Column="1"
+                                Margin="0,-6,0,0"
+                                Text="{Binding Price, StringFormat='${0:N0} K'}"
+                                TextColor="{AppThemeBinding Light={StaticResource HousePriceTextColor}, Dark={StaticResource HousePriceTextColorDark}}"
+                                FontAttributes="Bold"
+                                VerticalOptions="Start"
+                                VerticalTextAlignment="Start"
+                                HorizontalTextAlignment="End"
+                                FontSize="{OnIdiom Phone=16, Tablet=18}"/>
+                        </Grid>
+                    </utils:DockLayout>
+                </utils:DockLayout>
+            </Border>
+        </DataTemplate>
+        <DataTemplate x:Key="filteringUIFormTemplate">
+            <utils:ScrollViewFix Background="{StaticResource ThemeBackgroundBrush}">
+                <VerticalStackLayout>
+                    <dxe:FilterRadioListPickerItem 
+                                FieldName="City" 
+                                ShowValuesOutOfFilter="true"
+                                ShowValueCounts="false"
+                                ShowRadioButtons="false"
+                                ImageSource="filteringui_location" 
+                                ImageColor="{AppThemeBinding Light={StaticResource AccentColor}, Dark={StaticResource AccentColorDark}}">
+                        <dxe:FilterRadioListPickerItem.PickerTitleView>
+                            <Label FontSize="17"
+                                   FontFamily="Roboto Medium"
+                                   FontAttributes="Bold"
+                                   HorizontalOptions="Start"
+                                   VerticalOptions="Center"
+                                   Margin="0"
+                                   TextColor="{AppThemeBinding Light={StaticResource TextThemeColor}, Dark={StaticResource TextThemeColorDark}}"
+                                   BackgroundColor="Transparent"
+                                   Text="City"
+                                   LineBreakMode="NoWrap">
+                            </Label>
+                        </dxe:FilterRadioListPickerItem.PickerTitleView>
+                    </dxe:FilterRadioListPickerItem>
+                    <dxe:FilterChipGroupItem Text="I Want To" FieldName="Status" AllowDeselect="True"/>
+                    <dxe:FilterCheckedChipGroupItem Text="Property Type" FieldName="Type" CustomDisplayText="OnCustomDisplayText"/>
+                    <dxe:FilterNumericRangeItem Text="Price" FieldName="Price" EditorDisplayFormat="c0"/>
+                    <dxe:FilterNumericRangeItem Text="Square Feet" FieldName="HouseSize"/>
+                    <dxe:FilterCheckedChipGroupItem Text="Bedrooms" ShowValuesOutOfFilter="true" FieldName="Beds"/>
+                    <dxe:FilterNumericRangeItem Text="Year Built" FieldName="YearBuilt"/>
+                    <dxe:FilterCheckItem Text="Must have garage" FieldName="IsGarageExist"/>
+                </VerticalStackLayout>
+            </utils:ScrollViewFix>
+        </DataTemplate>
+    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding Source={Reference collectionView}, Path=Commands.ShowFilteringUIForm}" IconImageSource="filteringui_filter"/>
+    </ContentPage.ToolbarItems>
+    <Grid BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundThemeColor}, Dark={StaticResource BackgroundThemeColorDark}}">
+            <dxco:TabView HeaderPanelPosition="Bottom" ItemHeaderPadding="0"
+                        ItemHeaderWidth="*" HeaderPanelBackgroundColor="Transparent"
+                        HeaderPanelPadding="0"
+                        IsSelectedItemIndicatorVisible="False"
+                        SelectedItemIndex="{Binding SelectedTabIndex}">
+                <dxco:TabViewItem>
+                    <dxco:TabViewItem.HeaderContent>
+                        <local:TabHeaderControl Caption="Home" IconPath="filteringui_home" IsSelected="{Binding IsHomeTabSelected}"/>
+                    </dxco:TabViewItem.HeaderContent>
+                <dxco:TabViewItem.Content>
+                    <dxcv:DXCollectionView x:Name="collectionView"
+                                   ItemsSource="{Binding ItemsSource}"
+                                   ItemTemplate="{StaticResource houseCardTemplate}"
+                                   FilteringUITemplate="{StaticResource filteringUIFormTemplate}"
+                                   FilteringUIFormShowing="OnFilteringUIFormShowing">
+                        </dxcv:DXCollectionView>    
+                </dxco:TabViewItem.Content>
+                </dxco:TabViewItem>
+                <dxco:TabViewItem>
+                    <dxco:TabViewItem.HeaderContent>
+                        <local:TabHeaderControl Caption="Favorites" IconPath="filteringui_like" IsSelected="{Binding IsFavoritesTabSelected}"/>
+                    </dxco:TabViewItem.HeaderContent>
+                    <dxco:TabViewItem.Content>
+                        <dxcv:DXCollectionView
+                                   FilterExpression="{Binding Source={Reference collectionView}, Path=FilterExpression}"
+                                   ItemsSource="{Binding Favorites}"
+                                   ItemTemplate="{StaticResource houseCardTemplate}">
+                        </dxcv:DXCollectionView>
+                    </dxco:TabViewItem.Content>
+                </dxco:TabViewItem>
+            </dxco:TabView>
+        </Grid>
+</ContentPage>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxdf="clr-namespace:DevExpress.Maui.DataForm;assembly=DevExpress.Maui.Editors"
+             xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+             xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
+             x:Class="CrudOperations.ContactEditingPage" Title="Edit contact"
+             Style="{StaticResource detailPageStyle}">
+    <ContentPage.Triggers>
+        <DataTrigger Binding="{Binding IsNew}" Value="True" TargetType="ContentPage">
+            <Setter Property="Title" Value="Add new contact"/>
+            <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource cardColor}, Dark={StaticResource cardColorDark}}"/>
+        </DataTrigger>
+    </ContentPage.Triggers>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="{AppThemeBinding Light=savechanges, Dark=savechanges_dark}" Clicked="SaveItemClick" />
+    </ContentPage.ToolbarItems>
+    <Grid>
+        <ScrollView>
+            <VerticalStackLayout>
+                <VerticalStackLayout>
+                    <VerticalStackLayout.Triggers>
+                        <DataTrigger Binding="{Binding IsNew}" Value="True" TargetType="VerticalStackLayout">
+                            <Setter Property="IsVisible" Value="False"/>
+                        </DataTrigger>
+                    </VerticalStackLayout.Triggers>
+                    <Border HeightRequest="1" StrokeThickness="1" BackgroundColor="{AppThemeBinding Light={StaticResource separatorColor}, Dark={StaticResource separatorColorDark}}"/>
+                    <Image Source="{Binding Item.PhotoImageSource}" WidthRequest="100" HeightRequest="100" Margin="0,10,0,10">
+                        <Image.Clip>
+                            <EllipseGeometry RadiusX="50" RadiusY="50" Center="50, 50" />
+                        </Image.Clip>
+                    </Image>
+                </VerticalStackLayout>
+                <Border BackgroundColor="{AppThemeBinding Light={StaticResource cardColor}, Dark={StaticResource cardColorDark}}" StrokeThickness="0" StrokeShape="RoundRectangle 10,10,0,0">
+                    <dxdf:DataFormView x:Name="dataForm" DataObject="{Binding Item}"
+                                       EditorLabelColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource PrimaryDark}}" IsAutoGenerationEnabled="False"
+                                       EditorLabelWidth="40" ValidateProperty="dataForm_ValidateProperty"
+                                       Margin="0,10,0,0" Background="Transparent">
+                        <dxdf:DataFormTextItem FieldName="FirstName" LabelIcon="editorsname" LabelWidth="40" ReturnType="Next"
+                                               LabelText="" InplaceLabelText="First Name" IsInplaceLabelFloating="True" />
+                        <dxdf:DataFormTextItem FieldName="LastName" IsLabelVisible="True" LabelText="" ReturnType="Next"
+                                               InplaceLabelText="Last Name" IsInplaceLabelFloating="True" />
+                        <dxdf:DataFormMaskedItem FieldName="HomePhone" Keyboard="Telephone" Mask="+1 (000) 000-0000" ReturnType="Next"
+                                                 IsLabelVisible="True" LabelIcon="editorsphone"
+                                                 InplaceLabelText="Phone" IsInplaceLabelFloating="True" />
+                        <dxdf:DataFormTextItem FieldName="Email" IsLabelVisible="True" LabelIcon="editorsemail" ReturnType="Next"
+                                               InplaceLabelText="Email" IsInplaceLabelFloating="True" />
+                        <dxdf:DataFormComboBoxItem FieldName="Company" IsLabelVisible="True" LabelIcon="editorscompany" ReturnType="Next"
+                                               InplaceLabelText="Company" IsInplaceLabelFloating="True" ItemsSource="{Binding DataControlContext.Companies}" PickerShowMode="BottomSheet"/>
+                        <dxdf:DataFormTextItem FieldName="State" IsLabelVisible="True" LabelIcon="editorslocation" ReturnType="Next" 
+                                               InplaceLabelText="State" IsInplaceLabelFloating="True" />
+                        <dxdf:DataFormTextItem FieldName="City" IsLabelVisible="True" LabelText="" ReturnType="Next" 
+                                               InplaceLabelText="City" IsInplaceLabelFloating="True" />
+                        <dxdf:DataFormTextItem FieldName="Address" IsLabelVisible="True" LabelText=""
+                                               InplaceLabelText="Street" IsInplaceLabelFloating="True"  ReturnType="Next"/>
+                        <dxdf:DataFormNumericItem FieldName="ZipCode" IsLabelVisible="True" LabelText=""
+                                                  InplaceLabelText="Zip" IsInplaceLabelFloating="True" />
+                    </dxdf:DataFormView>
+                    <Border.Triggers>
+                        <DataTrigger Binding="{Binding IsNew}" Value="False" TargetType="Border">
+                            <Setter Property="Shadow">
+                                <Setter.Value>
+                                    <Shadow Brush="Gray" Offset="2,2" Radius="4" />
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                    </Border.Triggers>
+                </Border>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

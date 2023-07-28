@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+             xmlns:dxcn="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
+             xmlns:dxdf="clr-namespace:DevExpress.Maui.DataForm;assembly=DevExpress.Maui.Editors"
+             xmlns:dxco="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="CrudOperations.DetailInfoPage" Style="{StaticResource detailPageStyle}">
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="{AppThemeBinding Light={StaticResource pageBackground}, Dark={StaticResource pageBackgroundDark}}" StatusBarStyle="{AppThemeBinding Light=DarkContent, Dark=LightContent}" />
+    </ContentPage.Behaviors>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding EditCommand}" Text="Edit" IconImageSource="{AppThemeBinding Light=edit, Dark=edit_dark}"/>
+        <ToolbarItem Clicked="DeleteItemClick" Text="Delete" IconImageSource="{AppThemeBinding Light=delete, Dark=delete_dark}" />
+    </ContentPage.ToolbarItems>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="0, 10, 0, 0">
+            <Image Source="{Binding Item.PhotoImageSource}" WidthRequest="100" HeightRequest="100" Margin="0,0,0,10">
+                <Image.Clip>
+                    <EllipseGeometry RadiusX="50" RadiusY="50" Center="50, 50" />
+                </Image.Clip>
+            </Image>
+            <HorizontalStackLayout HorizontalOptions="Center">
+                <Label Text="{Binding Item.FirstName}" FontSize="24" FontAttributes="Bold"/>
+                <Label Text="{Binding Item.LastName}" Margin="10,0,0,0" FontSize="24" FontAttributes="Bold"/>
+            </HorizontalStackLayout>
+            <HorizontalStackLayout HorizontalOptions="Center" Margin="0,10,0,0">
+                <dxcn:SimpleButton Style="{StaticResource actionButton}" Clicked="MessageClick">
+                    <VerticalStackLayout>
+                            <dxcn:DXImage Source="message" Style="{StaticResource primaryActionImage}"/>
+                            <Label Text="Message" FontSize="12" HorizontalOptions="Center" />
+                        </VerticalStackLayout>
+                </dxcn:SimpleButton>
+                <dxcn:SimpleButton Style="{StaticResource actionButton}" Clicked="CallClick">
+                    <VerticalStackLayout>
+                            <dxcn:DXImage Source="phone" Style="{StaticResource primaryActionImage}"/>
+                            <Label Text="Call" FontSize="12" HorizontalOptions="Center" />
+                        </VerticalStackLayout>
+                </dxcn:SimpleButton>
+                <dxcn:SimpleButton Style="{StaticResource actionButton}" Clicked="MailClick">
+                    <VerticalStackLayout>
+                        <dxcn:DXImage Source="mail" Style="{StaticResource primaryActionImage}"/>
+                        <Label Text="Mail" FontSize="12" HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </dxcn:SimpleButton>
+            </HorizontalStackLayout>
+            <Border Style="{StaticResource propertyBorder}">
+                <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="*,Auto">
+                    <Label Text="Phone" FontAttributes="Bold" />
+                    <dxcn:SimpleButton Grid.Row="1" Clicked="CallClick" Text="{Binding Item.HomePhone}" Style="{StaticResource detailActionButtonStyle}"/>
+                    <dxcn:SimpleButton Grid.Column="1" Clicked="CopyPhoneClick" Grid.RowSpan="2" Style="{StaticResource detailSecondaryActionButtonStyle}">
+                        <dxcn:DXImage Source="copy" Style="{StaticResource detailSecondaryActionImageStyle}"/>
+                    </dxcn:SimpleButton>
+                </Grid>
+            </Border>
+            <Border Style="{StaticResource propertyBorder}">
+                <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="*,Auto">
+                    <Label Text="Email" FontAttributes="Bold" />
+                    <dxcn:SimpleButton Grid.Row="1" Clicked="MailClick" Text="{Binding Item.Email}"  Style="{StaticResource detailActionButtonStyle}"/>
+                    <dxcn:SimpleButton Grid.Column="1" Clicked="CopyEmailClick" Grid.RowSpan="2" Style="{StaticResource detailSecondaryActionButtonStyle}">
+                        <dxcn:DXImage Source="copy" Style="{StaticResource detailSecondaryActionImageStyle}"/>
+                    </dxcn:SimpleButton>
+                </Grid>
+            </Border>
+            <Border Style="{StaticResource propertyBorder}">
+                <VerticalStackLayout>
+                    <Label Text="Company" FontAttributes="Bold" />
+                    <Label Text="{Binding Item.Company}" Style="{StaticResource AltText}" />
+                </VerticalStackLayout>
+            </Border>
+            <Border Style="{StaticResource propertyBorder}">
+                <VerticalStackLayout>
+                    <Label Text="City" FontAttributes="Bold" />
+                    <Label Text="{Binding Item.City}" Style="{StaticResource AltText}" />
+                </VerticalStackLayout>
+            </Border>
+            <Border Style="{StaticResource propertyBorder}">
+                <VerticalStackLayout>
+                    <Label Text="Address" FontAttributes="Bold" />
+                    <Label Text="{Binding Item.Address}" Style="{StaticResource AltText}" />
+                </VerticalStackLayout>
+            </Border>
+            <Border Style="{StaticResource propertyBorder}">
+                <VerticalStackLayout>
+                    <Label Text="Zip" FontAttributes="Bold" />
+                    <Label Text="{Binding Item.ZipCode}" Style="{StaticResource AltText}" />
+                </VerticalStackLayout>
+            </Border>
+            <dxcn:DXPopup x:Name="popup" AllowScrim="True" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="16" CornerRadius="16"
+                          BackgroundColor="{AppThemeBinding Light={StaticResource pageBackground}, Dark={StaticResource pageBackgroundDark}}">
+                <VerticalStackLayout Padding="10">
+                    <Label Text="Do you want to delete the record?" Margin="0,20" HorizontalTextAlignment="Center" FontAttributes="Bold" />
+                    <Border Style="{StaticResource SeparatorStyle}" />
+                    <dxcn:SimpleButton Text="Delete" Clicked="DeleteConfirmedClick" Style="{StaticResource popupActionButtonStyle}"/>
+                    <Border Style="{StaticResource SeparatorStyle}" />
+                    <dxcn:SimpleButton Text="Cancel" Clicked="CancelDeleteClick" Style="{StaticResource popupActionButtonStyle}"/>
+                </VerticalStackLayout>
+            </dxcn:DXPopup>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

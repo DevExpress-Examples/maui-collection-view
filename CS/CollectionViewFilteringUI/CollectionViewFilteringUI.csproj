@@ -1,0 +1,95 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net7.0-android;net7.0-ios</TargetFrameworks>
+    	<OutputType>Exe</OutputType>
+		<UseMaui>true</UseMaui>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<SingleProject>true</SingleProject>
+		<RootNamespace>CollectionViewFilteringUI</RootNamespace>
+
+		<!-- Display name -->
+		<ApplicationTitle>CollectionViewFilteringUI</ApplicationTitle>
+
+		<!-- App Identifier -->
+		<ApplicationId>com.companyname.CollectionViewFilteringUI</ApplicationId>
+		<ApplicationIdGuid>DB72A12B-8772-49BD-8A1F-A1235CEAC3A0</ApplicationIdGuid>
+		<!-- Versions -->
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationVersion>1</ApplicationVersion>
+
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+		<UseInterpreter Condition="$(TargetFramework.Contains('-ios')) AND '$(Configuration)' == 'Release'">True</UseInterpreter>
+	</PropertyGroup>
+	<ItemGroup>
+		<!-- App Icon -->
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+
+		<!-- Splash Screen -->
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+
+		<!-- Images -->
+		<MauiImage Include="Resources\Images\*" />
+
+		<!-- Custom Fonts -->
+		<MauiFont Include="Resources\Fonts\*" />
+	</ItemGroup>
+	<ItemGroup>
+	  <MauiImage Include="Resources\Images\Houses\house1.jpg" />
+	  <MauiImage Include="Resources\Images\Houses\house10.jpg" />
+	  <MauiImage Include="Resources\Images\Houses\house11.jpg" />
+	  <MauiImage Include="Resources\Images\Houses\house12.jpg" />
+	  <MauiImage Include="Resources\Images\Houses\house13.jpg" />
+	  <MauiImage Include="Resources\Images\Houses\house14.jpg" />
+	  <MauiImage Include="Resources\Images\Houses\house15.jpg" />
+	  <MauiImage Include="Resources\Images\Houses\house16.jpg" />
+	  <MauiImage Include="Resources\Images\Houses\house17.jpg" />
+	  <MauiImage Include="Resources\Images\Houses\house18.jpg" />
+	  <MauiImage Include="Resources\Images\Houses\house19.jpg" />
+	  <MauiImage Include="Resources\Images\Houses\house2.jpg" />
+	  <MauiImage Include="Resources\Images\Houses\house20.jpg" />
+	  <MauiImage Include="Resources\Images\Houses\house21.jpg" />
+	  <MauiImage Include="Resources\Images\Houses\house22.jpg" />
+	  <MauiImage Include="Resources\Images\Houses\house23.jpg" />
+	  <MauiImage Include="Resources\Images\Houses\house24.jpg" />
+	  <MauiImage Include="Resources\Images\Houses\house25.jpg" />
+	  <MauiImage Include="Resources\Images\Houses\house3.jpg" />
+	  <MauiImage Include="Resources\Images\Houses\house4.jpg" />
+	  <MauiImage Include="Resources\Images\Houses\house5.jpg" />
+	  <MauiImage Include="Resources\Images\Houses\house6.jpg" />
+	  <MauiImage Include="Resources\Images\Houses\house7.jpg" />
+	  <MauiImage Include="Resources\Images\Houses\house8.jpg" />
+	  <MauiImage Include="Resources\Images\Houses\house9.jpg" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Maui" Version="5.2.0" />
+		<PackageReference Include="DevExpress.Maui.CollectionView" Version="23.1.*" />
+		<PackageReference Include="DevExpress.Maui.Editors" Version="23.1.*" />
+		<PackageReference Include="DevExpress.Maui.Core" Version="23.1.*" />
+		<PackageReference Include="DevExpress.Maui.Controls" Version="23.1.*" />
+		<TrimmableAssembly Include="DevExpress.Data.v23.1" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+	  <Compile Update="AppShell.xaml.cs">
+	    <DependentUpon>AppShell.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+
+	<ItemGroup>
+	  <MauiXaml Update="AppShell.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Resources\Styles.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="TabHeaderControl.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+</Project>

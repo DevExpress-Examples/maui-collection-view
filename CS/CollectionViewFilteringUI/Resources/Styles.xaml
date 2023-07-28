@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CollectionViewFilteringUI.Resources.Styles"
+             xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors">
+
+    <Color x:Key="BackgroundThemeColor">#F9F6FF</Color>
+    <Color x:Key="NavigationBarColor" x:Uid="Neutral-100">#FFFFFF</Color>
+    <Color x:Key="AccentColor" x:Uid="Primary-40">#6750A4</Color>
+    <Color x:Key="SeparatorColor" x:Uid="NeutralVariant-80">#CAC4D0</Color>
+    <Color x:Key="DividerColor" x:Uid="NeutralVariant-90">#E7E0EC</Color>
+    <Color x:Key="TextThemeColor" x:Uid="Neutral-10">#1C1B1F</Color>
+    <Color x:Key="DemoHamburgerIconColor" x:Uid="NeutralVariant-30">#49454F</Color>
+    <Color x:Key="SecondaryTextColor" x:Uid="NeutralVariant-30">#49454F</Color>
+    <Color x:Key="NavigationTextColor" x:Uid="Neutral-10">#1C1B1F</Color>
+
+    <Color x:Key="AccentColorDark" x:Uid="Primary-80">#D0BCFF</Color>
+    <Color x:Key="BackgroundThemeColorDark" x:Uid="Neutral-10">#1C1B1F</Color>
+    <Color x:Key="NavigationBarColorDark" x:Uid="Neutral-10">#1C1B1F</Color>
+    <Color x:Key="SeparatorColorDark" x:Uid="Secondary-40">#625B71</Color>
+    <Color x:Key="DividerColorDark" x:Uid="NeutralVariant-30">#49454F</Color>
+    <Color x:Key="TextThemeColorDark" x:Uid="Neutral-90">#E6E1E5</Color>
+    <Color x:Key="DemoHamburgerIconColorDark" x:Uid="NeutralVariant-80">#CAC4D0</Color>
+    <Color x:Key="SecondaryTextColorDark" x:Uid="NeutralVariant-80">#CAC4D0</Color>
+    <Color x:Key="NavigationTextColorDark" x:Uid="Neutral-90">#E6E1E5</Color>
+
+
+
+    <Color x:Key="HousePriceTextColor">#000000</Color>
+    <Color x:Key="HouseAddressTextColor">#605D66</Color>
+    <Color x:Key="HouseTypeTextColor">#1D1A22</Color>
+    <Color x:Key="HouseCardBackgroundColor">#FAF8FF</Color>
+    <Color x:Key="ToogleFavoriteIconBackgroundColor">#B58392</Color>
+    <Color x:Key="ToogleFavoriteIconStrokeColor">#FFFFFF</Color>
+    <Color x:Key="FavoriteIconBackgroundColor">#FAF8FF</Color>
+    <Color x:Key="FavoriteIconStrokeColor">#B58392</Color>
+    <Color x:Key="SelectedTabHeaderBackgroundColor">#E8DEF8</Color>
+    <Color x:Key="SelectedTabHeaderTextColor">#1C1B1F</Color>
+    <Color x:Key="TabHeaderTextColor">#49454F</Color>
+    <Color x:Key="FormSettingsIconColor">#49454F</Color>
+    <Color x:Key="RegionTextColor">#49454F</Color>
+    <Color x:Key="FilterFormItemEditorBackgroundColor">#FFFFFF</Color>
+    <Color x:Key="FilterFormItemSelectedChipBackgroundColor">#E8DEF8</Color>
+    <Color x:Key="ToolBarItemTextColor">#79747E</Color>
+
+    <Color x:Key="HousePriceTextColorDark">#FFFFFF</Color>
+    <Color x:Key="HouseAddressTextColorDark">#CAC4D0</Color>
+    <Color x:Key="HouseTypeTextColorDark">#E6E1E5</Color>
+    <Color x:Key="HouseCardBackgroundColorDark">#443F4A</Color>
+    <Color x:Key="ToogleFavoriteIconBackgroundColorDark">#EFB8C8</Color>
+    <Color x:Key="ToogleFavoriteIconStrokeColorDark">#1C1B1F</Color>
+    <Color x:Key="FavoriteIconBackgroundColorDark">#443F4A</Color>
+    <Color x:Key="FavoriteIconStrokeColorDark">#EFB8C8</Color>
+    <Color x:Key="SelectedTabHeaderBackgroundColorDark">#4A4458</Color>
+    <Color x:Key="SelectedTabHeaderTextColorDark">#E6E1E5</Color>
+    <Color x:Key="TabHeaderTextColorDark">#CAC4D0</Color>
+    <Color x:Key="FormSettingsIconColorDark">#CAC4D0</Color>
+    <Color x:Key="RegionTextColorDark">#E6E1E5</Color>
+    <Color x:Key="FilterFormItemEditorBackgroundColorDark">#2E2A30</Color>
+    <Color x:Key="FilterFormItemSelectedChipBackgroundColorDark">#E8DEF8</Color>
+    <Color x:Key="ToolBarItemTextColorDark">#A49EAC</Color>
+
+    <SolidColorBrush x:Key="ThemeBackgroundBrush" Color="{AppThemeBinding Light={StaticResource BackgroundThemeColor}, Dark={StaticResource BackgroundThemeColorDark}}"/>
+
+
+    <Style TargetType="dxe:FilterNumericRangeItem" ApplyToDerivedTypes="True">
+        <Setter Property="EditorBackgroundColor" Value="{AppThemeBinding Light={StaticResource FilterFormItemEditorBackgroundColor}, Dark={StaticResource FavoriteIconBackgroundColorDark}}"/>
+    </Style>
+    <Style TargetType="dxe:FilterChipGroupItem" ApplyToDerivedTypes="True">
+        <Setter Property="ChipBackgroundColor" Value="{AppThemeBinding Light={StaticResource FilterFormItemEditorBackgroundColor}, Dark={StaticResource FavoriteIconBackgroundColorDark}}"/>
+        <Setter Property="ChipSelectedBackgroundColor" Value="{AppThemeBinding Light={StaticResource FilterFormItemSelectedChipBackgroundColor}, Dark={StaticResource FilterFormItemSelectedChipBackgroundColorDark}}"/>
+        <Setter Property="ShowValuesOutOfFilter" Value="true"/>
+        <Setter Property="ShowValueCounts" Value="true"/>
+    </Style>
+    <Style TargetType="dxe:FilterCheckedChipGroupItem" ApplyToDerivedTypes="True">
+        <Setter Property="ChipBackgroundColor" Value="{AppThemeBinding Light={StaticResource FilterFormItemEditorBackgroundColor}, Dark={StaticResource FilterFormItemEditorBackgroundColorDark}}"/>
+        <Setter Property="ChipSelectedBackgroundColor" Value="{AppThemeBinding Light={StaticResource FilterFormItemSelectedChipBackgroundColor}, Dark={StaticResource FilterFormItemSelectedChipBackgroundColorDark}}"/>
+        <Setter Property="ShowValuesOutOfFilter" Value="true"/>
+        <Setter Property="ShowValueCounts" Value="true"/>
+    </Style>
+</ResourceDictionary>

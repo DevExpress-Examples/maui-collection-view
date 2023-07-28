@@ -1,0 +1,191 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:CrudOperations"
+             xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+             xmlns:dxcn="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
+             x:Class="CrudOperations.App">
+    <Application.Resources>
+
+        <Color x:Key="Primary">#6750A4</Color>
+        <Color x:Key="PrimaryDark">#9a80e0</Color>
+        <Color x:Key="Secondary">#DFD8F7</Color>
+
+        <Color x:Key="pageBackground">#F9F6FF</Color>
+        <Color x:Key="pageBackgroundDark">#1C1B1F</Color>
+
+        <Color x:Key="panelDark">#302D38</Color>
+        <Color x:Key="surfaceDark">#151417</Color>
+        <Color x:Key="Tertiary">#2B0B98</Color>
+        <Color x:Key="White">White</Color>
+        <Color x:Key="paleTextColor">#605D66</Color>
+        <Color x:Key="paleTextColorDark">#CAC4D0</Color>
+        <Color x:Key="pale2TextColor">#79747E</Color>
+        <Color x:Key="pale2TextColorDark">#F4EFF4</Color>
+        <Color x:Key="cardColor">#FFFFFF</Color>
+        <Color x:Key="cardColorDark">#322F37</Color>
+        <Color x:Key="iconColor">#49454F</Color>
+        <Color x:Key="iconColorDark">#CAC4D0</Color>
+        <Color x:Key="separatorColor">#CAC4D0</Color>
+        <Color x:Key="separatorColorDark">#625B71</Color>
+        <Color x:Key="itemFontColor" >#1C1B1F</Color>
+        <Color x:Key="itemFontColorDark" >#E6E1E5</Color>
+        <Color x:Key="Gray50">#F2F2F7</Color>
+        <Color x:Key="Gray100">#E1E1E1</Color>
+        <Color x:Key="Gray200">#C8C8C8</Color>
+        <Color x:Key="Gray300">#ACACAC</Color>
+        <Color x:Key="Gray400">#919191</Color>
+        <Color x:Key="Gray500">#6E6E6E</Color>
+        <Color x:Key="Gray550">#49454F</Color>
+        <Color x:Key="Gray600">#404040</Color>
+        <Color x:Key="Gray900">#212121</Color>
+        <Color x:Key="Gray950">#141414</Color>
+        <Color x:Key="TonalForeground">#1D192B</Color>
+        <Color x:Key="fabColor">#EADDFF</Color>
+        <Color x:Key="fabColorDark">#4F378B</Color>
+        <Color x:Key="onPrimary">#21005D</Color>
+        <Color x:Key="onPrimaryDark">#EADDFF</Color>
+        <Color x:Key="fabShadowColor">Gray</Color>
+        <Color x:Key="fabShadowColorDark">Black</Color>
+
+        <Style TargetType="NavigationPage">
+            <Setter Property="BarBackgroundColor" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource Gray950}}" />
+            <Setter Property="BarTextColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource White}}" />
+            <Setter Property="IconColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource White}}" />
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray200}}" />
+        </Style>
+        <Style x:Key="paleLabelStyle" TargetType="Label" BasedOn="{StaticResource Microsoft.Maui.Controls.Label}">
+            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource paleTextColor}, Dark={StaticResource paleTextColorDark}}" />
+        </Style>
+        <Style x:Key="pale2LabelStyle" TargetType="Label" BasedOn="{StaticResource Microsoft.Maui.Controls.Label}">
+            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource pale2TextColor}, Dark={StaticResource pale2TextColorDark}}" />
+        </Style>
+
+        <Style TargetType="Shell" ApplyToDerivedTypes="True">
+            <Setter Property="Shell.BackgroundColor" Value="{AppThemeBinding Light={StaticResource pageBackground}, Dark={StaticResource pageBackgroundDark}}" />
+            <Setter Property="Shell.TitleColor" Value="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray200}}" />
+            <Setter Property="Shell.NavBarHasShadow" Value="False" />
+        </Style>
+        <Style TargetType="ContentPage">
+            <Setter Property="Shell.BackgroundColor" Value="{AppThemeBinding Light={StaticResource pageBackground}, Dark={StaticResource pageBackgroundDark}}" />
+            <Setter Property="Shell.ForegroundColor" Value="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray200}}" />
+            <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource pageBackground}, Dark={StaticResource pageBackgroundDark}}"/>
+        </Style>
+
+        <Style x:Key="SeparatorStyle" TargetType="Border">
+            <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource separatorColor}, Dark={StaticResource separatorColorDark}}" />
+            <Setter Property="HeightRequest" Value="1" />
+            <Setter Property="StrokeThickness" Value="1" />
+        </Style>
+        <Style x:Key="AltText" TargetType="Label">
+            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource pale2TextColor}, Dark={StaticResource pale2TextColorDark}}"/>
+            <Setter Property="Margin" Value="0, 5, 0, 0"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+        <Style TargetType="dxcn:SimpleButton" x:Key="actionButton">
+            <Setter Property="HeightRequest" Value="60" />
+            <Setter Property="WidthRequest" Value="70" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="Margin" Value="8" />
+            <Setter Property="BackgroundColor" Value="White" />
+            <Setter Property="CornerRadius" Value="10" />
+            <Setter Property="Background" Value="{AppThemeBinding Light={StaticResource cardColor}, Dark={StaticResource cardColorDark}}"/>
+            <Setter Property="Shadow">
+                <Setter.Value>
+                    <Shadow Radius="20" Brush="Black" Opacity="0.15" />
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="Border" x:Key="propertyBorder">
+            <Setter Property="Margin" Value="10,8,10,8" />
+            <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource cardColor}, Dark={StaticResource cardColorDark}}" />
+            <Setter Property="StrokeShape" Value="RoundRectangle 10,10,10,10" />
+            <Setter Property="Padding" Value="16" />
+            <Setter Property="StrokeThickness" Value="0" />
+            <Setter Property="Shadow">
+                <Setter.Value>
+                    <Shadow Radius="20" Brush="{AppThemeBinding Light={StaticResource pageBackground}, Dark={StaticResource pageBackgroundDark}}" />
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="dxcn:DXImage" x:Key="primaryActionImage">
+            <Setter Property="TintColor" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource PrimaryDark}}"/>
+            <Setter Property="WidthRequest" Value="30"/>
+            <Setter Property="HeightRequest" Value="30"/>
+            <Setter Property="Margin" Value="0,5,0,0"/>
+        </Style>
+        <Style TargetType="dxcn:DXImage" x:Key="detailSecondaryActionImageStyle">
+            <Setter Property="TintColor" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource PrimaryDark}}"/>
+            <Setter Property="WidthRequest" Value="20"/>
+            <Setter Property="HeightRequest" Value="20"/>
+        </Style>
+        <Style TargetType="dxcn:SimpleButton" x:Key="detailSecondaryActionButtonStyle">
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+            <Setter Property="WidthRequest" Value="40"/>
+            <Setter Property="HeightRequest" Value="40"/>
+            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource PrimaryDark}}"/>
+            <Setter Property="CornerRadius" Value="22"/>
+        </Style>
+
+        <Style TargetType="dxcn:SimpleButton" x:Key="detailActionButtonStyle">
+            <Setter Property="FontAttributes" Value="None"/>
+            <Setter Property="Margin" Value="0,5,0,0"/>
+            <Setter Property="HeightRequest" Value="20"/>
+            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource PrimaryDark}}"/>
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="CornerRadius" Value="0"/>
+            <Setter Property="HorizontalOptions" Value="Start"/>
+            <Setter Property="HorizontalContentAlignment" Value="Start"/>
+        </Style>
+
+        <Style TargetType="dxcn:SimpleButton" x:Key="popupActionButtonStyle">
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+            <Setter Property="HeightRequest" Value="50"/>
+            <Setter Property="CornerRadius" Value="0"/>
+            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource PrimaryDark}}"/>
+        </Style>
+        <Style TargetType="ContentPage" x:Key="detailPageStyle">
+            <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource pageBackground}, Dark={StaticResource pageBackgroundDark}}"/>
+            <Setter Property="Shell.TitleColor" Value="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray200}}"/>
+            <Setter Property="Shell.ForegroundColor" Value="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray200}}"/>
+        </Style>
+        <Style TargetType="dxe:TextEdit" x:Key="searchEditorStyle">
+            <Setter Property="ClearIconColor" Value="{AppThemeBinding Light={StaticResource iconColor}, Dark={StaticResource iconColorDark}}"/>
+            <Setter Property="TextVerticalAlignment" Value="Center"/>
+            <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource cardColor}, Dark={StaticResource cardColorDark}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource separatorColor}, Dark={StaticResource separatorColorDark}}"/>
+            <Setter Property="BoxPadding" Value="20,6,10,6"/>
+            <Setter Property="PlaceholderColor" Value="{AppThemeBinding Light={StaticResource iconColor}, Dark={StaticResource iconColorDark}}"/>
+            <Setter Property="EndIconColor" Value="{AppThemeBinding Light={StaticResource iconColor}, Dark={StaticResource iconColorDark}}"/>
+            <Setter Property="FocusedBorderColor" Value="Transparent"/>
+            <Setter Property="CornerRadius" Value="16"/>
+            <Setter Property="HeightRequest" Value="35"/>
+            <Setter Property="TextFontSize" Value="14"/>
+            <Setter Property="EndIcon" Value="search"/>
+        </Style>
+
+        <Style TargetType="dxcn:SimpleButton" x:Key="fabStyle">
+            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource onPrimary}, Dark={StaticResource onPrimaryDark}}"/>
+            <Setter Property="WidthRequest" Value="56"/>
+            <Setter Property="HeightRequest" Value="56"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource fabColor}, Dark={StaticResource fabColorDark}}"/>
+            <Setter Property="FontSize" Value="28"/>
+            <Setter Property="CornerRadius" Value="14"/>
+            <Setter Property="FontAttributes" Value="None"/>
+            <Setter Property="Shadow">
+                <Setter.Value>
+                    <Shadow Brush="{AppThemeBinding Light={StaticResource fabShadowColor}, Dark=Transparent}" Offset="4,8" Radius="10" />
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Application.Resources>
+</Application>
+

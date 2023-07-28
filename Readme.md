@@ -34,6 +34,9 @@ Samples in this repository demonstrate how to get started with the [DXCollection
 * [Select Collection View Items](./CS/CollectionViewSelection/)
 * [Add Custom Actions on Swipe Gestures](./CS/CollectionViewSwipe/)
 * [Context Menu Actions in Popup](./CS/ContextMenuPopup/)
+* [Populate E-Forms in a PDF File](./CS/FilterChips/)
+* [Create a Filter UI Form](./CS/CollectionViewFilteringUI/)
+* [Incorporate CRUD Operations](./CS/CrudOperations/)
 
 ## Documentation
 
