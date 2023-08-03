@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31521.260
@@ -12,6 +12,16 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CollectionViewLoadMore", "CollectionViewLoadMore\CollectionViewLoadMore.csproj", "{B835B020-0986-4DFD-B52B-258D4CFA4AF3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CollectionViewSwipe", "CollectionViewSwipe\CollectionViewSwipe.csproj", "{97D6955D-0382-4F1C-A6C4-29BA8A86B8A1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CollectionViewFilteringUI", "CollectionViewFilteringUI\CollectionViewFilteringUI.csproj", "{97D6955D-0382-4F1C-A6C4-29BA8A86B8A1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContextMenuPopup", "ContextMenuPopup\PopupContextMenuActions.csproj", "{97D6955D-0382-4F1C-A6C4-29BA8A86B8A1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrudOperations", "CrudOperations\CrudOperations.csproj", "{97D6955D-0382-4F1C-A6C4-29BA8A86B8A1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FilterChips", "FilterChips\FilterChips.csproj", "{97D6955D-0382-4F1C-A6C4-29BA8A86B8A1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FilteringUIinBottomSheet", "FilteringUIinBottomSheet\BottomSheetFilterUI.csproj", "{97D6955D-0382-4F1C-A6C4-29BA8A86B8A1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
