@@ -37,6 +37,7 @@ Samples in this repository demonstrate how to get started with the [DXCollection
 * [Predefined Chip Filters](./CS/FilterChips/)
 * [Create a Filter UI Form](./CS/CollectionViewFilteringUI/)
 * [Incorporate CRUD Operations](./CS/CrudOperations/)
+* [Display Filtering UI Elements in a BottomSheet](./CS/FilteringUIinBottomSheet/)
 
 ## Documentation
 
