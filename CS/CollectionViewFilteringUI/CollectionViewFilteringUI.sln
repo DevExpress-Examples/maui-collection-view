@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.33906.173
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CollectionViewFilteringUI", "CollectionViewFilteringUI\CollectionViewFilteringUI.csproj", "{8E8A97ED-259C-4CAA-83BC-00C6555A50ED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CollectionViewFilteringUI", "CollectionViewFilteringUI.csproj", "{137BC85F-F649-4B01-A3A9-7FBBB428E08A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,17 +11,16 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8E8A97ED-259C-4CAA-83BC-00C6555A50ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8E8A97ED-259C-4CAA-83BC-00C6555A50ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8E8A97ED-259C-4CAA-83BC-00C6555A50ED}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{8E8A97ED-259C-4CAA-83BC-00C6555A50ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8E8A97ED-259C-4CAA-83BC-00C6555A50ED}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8E8A97ED-259C-4CAA-83BC-00C6555A50ED}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{137BC85F-F649-4B01-A3A9-7FBBB428E08A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{137BC85F-F649-4B01-A3A9-7FBBB428E08A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{137BC85F-F649-4B01-A3A9-7FBBB428E08A}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{137BC85F-F649-4B01-A3A9-7FBBB428E08A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{137BC85F-F649-4B01-A3A9-7FBBB428E08A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {371E3EA1-7084-45E8-86A4-D2CB48862A7A}
+		SolutionGuid = {030D910D-365F-4BBE-8E30-38EACD4DD988}
 	EndGlobalSection
 EndGlobal
