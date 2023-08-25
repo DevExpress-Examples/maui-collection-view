@@ -47,7 +47,7 @@ Follow the steps below to obtain data from the SQLite database and display it in
     } 
     ```
 
-4. Copy the [Contacts.db](/CS/CrudOperations/Contacts.db) database file from the application bundle to the application's data folder on the device. This is required since Android/iOS applications have no access to the application's bundle files due to security reasons. To work with these files, you should copy them to the *Cache* or *AppDataDirectory* (used in this example) folder. 
+4. Copy the [Contacts.db](/CS/CrudOperations/Resources/Raw/contacts.db) database file from the application bundle to the application's data folder on the device. This is required since Android/iOS applications have no access to the application's bundle files due to security reasons. To work with these files, you should copy them to the *Cache* or *AppDataDirectory* (used in this example) folder. 
 
     ```cs
     CopyWorkingFilesToAppData(DbFileName).Wait(); 
@@ -132,8 +132,8 @@ The following code snippet binds a [ToolbarItem](https://learn.microsoft.com/en-
 
     **Files to Review:**
 
-    * [DetailInfoPage.xaml](/CS/DetailInfoPage.xaml)
-    * [ContactEditingPage.xaml](/CS/ContactEditingPage.xaml)
+    * [DetailInfoPage.xaml](/CS/CrudOperations/DetailInfoPage.xaml)
+    * [ContactEditingPage.xaml](/CS/CrudOperations/ContactEditingPage.xaml)
 
 * Use the [DataFormView](https://docs.devexpress.com/MAUI/DevExpress.Maui.DataForm.DataFormView) control to build the edit view. The view's editors post their changes when you call the [Commit](https://docs.devexpress.com/MAUI/DevExpress.Maui.DataForm.DataFormView.Commit) method. This allows you to discard changes if the user goes back and cancels the edit operation.
 
