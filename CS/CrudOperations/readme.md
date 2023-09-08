@@ -104,9 +104,9 @@ The following code snippet binds a [ToolbarItem](https://learn.microsoft.com/en-
 
 * Call the *ShowDetailForm* command to display the detail view:
 
-    ```xml
-<dxco:SimpleButton Command="{Binding Source={x:Reference collectionView}, Path=Commands.ShowDetailForm}" .../>
-    ```
+   ```xml
+   <dxco:SimpleButton Command="{Binding Source={x:Reference collectionView}, Path=Commands.ShowDetailForm}" .../>
+   ```
 
 * Place a [SimpleButton](https://docs.devexpress.com/MAUI/DevExpress.Maui.Controls.SimpleButton) control above the [CollectionView](https://docs.devexpress.com/MAUI/403324/collection-view/index) control in the Grid panel to implement a Floating Action Button (FAB). Users can click this button to add a new item to the collection.
 
