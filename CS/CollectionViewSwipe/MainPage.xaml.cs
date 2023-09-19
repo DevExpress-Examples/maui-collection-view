@@ -7,7 +7,7 @@ namespace CollectionViewSwipe {
             InitializeComponent();
         }
 
-        void SwipeItem_Invoked(System.Object sender, SwipeItemTapEventArgs e) {
+        void SwipeItem_Tapped(System.Object sender, SwipeItemTapEventArgs e) {
             this.collectionView.DeleteItem(e.ItemHandle);
         }
     }

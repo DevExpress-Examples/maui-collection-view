@@ -13,7 +13,7 @@
             <Setter Property="FontSize" Value="Medium"/>
         </Style>
         <Style x:Key="SeparatorStyle" TargetType="BoxView">
-            <Setter Property="BackgroundColor" Value="DarkGray"/>
+            <Setter Property="Color" Value="DarkGray"/>
             <Setter Property="HeightRequest" Value="1"/>
         </Style>
     </ContentPage.Resources>
@@ -40,7 +40,7 @@
                         <dxcv:SwipeItem Caption="Delete"
                                         BackgroundColor="Red"
                                         Image="deletetask"
-                                        Invoked="SwipeItem_Invoked"/>
+                                        Tap="SwipeItem_Tapped"/>
                     </dxcv:SwipeContainer.EndSwipeItems>
                 </dxcv:SwipeContainer>
             </DataTemplate>
