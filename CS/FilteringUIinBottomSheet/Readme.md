@@ -1,6 +1,6 @@
 # Display Filtering UI Elements in a BottomSheet
 
-This example demonstrates how to place [DXCollectionView](https://docs.devexpress.com/MAUI/403324)'s Filtering UI Elements into a [BottomSheet](https://docs.devexpress.com/MAUI/DevExpress.Maui.Controls.BottomSheet) control.
+This example places [DXCollectionView](https://docs.devexpress.com/MAUI/403324) Filter UI Elements into a [BottomSheet](https://docs.devexpress.com/MAUI/DevExpress.Maui.Controls.BottomSheet) control.
 
 <img src="https://github.com/DevExpress-Examples/maui-collection-view/assets/12169834/8918b2db-ace0-4adb-9b22-571e82033c89" width="30%"/>
 
@@ -15,8 +15,8 @@ This example demonstrates how to place [DXCollectionView](https://docs.devexpres
 
 ## Implementation Details
 
-* This project uses [Filtering UI Elements](https://docs.devexpress.com/MAUI/404126/collection-view/filter-sort-and-group-data). You can click a Chip to display a `BottomSheet` with these filter elements.
-* Pass the [DXCollectionView.FilteringContext](https://docs.devexpress.com/MAUI/DevExpress.Maui.CollectionView.DXCollectionView.FilteringContext) to the filter element's [FilterItemBase.Context](https://docs.devexpress.com/MAUI/DevExpress.Maui.Editors.FilterItemBase.Context) property and specify the [FilterItemBase.FieldName](https://docs.devexpress.com/MAUI/DevExpress.Maui.Editors.FilterItemBase.FieldName) property to bind this filter element to the [DXCollectionView](https://docs.devexpress.com/MAUI/DevExpress.Maui.CollectionView.DXCollectionView).
+* This project uses [Filtering UI Elements](https://docs.devexpress.com/MAUI/404126/collection-view/filter-sort-and-group-data). You can click a Chip to display a `BottomSheet` with our filter UI elements.
+* Pass the [DXCollectionView.FilteringContext](https://docs.devexpress.com/MAUI/DevExpress.Maui.CollectionView.DXCollectionView.FilteringContext) to the filter element's [FilterItemBase.Context](https://docs.devexpress.com/MAUI/DevExpress.Maui.Editors.FilterItemBase.Context) property and specify the [FilterItemBase.FieldName](https://docs.devexpress.com/MAUI/DevExpress.Maui.Editors.FilterItemBase.FieldName) property (to bind this filter element to the [DXCollectionView](https://docs.devexpress.com/MAUI/DevExpress.Maui.CollectionView.DXCollectionView)).
 
     ```xml
     <dxe:FilterRadioListItem Context="{Binding Source={x:Reference tutorsCollection}, Path=FilteringContext}" FieldName="Subject" />
@@ -35,10 +35,10 @@ This example demonstrates how to place [DXCollectionView](https://docs.devexpres
     ```xml
     <dxco:SimpleButton Text="Reset" Command="{Binding Source={x:Reference tutorsCollection}, Path=FilteringContext.ResetFilterCommand}" />
     ```
-* The project wraps filter groups with the [TabView](https://docs.devexpress.com/MAUI/DevExpress.Maui.Controls.TabView) control and displays it in the [BottomSheet](https://docs.devexpress.com/MAUI/DevExpress.Maui.Controls.BottomSheet) control. This allows users to specify multiple filter rules without closing the BottomSheet.
+* The project wraps filter groups using the [TabView](https://docs.devexpress.com/MAUI/DevExpress.Maui.Controls.TabView) control and displays it in the [BottomSheet](https://docs.devexpress.com/MAUI/DevExpress.Maui.Controls.BottomSheet) control. This allows users to specify multiple filter rules without closing the BottomSheet.
 
-* You can use the [BottomSheet.State](https://docs.devexpress.com/MAUI/DevExpress.Maui.Controls.BottomSheet.State) property to specify whether the BottomSheet is hidden, partially expanded, or fully expanded. This project sets the [BottomSheet.State](https://docs.devexpress.com/MAUI/DevExpress.Maui.Controls.BottomSheet.State) property to [FullExpanded](https://docs.devexpress.com/MAUI/DevExpress.Maui.Controls.BottomSheetState.FullExpanded) to fit the textual edit's popup keyboard.
-* This project uses triggers to change [Chip](https://docs.devexpress.com/MAUI/DevExpress.Maui.Editors.Chip)'s text and appearance depending on whether the corresponding rule is applied.
+* You can use the [BottomSheet.State](https://docs.devexpress.com/MAUI/DevExpress.Maui.Controls.BottomSheet.State) property to specify whether the BottomSheet is hidden, partially expanded, or fully expanded. This project sets the [BottomSheet.State](https://docs.devexpress.com/MAUI/DevExpress.Maui.Controls.BottomSheet.State) property to [FullExpanded](https://docs.devexpress.com/MAUI/DevExpress.Maui.Controls.BottomSheetState.FullExpanded) to fit the text edit's popup keyboard.
+* This project uses triggers to change [Chip](https://docs.devexpress.com/MAUI/DevExpress.Maui.Editors.Chip) text/appearance (depends on the application of a corresponding rule).
 
     ```xml
     <DataTrigger Binding="{Binding Source={x:Reference subjectRadioListItem}, Path=FilterModel.SelectedFilterValue, Converter={StaticResource isFilterEmptyConverter}}" Value="False" TargetType="dxe:Chip">
