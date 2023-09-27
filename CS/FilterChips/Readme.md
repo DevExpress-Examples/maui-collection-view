@@ -1,6 +1,6 @@
 # Chip Filters for a CollectionView
 
-This example demonstrates how to add chips with predefined filters that you can apply to the [CollectionView](https://docs.devexpress.com/MAUI/403324) control.
+This example illustrates how to add chips with predefined filters (and apply pre-defined filters against data displayed in the DevExpress .NET MAUI [CollectionView](https://docs.devexpress.com/MAUI/403324) control).
 
 <img src="https://github.com/DevExpress-Examples/maui-collection-view/assets/12169834/17c8eb59-f0fd-4d65-a16d-b36d09eb12a3" width="30%"/>
 
@@ -11,7 +11,7 @@ This example demonstrates how to add chips with predefined filters that you can 
 
 ## Implementation Details
 
-* This project uses the [FilterChipGroup](https://docs.devexpress.com/MAUI/DevExpress.Maui.Editors.FilterChipGroup) control to display chips with predefined filters. The [FilterChipGroup.ItemsSource](https://docs.devexpress.com/MAUI/DevExpress.Maui.Editors.ChipGroup.ItemsSource) property is bound to the *PredefinedFilters* collection. Each item in this collection contains a value and corresponding display text. The value is specified according to the [Criteria Language Syntax](https://docs.devexpress.com/CoreLibraries/4928/devexpress-data-library/criteria-language-syntax).
+* This project uses the [FilterChipGroup](https://docs.devexpress.com/MAUI/DevExpress.Maui.Editors.FilterChipGroup) control to display chips with predefined filters. The [FilterChipGroup.ItemsSource](https://docs.devexpress.com/MAUI/DevExpress.Maui.Editors.ChipGroup.ItemsSource) property is bound to the *PredefinedFilters* collection. Each item in this collection contains a value and corresponding display text. The value is specified using [Criteria Language Syntax](https://docs.devexpress.com/CoreLibraries/4928/devexpress-data-library/criteria-language-syntax).
 
     ```xml
     <dxe:FilterChipGroup ItemsSource="{Binding PredefinedFilters}" SelectedItems="{Binding SelectedFilters, Mode=TwoWay}"
@@ -40,7 +40,7 @@ This example demonstrates how to add chips with predefined filters that you can 
     }
     ```
 
-* The [FilterChipGroup.SelectedItems](https://docs.devexpress.com/MAUI/DevExpress.Maui.Editors.FilterChipGroup.SelectedItems) property returns a `BindingList`. You can handle the [BindingList.ListChanged](https://learn.microsoft.com/en-us/dotnet/api/system.componentmodel.bindinglist-1.listchanged) event to update the filter condition. In the event handler, create the filter string and pass it to the [FilterString](https://docs.devexpress.com/MAUI/DevExpress.Maui.CollectionView.DXCollectionView.FilterString) property.
+* The [FilterChipGroup.SelectedItems](https://docs.devexpress.com/MAUI/DevExpress.Maui.Editors.FilterChipGroup.SelectedItems) property returns a `BindingList`. You can handle the [BindingList.ListChanged](https://learn.microsoft.com/en-us/dotnet/api/system.componentmodel.bindinglist-1.listchanged) event to update a filter condition. In the event handler, create the filter string and pass it to the [FilterString](https://docs.devexpress.com/MAUI/DevExpress.Maui.CollectionView.DXCollectionView.FilterString) property.
 
     ```xaml
     <dxcv:DXCollectionView FilterString="{Binding Filter, Mode=TwoWay}" ... 
@@ -71,7 +71,7 @@ This example demonstrates how to add chips with predefined filters that you can 
     }
     ```
 
-* The [FilterChipGroup](https://docs.devexpress.com/MAUI/DevExpress.Maui.Editors.FilterChipGroup) control's appearance settings are defined in application resources:
+* [FilterChipGroup](https://docs.devexpress.com/MAUI/DevExpress.Maui.Editors.FilterChipGroup) appearance settings are defined within application resources:
 
     ```
     <Style TargetType="dxe:FilterChipGroup">
