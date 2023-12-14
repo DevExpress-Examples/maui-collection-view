@@ -1,0 +1,45 @@
+<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
+             xmlns:windows="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.WindowsSpecific;assembly=Microsoft.Maui.Controls"
+             xmlns:local="clr-namespace:CollectionViewLongTapExamp"
+             x:Class= "CollectionViewLongTapExamp.App"
+             windows:Application.ImageDirectory="Assets">
+    <Application.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Border" x:Key="separatorStyle">
+                <Setter Property="BackgroundColor" Value="{dx:ThemeColor SurfaceDim}" />
+                <Setter Property="HeightRequest" Value="2"/>
+                <Setter Property="StrokeThickness" Value="0"/>
+            </Style>
+
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="{dx:ThemeColor Primary}" />
+            </Style>
+
+            <Style x:Key="paleLabelStyle" TargetType="Label" BasedOn="{StaticResource Microsoft.Maui.Controls.Label}">
+                <Setter Property="TextColor" Value="{dx:ThemeColor OnSurface}" />
+            </Style>
+
+            <Style x:Key="mediumPaleLabelStyle" TargetType="Label" BasedOn="{StaticResource Microsoft.Maui.Controls.Label}">
+                <Setter Property="TextColor" Value="{dx:ThemeColor Secondary}" />
+            </Style>
+
+            <Style TargetType="Page" ApplyToDerivedTypes="True">
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="BackgroundColor" Value="{dx:ThemeColor Surface}" />
+            </Style>
+
+            <Style TargetType="Shell" ApplyToDerivedTypes="True">
+                <Setter Property="Shell.BackgroundColor" Value="{dx:ThemeColor Primary}" />
+                <Setter Property="Shell.ForegroundColor" Value="{dx:ThemeColor OnSurfaceVariant}" />
+                <Setter Property="Shell.TitleColor" Value="{dx:ThemeColor OnSurface}" />
+                <Setter Property="Shell.NavBarHasShadow" Value="False" />
+                <Setter Property="Shell.TabBarBackgroundColor" Value="{dx:ThemeColor SurfaceContainer}" />
+                <Setter Property="Shell.TabBarForegroundColor" Value="{dx:ThemeColor Primary}" />
+                <Setter Property="Shell.TabBarTitleColor" Value="{dx:ThemeColor Primary}" />
+                <Setter Property="Shell.TabBarUnselectedColor" Value="{dx:ThemeColor OnSurfaceVariant}" />
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

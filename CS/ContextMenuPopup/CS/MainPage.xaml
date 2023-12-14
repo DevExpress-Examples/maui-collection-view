@@ -2,13 +2,14 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
     xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
+    xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:local="clr-namespace:PopupContextMenuActions" ios:Page.UseSafeArea="true" x:Class= "PopupContextMenuActions.MainPage" BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}">
     <ContentPage.BindingContext>
         <local:MainViewModel/>
     </ContentPage.BindingContext>
     <ContentPage.Resources>
-        <Style TargetType="dxco:SimpleButton" x:Key="popupButtonStyle">
+        <Style TargetType="dx:DXButton" x:Key="popupButtonStyle">
             <Setter Property="CornerRadius" Value="0"/>
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="IconColor" Value="{StaticResource Gray500}"/>
@@ -19,51 +20,44 @@
             <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Popup_Background_Light}, Dark={StaticResource Popup_Background_Dark}}"/>
         </Style>
         <DataTemplate x:Key="contactTemplate">
-            <dxco:SimpleButton Padding="5" BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" CornerRadius="0">
+            <dx:DXButton Padding="5" BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" CornerRadius="0" HorizontalContentAlignment="Fill" PressedBackgroundColor="Transparent">
                 <Grid ColumnDefinitions="Auto,*,Auto" RowDefinitions="*,*">
                     <Ellipse HeightRequest="40" WidthRequest="40" Fill="{Binding CategoryColor}" Margin="10" VerticalOptions="Center" Grid.RowSpan="2"/>
                     <Label Text="{Binding Initials}" TextColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" Grid.RowSpan="2" VerticalOptions="Center" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                     <Label Text="{Binding FullName}" TextColor="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource White}}" Grid.Column="1" VerticalOptions="End"/>
                     <Label Text="{Binding Email}" TextColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray300}}" VerticalOptions="Start" Grid.Column="1" Grid.Row="1"/>
-                    <dxco:SimpleButton Grid.Column="2" Icon="verticaldots" BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" IconColor="{StaticResource Gray300}" Clicked="ContactActionsClick" Grid.RowSpan="2" VerticalOptions="Center"/>
+                    <dx:DXButton Grid.Column="2" Icon="verticaldots" BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" IconColor="{StaticResource Gray300}" Clicked="ContactActionsClick" Grid.RowSpan="2" VerticalOptions="Center"/>
                 </Grid>
-            </dxco:SimpleButton>
+            </dx:DXButton>
         </DataTemplate>
-        <DataTemplate x:Key="groupItemTemplate">
-            <StackLayout>
-                <Label FontAttributes="Bold" Margin="15,10,0,0" TextColor="{AppThemeBinding Light={StaticResource PhoneListTabTextColor}, Dark={StaticResource White}}" Text="{Binding Value, StringFormat='{0:d}'}"/>
-            </StackLayout>
-        </DataTemplate>
-
-
     </ContentPage.Resources>
-    <Grid BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundThemeColor}, Dark={StaticResource Black}}}">
-        <dxcv:DXCollectionView x:Name="collectionView" AllowGroupCollapse="False" GroupHeaderTemplate="{StaticResource groupItemTemplate}" ItemTemplate="{StaticResource contactTemplate}" ItemsSource="{Binding Contacts}">
+    <Grid BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundThemeColor}, Dark={StaticResource Black}}">
+        <dxcv:DXCollectionView x:Name="collectionView" AllowGroupCollapse="False" ItemTemplate="{StaticResource contactTemplate}" ItemsSource="{Binding Contacts}" SelectionMode="None">
             <dxcv:DXCollectionView.GroupDescription>
                 <dxcv:GroupDescription FieldName="FirstName" GroupInterval="Alphabetical"/>
             </dxcv:DXCollectionView.GroupDescription>
 
             <dxcv:DXCollectionView.GroupHeaderTemplate>
                 <DataTemplate>
-                    <StackLayout Margin="20,0,18,10">
-                        <StackLayout.Margin>
+                    <dx:DXStackLayout Orientation="Vertical" Margin="20,0,18,10">
+                        <dx:DXStackLayout.Margin>
                             <OnPlatform x:TypeArguments="Thickness">
                                 <On Platform="iOS" Value="20,0,18,10"/>
                                 <On Platform="Android" Value="20,0,18,10"/>
                             </OnPlatform>
-                        </StackLayout.Margin> 
-                        <Label Margin="0,20,0,1" FontFamily="Roboto-Medium" TextColor="{AppThemeBinding Light={StaticResource PhoneListTabTextColor}, Dark={StaticResource White}}" Text="{Binding Value}"/>
+                        </dx:DXStackLayout.Margin>
+                        <Label Margin="0,20,0,1" FontFamily="Roboto-Medium" TextColor="{AppThemeBinding Light={StaticResource PhoneListTabTextColor}, Dark={StaticResource White}}" Text="{Binding Value, StringFormat='{0:d}'}"/>
                         <BoxView BackgroundColor="{AppThemeBinding Light=White, Dark=Black}" HeightRequest="1"/>
-                    </StackLayout>
+                    </dx:DXStackLayout>
                 </DataTemplate>
             </dxcv:DXCollectionView.GroupHeaderTemplate>
         </dxcv:DXCollectionView>
 
         <dxco:DXPopup x:Name="actionsPopup" Placement="Bottom" CornerRadius="8" BackgroundColor="{AppThemeBinding Light={StaticResource Popup_Background_Light}, Dark={StaticResource Popup_Background_Dark}}" HorizontalAlignment="Left" ShadowColor="{AppThemeBinding Light={StaticResource Gray500}, Dark=Black}" ShadowRadius="5">
-            <StackLayout Padding="8,6">
-                <dxco:SimpleButton Text="Copy number" Icon="copy" Clicked="PopupItemClick" Style="{StaticResource popupButtonStyle}" PressedIconColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource Popup_Icon_Dark}}" PressedTextColor="{AppThemeBinding Light=Black, Dark={StaticResource Popup_Icon_Dark}}"/>
-                <dxco:SimpleButton Text="Delete" Icon="delete" Clicked="PopupItemClick" Style="{StaticResource popupButtonStyle}" PressedIconColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource Popup_Icon_Dark}}" PressedTextColor="{AppThemeBinding Light=Black, Dark={StaticResource Popup_Icon_Dark}}"/>
-            </StackLayout>
+            <dx:DXStackLayout Orientation="Vertical" Padding="8,6">
+                <dx:DXButton Command="{Binding PopupActionCommand}" Content="Copy number" Icon="copy" Style="{StaticResource popupButtonStyle}" PressedIconColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource Popup_Icon_Dark}}" PressedTextColor="{AppThemeBinding Light=Black, Dark={StaticResource Popup_Icon_Dark}}"/>
+                <dx:DXButton Command="{Binding PopupActionCommand}" Content="Delete" Icon="delete" Style="{StaticResource popupButtonStyle}" PressedIconColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource Popup_Icon_Dark}}" PressedTextColor="{AppThemeBinding Light=Black, Dark={StaticResource Popup_Icon_Dark}}"/>
+            </dx:DXStackLayout>
         </dxco:DXPopup>
     </Grid>
 </ContentPage>

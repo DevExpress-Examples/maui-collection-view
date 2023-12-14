@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Maui;
 using DevExpress.Maui;
+using DevExpress.Maui.Core;
 using Microsoft.Maui;
 using Microsoft.Maui.Controls.Compatibility;
 using Microsoft.Maui.Controls.Compatibility.Hosting;
@@ -10,6 +11,8 @@ using System.Windows.Input;
 namespace BottomSheetFilterUI {
     public static class MauiProgram {
         public static MauiApp CreateMauiApp() {
+            ThemeManager.UseAndroidSystemColor = false;
+            ThemeManager.Theme = new Theme(ThemeSeedColor.Purple);
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()

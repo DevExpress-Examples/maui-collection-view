@@ -5,12 +5,12 @@
     <UseMaui>true</UseMaui>
     <ImplicitUsings>enable</ImplicitUsings>
     <SingleProject>true</SingleProject>
-    <RootNamespace>PopupContextMenuActions</RootNamespace>
+    <RootNamespace>CollectionViewLongTapExamp</RootNamespace>
     <!-- Display name -->
-    <ApplicationTitle>Popup ContextMenu Actions</ApplicationTitle>
+    <ApplicationTitle>Long Tap</ApplicationTitle>
     <!-- App Identifier -->
-    <ApplicationId>com.companyname.PopupContextMenuActions1</ApplicationId>
-    <ApplicationIdGuid>E3B6E16D-A806-4827-AE62-E0A0E2D60C75</ApplicationIdGuid>
+    <ApplicationId>com.companyname.CollectionViewLongTapExamp</ApplicationId>
+    <ApplicationIdGuid>7C852A03-9BB3-450C-BBC6-CC0386722D19</ApplicationIdGuid>
     <!-- Versions -->
     <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
     <ApplicationVersion>1</ApplicationVersion>
@@ -29,18 +29,13 @@
     <MauiFont Include="Resources\Fonts\*" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="EmployeeTasks.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="EmployeeTasks.json" />
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
     <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
-    <PackageReference Include="DevExpress.Maui.CollectionView" Version="23.2.*" />
-    <PackageReference Include="DevExpress.Maui.Controls" Version="23.2.*" />
-    <PackageReference Include="DevExpress.Maui.Core" Version="23.2.*" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+    <PackageReference Include="CommunityToolkit.Maui" Version="5.0.0" />
+    <PackageReference Include="DevExpress.Maui.CollectionView" Version="23.2.4-pre-23338-18856" />
+    <PackageReference Include="DevExpress.Maui.Controls" Version="23.2.4-pre-23338-18856" />
+  </ItemGroup>
+  <ItemGroup>
     <TrimmableAssembly Include="DevExpress.Data.v23.2" />
   </ItemGroup>
   <ItemGroup>

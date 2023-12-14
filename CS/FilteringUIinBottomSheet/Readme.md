@@ -2,13 +2,13 @@
 
 This example places [DXCollectionView](https://docs.devexpress.com/MAUI/403324) Filter UI Elements into a [BottomSheet](https://docs.devexpress.com/MAUI/DevExpress.Maui.Controls.BottomSheet) control.
 
-<img src="https://github.com/DevExpress-Examples/maui-collection-view/assets/12169834/8918b2db-ace0-4adb-9b22-571e82033c89" width="30%"/>
+<img src="media/resulting-app.png" width="20%"/>
 
 **Related Controls and Their Properties**: 
 
 * [BottomSheet](https://docs.devexpress.com/MAUI/DevExpress.Maui.Controls.BottomSheet): [HalfExpandedRatio](https://docs.devexpress.com/MAUI/DevExpress.Maui.Controls.BottomSheet.HalfExpandedRatio)
 * [DXCollectionView](https://docs.devexpress.com/MAUI/403324): [ItemTemplate](https://docs.devexpress.com/MAUI/DevExpress.Maui.CollectionView.DXCollectionView.ItemTemplate)
-* [SimpleButton](https://docs.devexpress.com/MAUI/DevExpress.Maui.Controls.SimpleButton): [Clicked](https://docs.devexpress.com/MAUI/DevExpress.Maui.Controls.SimpleButton.Clicked), [Command](https://docs.devexpress.com/MAUI/DevExpress.Maui.Controls.SimpleButton.Command)
+* [DXButton](https://docs.devexpress.com/MAUI/DevExpress.Maui.Core.DXButton?v=23.2): [Clicked](https://docs.devexpress.com/MAUI/DevExpress.Maui.Core.DXButtonBase.Clicked?v=23.2), [Command](https://docs.devexpress.com/MAUI/DevExpress.Maui.Core.DXButtonBase.Command?v=23.2)
 * [TabView](https://docs.devexpress.com/MAUI/DevExpress.Maui.Controls.TabView): [ItemHeaderTapped](https://docs.devexpress.com/MAUI/DevExpress.Maui.Controls.TabView.ItemHeaderTapped), [Command](https://docs.devexpress.com/MAUI/DevExpress.Maui.Controls.SimpleButton.Command)
 * [FilterCheckedListItem](https://docs.devexpress.com/MAUI/DevExpress.Maui.Editors.FilterCheckedListItem): [Context](https://docs.devexpress.com/MAUI/DevExpress.Maui.Editors.FilterItemBase.Context), [ShowSearchPanel](https://docs.devexpress.com/MAUI/DevExpress.Maui.Editors.FilterListItemBase.ShowSearchPanel)
 * [Chip](https://docs.devexpress.com/MAUI/DevExpress.Maui.Editors.Chip): [Text](https://docs.devexpress.com/MAUI/DevExpress.Maui.Editors.Chip.Text), [TextColor](https://docs.devexpress.com/MAUI/DevExpress.Maui.Editors.Chip.TextColor), [BorderThickness](https://docs.devexpress.com/MAUI/DevExpress.Maui.Editors.Chip.BorderThickness)
@@ -33,7 +33,7 @@ This example places [DXCollectionView](https://docs.devexpress.com/MAUI/403324) 
 * Call the [FilteringContext.ResetFilterCommand](https://docs.devexpress.com/MAUI/DevExpress.Maui.Core.FilteringUIContext.ResetFilterCommand) command to reset all applied filter rules.
 
     ```xml
-    <dxco:SimpleButton Text="Reset" Command="{Binding Source={x:Reference tutorsCollection}, Path=FilteringContext.ResetFilterCommand}" />
+    <dx:DXButton Content="Reset" Command="{Binding Source={x:Reference tutorsCollection}, Path=FilteringContext.ResetFilterCommand}" />
     ```
 * The project wraps filter groups using the [TabView](https://docs.devexpress.com/MAUI/DevExpress.Maui.Controls.TabView) control and displays it in the [BottomSheet](https://docs.devexpress.com/MAUI/DevExpress.Maui.Controls.BottomSheet) control. This allows users to specify multiple filter rules without closing the BottomSheet.
 
@@ -42,9 +42,6 @@ This example places [DXCollectionView](https://docs.devexpress.com/MAUI/403324) 
 
     ```xml
     <DataTrigger Binding="{Binding Source={x:Reference subjectRadioListItem}, Path=FilterModel.SelectedFilterValue, Converter={StaticResource isFilterEmptyConverter}}" Value="False" TargetType="dxe:Chip">
-        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource SecondaryContainer}, Dark={StaticResource SecondaryContainerDark}}"/>
-        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource SecondaryContainer}}"/>
-        <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Text" Value="{Binding Source={x:Reference subjectRadioListItem}, Path=FilterModel.SelectedFilterValue.DisplayText, StringFormat='{0} ▼'}"/>
     </DataTrigger>
-```
+    ```

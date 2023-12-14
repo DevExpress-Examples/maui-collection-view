@@ -1,9 +1,6 @@
-﻿using BottomSheetFilterUI.ViewModel;
-using DevExpress.Maui.Controls;
+﻿using DevExpress.Maui.Controls;
 using DevExpress.Maui.Core;
 using DevExpress.Maui.Editors;
-using Microsoft.Maui.Controls.Shapes;
-using System.Collections.ObjectModel;
 using System.Globalization;
 
 namespace BottomSheetFilterUI {
@@ -15,7 +12,7 @@ namespace BottomSheetFilterUI {
 
         private void OnFilterChipGroupTap(object sender, ChipEventArgs e) {
             filterTabView.SelectedItemIndex = filterChipGroup.Chips.IndexOf(e.Chip);
-            UpdateBottmSheetState(filterTabView.SelectedItemIndex);
+            UpdateBottomSheetState(filterTabView.SelectedItemIndex);
         }
 
         private void OnCloseBottomSheetClicked(object sender, EventArgs e) {
@@ -23,9 +20,9 @@ namespace BottomSheetFilterUI {
         }
 
         private void FilterTabHeaderTapped(object sender, ItemHeaderTappedEventArgs e) {
-            UpdateBottmSheetState(e.Index);
+            UpdateBottomSheetState(e.Index);
         }
-        void UpdateBottmSheetState(int selectedIndex) {
+        void UpdateBottomSheetState(int selectedIndex) {
             if (selectedIndex == 2)
                 filterBottomSheet.State = BottomSheetState.FullExpanded;
             else
@@ -35,7 +32,7 @@ namespace BottomSheetFilterUI {
 
     public class IsFilterEmptyConverter : IValueConverter {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
-            if(value is FilterValueInfo filterInfo && filterInfo != null) {
+            if (value is FilterValueInfo filterInfo && filterInfo != null) {
                 return filterInfo.Count == 0;
             }
             else if (value is int selectedFilterItems) {

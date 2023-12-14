@@ -3,16 +3,16 @@
              xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
              xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
              xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+             xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
              xmlns:viewModels="clr-namespace:BottomSheetFilterUI.ViewModel"
              xmlns:model="clr-namespace:BottomSheetFilterUI.Model"
              xmlns:local="clr-namespace:BottomSheetFilterUI"
-             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
              ios:Page.UseSafeArea="true"
              Style="{StaticResource pageStyle}"
              x:Class= "BottomSheetFilterUI.MainPage">
     <ContentPage.Behaviors>
-        <toolkit:StatusBarBehavior StatusBarColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource TitleBackgroundDark}}" StatusBarStyle="LightContent" />
+        <dx:SystemBarBehavior AndroidStatusBarBackground="{dx:ThemeColor Surface}" />
     </ContentPage.Behaviors>
     <ContentPage.Resources>
         <local:IsFilterEmptyConverter x:Key="isFilterEmptyConverter"/>
@@ -20,36 +20,26 @@
     <ContentPage.BindingContext>
         <viewModels:MainViewModel/>
     </ContentPage.BindingContext>
-
     <Grid RowDefinitions="Auto, *">
         <dxe:ChipGroup IsMultiline="False" ChipTap="OnFilterChipGroupTap" x:Name="filterChipGroup" Background="Transparent">
             <dxe:Chip Text="Subject ▼">
                 <dxe:Chip.Triggers>
                     <DataTrigger Binding="{Binding Source={x:Reference subjectRadioListItem}, Path=FilterModel.SelectedFilterValue, Converter={StaticResource isFilterEmptyConverter}}" Value="False" TargetType="dxe:Chip">
-                        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource SecondaryContainer}, Dark={StaticResource SecondaryContainerDark}}"/>
-                        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource SecondaryContainer}}"/>
-                        <Setter Property="BorderThickness" Value="0"/>
                         <Setter Property="Text" Value="{Binding Source={x:Reference subjectRadioListItem}, Path=FilterModel.SelectedFilterValue.DisplayText, StringFormat='{0} ▼'}"/>
                     </DataTrigger>
                 </dxe:Chip.Triggers>
             </dxe:Chip>
             <dxe:Chip Text="City ▼">
                 <dxe:Chip.Triggers>
-                    <DataTrigger Binding="{Binding Source={x:Reference cityChechedListItem}, Path=FilterModel.SelectedFilterValues.Count, Converter={StaticResource isFilterEmptyConverter}}" Value="False" TargetType="dxe:Chip">
-                        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource SecondaryContainer}, Dark={StaticResource SecondaryContainerDark}}"/>
-                        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource SecondaryContainer}}"/>
-                        <Setter Property="BorderThickness" Value="0"/>
-                        <Setter Property="Text" Value="{Binding Source={x:Reference cityChechedListItem}, Path=FilterModel.SelectedFilterValues.Count, StringFormat='City ({0}) ▼'}"/>
+                    <DataTrigger Binding="{Binding Source={x:Reference cityCheckedListItem}, Path=FilterModel.SelectedFilterValues.Count, Converter={StaticResource isFilterEmptyConverter}}" Value="False" TargetType="dxe:Chip">
+                        <Setter Property="Text" Value="{Binding Source={x:Reference cityCheckedListItem}, Path=FilterModel.SelectedFilterValues.Count, StringFormat='City ({0}) ▼'}"/>
                     </DataTrigger>
                 </dxe:Chip.Triggers>
             </dxe:Chip>
             <dxe:Chip Text="Tutor ▼">
                 <dxe:Chip.Triggers>
-                    <DataTrigger Binding="{Binding Source={x:Reference tutorChechedListItem}, Path=FilterModel.SelectedFilterValues.Count, Converter={StaticResource isFilterEmptyConverter}}" Value="False" TargetType="dxe:Chip">
-                        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource SecondaryContainer}, Dark={StaticResource SecondaryContainerDark}}"/>
-                        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource SecondaryContainer}}"/>
-                        <Setter Property="BorderThickness" Value="0"/>
-                        <Setter Property="Text" Value="{Binding Source={x:Reference tutorChechedListItem}, Path=FilterModel.SelectedFilterValues.Count, StringFormat='Tutor ({0}) ▼'}"/>
+                    <DataTrigger Binding="{Binding Source={x:Reference tutorCheckedListItem}, Path=FilterModel.SelectedFilterValues.Count, Converter={StaticResource isFilterEmptyConverter}}" Value="False" TargetType="dxe:Chip">
+                        <Setter Property="Text" Value="{Binding Source={x:Reference tutorCheckedListItem}, Path=FilterModel.SelectedFilterValues.Count, StringFormat='Tutor ({0}) ▼'}"/>
                     </DataTrigger>
                 </dxe:Chip.Triggers>
             </dxe:Chip>
@@ -57,45 +47,43 @@
         <dxcv:DXCollectionView ItemsSource="{Binding Tutors}" x:Name="tutorsCollection" ItemSpacing="10" Grid.Row="1">
             <dxcv:DXCollectionView.ItemTemplate>
                 <DataTemplate x:DataType="{x:Type model:Tutor}">
-                    <Border Style="{StaticResource cardStyle}" Margin="10,0" HeightRequest="90">
+                    <dx:DXBorder Style="{StaticResource cardStyle}" Margin="10,0" HeightRequest="90">
                         <Grid ColumnDefinitions="Auto,Auto, *,Auto" RowSpacing="0" RowDefinitions="Auto,Auto" BackgroundColor="Transparent">
-                            <Image Source="{Binding AvatarPath}" HeightRequest="90" WidthRequest="90" Aspect="AspectFill" Grid.RowSpan="2">
-                                <Image.Clip>
+                            <dx:DXImage Source="{Binding AvatarPath}" HeightRequest="90" WidthRequest="90" Aspect="AspectFill" Grid.RowSpan="2">
+                                <dx:DXImage.Clip>
                                     <RoundRectangleGeometry Rect="0,0,90,90"/>
-                                </Image.Clip>
-                            </Image>
-                            <Label Text="{Binding FullName}" FontSize="16" FontAttributes="Bold" TextColor="{AppThemeBinding Light={StaticResource Card_Header_Light}, Dark={StaticResource Card_Header_Dark}}" Margin="10,10,0,0" Grid.Column="1" Grid.ColumnSpan="2"/>
-                            <Label Text="{Binding Rating, StringFormat='{0:f1}  ⭐'}" TextColor="{AppThemeBinding Light={StaticResource Card_Header_Light}, Dark={StaticResource Card_Header_Dark}}" Style="{StaticResource paleLabelStyle}" Margin="10,10,10,0" Grid.Column="3"/>
-                            <Label Text="{Binding Subject}" VerticalOptions="End" TextColor="{AppThemeBinding Light={StaticResource Card_Subheader_Light}, Dark={StaticResource Card_Subheader_Dark}}" Margin="10,0,0,10" Grid.Column="1" Grid.Row="1"/>
-                            <Label Text="{Binding City, StringFormat=' &#8226; {0:m}'}" TextColor="{AppThemeBinding Light={StaticResource Card_Subheader_Light}, Dark={StaticResource Card_Subheader_Dark}}" VerticalOptions="End" Margin="0,0,0,10" Grid.Column="2" Grid.Row="1"/>
-                            <Label Text="{Binding HourRate, StringFormat='{0:c0}/h'}" TextColor="{AppThemeBinding Light={StaticResource Card_Header_Light}, Dark={StaticResource Card_Header_Dark}}" Style="{StaticResource paleLabelStyle}" VerticalOptions="End" Margin="10,0,0,10" Grid.Column="3" Grid.Row="1"/>
+                                </dx:DXImage.Clip>
+                            </dx:DXImage>
+                            <Label Text="{Binding FullName}" FontSize="16" FontAttributes="Bold" Margin="10,10,0,0" Grid.Column="1" Grid.ColumnSpan="2"/>
+                            <Label Text="{Binding Rating, StringFormat='{0:f1}  ⭐'}" Style="{StaticResource paleLabelStyle}" Margin="10,10,10,0" Grid.Column="3"/>
+                            <Label Text="{Binding Subject}" VerticalOptions="End" Margin="10,0,0,10" Grid.Column="1" Grid.Row="1"/>
+                            <Label Text="{Binding City, StringFormat=' &#8226; {0:m}'}" VerticalOptions="End" Margin="0,0,0,10" Grid.Column="2" Grid.Row="1"/>
+                            <Label Text="{Binding HourRate, StringFormat='{0:c0}/h'}" VerticalOptions="End" Margin="10,0,0,10" Grid.Column="3" Grid.Row="1"/>
                         </Grid>
-                    </Border>
+                    </dx:DXBorder>
                 </DataTemplate>
             </dxcv:DXCollectionView.ItemTemplate>
         </dxcv:DXCollectionView>
-        <dxco:BottomSheet x:Name="filterBottomSheet" Style="{StaticResource filterBottomSheetStyle}" GrabberColor="{AppThemeBinding Light=#79747E, Dark=#938F99}">
+        <dxco:BottomSheet x:Name="filterBottomSheet">
             <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,*">
-                <!-- <dxco:SimpleButton Text="Close" Clicked="OnCloseBottomSheetClicked" HorizontalOptions="Start" 
-                                           Style="{StaticResource bottomSheetButton}" Margin="20,10,0,0" Grid.Column="0"/> -->
-                <dxco:SimpleButton Text="Reset" Command="{Binding Source={x:Reference tutorsCollection}, Path=FilteringContext.ResetFilterCommand}" HorizontalOptions="End" Style="{StaticResource bottomSheetButton}" Margin="0,20,20,20" Grid.Column="1" Padding="0,0,10,0"/>
+                <dx:DXButton Content="Reset" Command="{Binding Source={x:Reference tutorsCollection}, Path=FilteringContext.ResetFilterCommand}" HorizontalOptions="End" Style="{StaticResource bottomSheetButton}" Margin="0,20,20,20" Grid.Column="1"/>
                 <dxco:TabView x:Name="filterTabView" HeaderPanelBackgroundColor="Transparent" Grid.Row="1" Grid.ColumnSpan="2" Margin="0,10,0,0" ItemHeaderTapped="FilterTabHeaderTapped" HeaderPanelPadding="0" ItemHeaderPadding="0" HeaderPanelMinHeight="30">
                     <dxco:TabViewItem HeaderText="Subject" HeaderWidth="*" HeaderPadding="0,0,0,20">
                         <Grid RowDefinitions="Auto,*">
-                            <Border BackgroundColor="#D0CAD6" Grid.ColumnSpan="2" ZIndex="1000"/>
-                            <dxe:FilterRadioListItem x:Name="subjectRadioListItem" Context="{Binding Source={x:Reference tutorsCollection}, Path=FilteringContext}" Margin="0,-12,0,0" FieldName="Subject" ShowSearchPanel="False" BackgroundColor="{AppThemeBinding Light=#FFFBFE, Dark=#141218}" Grid.Row="1" />
+                            <dx:DXBorder Grid.ColumnSpan="2" ZIndex="1000"/>
+                            <dxe:FilterRadioListItem x:Name="subjectRadioListItem" Context="{Binding Source={x:Reference tutorsCollection}, Path=FilteringContext}" Margin="0,-12,0,0" FieldName="Subject" ShowSearchPanel="False" Grid.Row="1" />
                         </Grid>
                     </dxco:TabViewItem>
                     <dxco:TabViewItem HeaderText="City" HeaderWidth="*" HeaderPadding="0,0,0,20">
                         <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,*" >
-                            <Border BackgroundColor="#D0CAD6" Grid.ColumnSpan="2" ZIndex="1000" />
-                            <dxe:FilterCheckedListItem x:Name="cityChechedListItem" Context="{Binding Source={x:Reference tutorsCollection}, Path=FilteringContext}" FieldName="City" ShowSearchPanel="False" BackgroundColor="{AppThemeBinding Light=#FFFBFE, Dark=#141218}" Grid.ColumnSpan="2" Grid.Row="1" Margin="0,-12,0,0"/>
+                            <dx:DXBorder Grid.ColumnSpan="2" ZIndex="1000" />
+                            <dxe:FilterCheckedListItem x:Name="cityCheckedListItem" Context="{Binding Source={x:Reference tutorsCollection}, Path=FilteringContext}" FieldName="City" ShowSearchPanel="False" Grid.ColumnSpan="2" Grid.Row="1" Margin="0,-12,0,0"/>
                         </Grid>
                     </dxco:TabViewItem>
                     <dxco:TabViewItem HeaderText="Tutor" HeaderWidth="*" HeaderPadding="0,0,0,20">
                         <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,*" >
-                            <Border BackgroundColor="#D0CAD6" Grid.ColumnSpan="2" ZIndex="1000" />
-                            <dxe:FilterCheckedListItem x:Name="tutorChechedListItem" Context="{Binding Source={x:Reference tutorsCollection}, Path=FilteringContext}" FieldName="FullName" ShowSearchPanel="True" ShowValueCounts="False" BackgroundColor="{AppThemeBinding Light=#FFFBFE, Dark=#141218}" Grid.ColumnSpan="2" Grid.Row="1" Margin="0,-12,0,0"/>
+                            <dx:DXBorder Grid.ColumnSpan="2" ZIndex="1000" />
+                            <dxe:FilterCheckedListItem x:Name="tutorCheckedListItem" Context="{Binding Source={x:Reference tutorsCollection}, Path=FilteringContext}" FieldName="FullName" ShowSearchPanel="True" ShowValueCounts="False" Grid.ColumnSpan="2" Grid.Row="1" Margin="0,-12,0,0"/>
                         </Grid>
                     </dxco:TabViewItem>
                 </dxco:TabView>

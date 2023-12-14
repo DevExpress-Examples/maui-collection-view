@@ -5,6 +5,7 @@
              xmlns:dxdf="clr-namespace:DevExpress.Maui.DataForm;assembly=DevExpress.Maui.Editors"
              xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
              xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
+             xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
              x:Class="CrudOperations.ContactEditingPage" Title="Edit contact"
              Style="{StaticResource detailPageStyle}">
     <ContentPage.Triggers>
@@ -18,21 +19,21 @@
     </ContentPage.ToolbarItems>
     <Grid>
         <ScrollView>
-            <VerticalStackLayout>
-                <VerticalStackLayout>
-                    <VerticalStackLayout.Triggers>
-                        <DataTrigger Binding="{Binding IsNew}" Value="True" TargetType="VerticalStackLayout">
+            <dx:DXStackLayout Orientation="Vertical">
+                <dx:DXStackLayout Orientation="Vertical">
+                    <dx:DXStackLayout.Triggers>
+                        <DataTrigger Binding="{Binding IsNew}" Value="True" TargetType="dx:DXStackLayout">
                             <Setter Property="IsVisible" Value="False"/>
                         </DataTrigger>
-                    </VerticalStackLayout.Triggers>
-                    <Border HeightRequest="1" StrokeThickness="1" BackgroundColor="{AppThemeBinding Light={StaticResource separatorColor}, Dark={StaticResource separatorColorDark}}"/>
-                    <Image Source="{Binding Item.PhotoImageSource}" WidthRequest="100" HeightRequest="100" Margin="0,10,0,10">
-                        <Image.Clip>
+                    </dx:DXStackLayout.Triggers>
+                    <dx:DXBorder HeightRequest="1" BorderThickness="1" BackgroundColor="{AppThemeBinding Light={StaticResource separatorColor}, Dark={StaticResource separatorColorDark}}"/>
+                    <dx:DXImage Source="{Binding Item.PhotoImageSource}" WidthRequest="100" HeightRequest="100" Margin="0,10,0,10">
+                        <dx:DXImage.Clip>
                             <EllipseGeometry RadiusX="50" RadiusY="50" Center="50, 50" />
-                        </Image.Clip>
-                    </Image>
-                </VerticalStackLayout>
-                <Border BackgroundColor="{AppThemeBinding Light={StaticResource cardColor}, Dark={StaticResource cardColorDark}}" StrokeThickness="0" StrokeShape="RoundRectangle 10,10,0,0">
+                        </dx:DXImage.Clip>
+                    </dx:DXImage>
+                </dx:DXStackLayout>
+                <dx:DXBorder BackgroundColor="{AppThemeBinding Light={StaticResource cardColor}, Dark={StaticResource cardColorDark}}" BorderThickness="0" CornerRadius="10">
                     <dxdf:DataFormView x:Name="dataForm" DataObject="{Binding Item}"
                                        EditorLabelColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource PrimaryDark}}" IsAutoGenerationEnabled="False"
                                        EditorLabelWidth="40" ValidateProperty="dataForm_ValidateProperty"
@@ -53,21 +54,21 @@
                         <dxdf:DataFormTextItem FieldName="City" IsLabelVisible="True" LabelText="" ReturnType="Next" 
                                                InplaceLabelText="City" IsInplaceLabelFloating="True" />
                         <dxdf:DataFormTextItem FieldName="Address" IsLabelVisible="True" LabelText=""
-                                               InplaceLabelText="Street" IsInplaceLabelFloating="True"  ReturnType="Next"/>
+                                               InplaceLabelText="Street" IsInplaceLabelFloating="True" ReturnType="Next"/>
                         <dxdf:DataFormNumericItem FieldName="ZipCode" IsLabelVisible="True" LabelText=""
                                                   InplaceLabelText="Zip" IsInplaceLabelFloating="True" />
                     </dxdf:DataFormView>
-                    <Border.Triggers>
-                        <DataTrigger Binding="{Binding IsNew}" Value="False" TargetType="Border">
+                    <dx:DXBorder.Triggers>
+                        <DataTrigger Binding="{Binding IsNew}" Value="False" TargetType="dx:DXBorder">
                             <Setter Property="Shadow">
                                 <Setter.Value>
                                     <Shadow Brush="Gray" Offset="2,2" Radius="4" />
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                    </Border.Triggers>
-                </Border>
-            </VerticalStackLayout>
+                    </dx:DXBorder.Triggers>
+                </dx:DXBorder>
+            </dx:DXStackLayout>
         </ScrollView>
     </Grid>
 </ContentPage>

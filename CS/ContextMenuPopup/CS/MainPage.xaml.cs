@@ -10,9 +10,5 @@ namespace PopupContextMenuActions {
             actionsPopup.PlacementTarget = (View)sender;
             actionsPopup.IsOpen = !actionsPopup.IsOpen;
         }
-
-        private void PopupItemClick(object sender, EventArgs e) {
-            actionsPopup.IsOpen = false;
-        }
     }
 }

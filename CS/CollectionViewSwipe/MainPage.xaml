@@ -2,8 +2,9 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
+             xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
              xmlns:local="clr-namespace:CollectionViewSwipe"
-             x:Class="CollectionViewSwipe.MainPage">
+             x:Class="CollectionViewSwipe.MainPage" Shell.NavBarIsVisible="False">
     <ContentPage.BindingContext>
         <local:ViewModel/>
     </ContentPage.BindingContext>
@@ -23,10 +24,10 @@
             <DataTemplate>
                 <dxcv:SwipeContainer>
                     <dxcv:SwipeContainer.ItemView>
-                        <StackLayout Margin="0" Spacing="0" BackgroundColor="{Binding ItemColor}">
+                        <dx:DXStackLayout Margin="0" ItemSpacing="0" BackgroundColor="{Binding ItemColor}">
                             <Label Margin="20" Text="{Binding Description}"/>
                             <BoxView Style="{StaticResource SeparatorStyle}"/>
-                        </StackLayout>
+                        </dx:DXStackLayout>
                     </dxcv:SwipeContainer.ItemView>
 
                     <dxcv:SwipeContainer.StartSwipeItems>

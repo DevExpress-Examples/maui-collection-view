@@ -1,6 +1,6 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
+             xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
              xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
              xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
              xmlns:viewModel="clr-namespace:FilterChips.ViewModel"
@@ -8,10 +8,10 @@
              xmlns:local="clr-namespace:FilterChips"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-             ios:Page.UseSafeArea="true" BackgroundColor="{AppThemeBinding Light={StaticResource Gray50}, Dark={StaticResource Gray950}}"
+             ios:Page.UseSafeArea="true" BackgroundColor="{dx:ThemeColor Surface}"
              x:Class= "FilterChips.MainPage">
     <ContentPage.Behaviors>
-        <toolkit:StatusBarBehavior StatusBarColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource TitleBackgroundDark}}" StatusBarStyle="LightContent" />
+        <dx:SystemBarBehavior AndroidStatusBarBackground="{dx:ThemeColor Primary}" StatusBarForeground="{AppThemeBinding Dark=Light, Light=Dark}"/>
     </ContentPage.Behaviors>
     <ContentPage.BindingContext>
         <viewModel:MainViewModel/>
@@ -21,25 +21,25 @@
         <dxcv:DXCollectionView ItemsSource="{Binding Invoices}" FilterString="{Binding Filter, Mode=TwoWay}" ItemSpacing="10" Grid.Row="1">
             <dxcv:DXCollectionView.ItemTemplate>
                 <DataTemplate x:DataType="{x:Type model:Invoice}">
-                    <Border Style="{StaticResource cardStyle}" Margin="10,0">
+                    <dx:DXBorder Style="{StaticResource cardStyle}" Margin="10,0">
                         <Grid ColumnDefinitions="*,Auto" RowSpacing="12" RowDefinitions="Auto,Auto" Padding="16" BackgroundColor="Transparent">
                             <Label Text="{Binding Company}" FontSize="16" FontAttributes="Bold" Style="{StaticResource CardHeader}"/>
                             <HorizontalStackLayout Grid.Row="1">
                                 <Label Text="{Binding ID, StringFormat='I{0}'}" Grid.Row="1"/>
-                                <dxco:DXImage Source="clock" WidthRequest="16" HeightRequest="16" Margin="10,0,0,0" TintColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource paleTextColorDark}}"/>
-                                <Label Text="{Binding CreatedDate, StringFormat='{0:m}'}" Style="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource paleTextColorDark}}" Margin="10,0,0,0" Grid.Row="1" Grid.Column="1"/>
+                                <dx:DXImage Source="clock" WidthRequest="16" HeightRequest="16" Margin="10,0,0,0" TintColor="{dx:ThemeColor OnPrimaryContainer}"/>
+                                <Label Text="{Binding CreatedDate, StringFormat='{0:m}'}" Style="{dx:ThemeNeutralColor Light=10, Dark=99}" Margin="10,0,0,0" Grid.Row="1" Grid.Column="1"/>
                             </HorizontalStackLayout>
-                            <Border IsVisible="False" StrokeShape="RoundRectangle 4" Padding="6,2" BackgroundColor="#f5ac95" HorizontalOptions="End" Grid.Column="1">
-                                <Border.Triggers>
-                                    <DataTrigger Binding="{Binding IsDraft}" Value="True" TargetType="Border">
+                            <dx:DXBorder IsVisible="False" CornerRadius="4" Padding="6,2" BackgroundColor="#f5ac95" HorizontalOptions="End" Grid.Column="1">
+                                <dx:DXBorder.Triggers>
+                                    <DataTrigger Binding="{Binding IsDraft}" Value="True" TargetType="dx:DXBorder">
                                         <Setter Property="IsVisible" Value="True"/>
                                     </DataTrigger>
-                                </Border.Triggers>
-                                <Label Text="Draft" HorizontalOptions="Center" TextColor="{StaticResource Card_Background_Dark}"/>
-                            </Border>
-                            <Label Text="{Binding Price,StringFormat='{0:c}'}" HorizontalOptions="End"  Grid.Column="1" Grid.Row="1"/>
+                                </dx:DXBorder.Triggers>
+                                <Label Text="Draft" HorizontalOptions="Center" TextColor="{dx:ThemeColor OnPrimaryFixed}"/>
+                            </dx:DXBorder>
+                            <Label Text="{Binding Price,StringFormat='{0:c}'}" HorizontalOptions="End" Grid.Column="1" Grid.Row="1"/>
                         </Grid>
-                    </Border>
+                    </dx:DXBorder>
                 </DataTemplate>
             </dxcv:DXCollectionView.ItemTemplate>
         </dxcv:DXCollectionView>

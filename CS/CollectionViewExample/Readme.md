@@ -12,7 +12,7 @@ This example shows how to add a [DXCollectionView](https://docs.devexpress.com/M
 ## Documentation
 
 - [DXCollectionView](https://docs.devexpress.com/MAUI/DevExpress.Maui.CollectionView.DXCollectionView)
-- [Filter, Sort, and Group Data in Collection View for .NET MAUI](https://docs.devexpress.com/MAUI/404126/collection-view/filter-sort-and-group-data?v=22.2)
+- [Filter, Sort, and Group Data in Collection View for .NET MAUI](https://docs.devexpress.com/MAUI/404126/collection-view/filter-sort-and-group-data)
 
 ## More Examples
 

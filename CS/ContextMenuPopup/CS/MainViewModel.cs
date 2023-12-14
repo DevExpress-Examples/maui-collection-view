@@ -49,7 +49,7 @@ namespace PopupContextMenuActions {
             Contacts = ContactDataGenerator.CreateContacts();
         }
         public async void PopupAction(string parameter) {
-            await Application.Current.MainPage.DisplayAlert("Popup Item Click", parameter, "OK");
+            await Application.Current.MainPage.DisplayAlert("Popup item is clicked", parameter, "OK");
         }
     }
 

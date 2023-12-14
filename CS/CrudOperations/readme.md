@@ -87,13 +87,13 @@ Follow the steps below to obtain data from the SQLite database and display it in
 
 Bind UI controls on detail views to appropriate data properties and commands. 
 
-The [CollectionView](https://docs.devexpress.com/MAUI/403324/collection-view/index) control passes the view model to next-level views: new item form, edit form, and detail view. This view model contains commands and item properties. The following code snippet binds the item's *FirstName* property to [Label.Text](https://learn.microsoft.com/en-us/dotnet/api/microsoft.maui.controls.label.text?view=net-maui-7.0):
+The [CollectionView](https://docs.devexpress.com/MAUI/403324/collection-view/index) control passes the view model to next-level views: new item form, edit form, and detail view. This view model contains commands and item properties. The following code snippet binds the item's *FirstName* property to [Label.Text](https://learn.microsoft.com/en-us/dotnet/api/microsoft.maui.controls.label.text):
   
 ```xml
 <Label Text="{Binding Item.FirstName}" .../>
 ```
 
-The following code snippet binds a [ToolbarItem](https://learn.microsoft.com/en-us/dotnet/api/microsoft.maui.controls.toolbaritem?view=net-maui-7.0) control to *EditCommand*:
+The following code snippet binds a [ToolbarItem](https://learn.microsoft.com/en-us/dotnet/api/microsoft.maui.controls.toolbaritem) control to *EditCommand*:
 
 ```xml
 <ToolbarItem Command="{Binding EditCommand}" .../>
@@ -153,7 +153,7 @@ void dataForm_ValidateProperty(object sender, DataFormPropertyValidationEventArg
 }
 ```
 
-You can also apply validation attributes the data object. The [DataFormView](https://docs.devexpress.com/MAUI/DevExpress.Maui.DataForm.DataFormView) control validates its editors accordingly. The following code sample marks the *FirstName* property with the [Required](https://learn.microsoft.com/en-us/dotnet/api/system.componentmodel.dataannotations.requiredattribute?view=net-7.0) attribute (the marked property cannot be empty):
+You can also apply validation attributes the data object. The [DataFormView](https://docs.devexpress.com/MAUI/DevExpress.Maui.DataForm.DataFormView) control validates its editors accordingly. The following code sample marks the *FirstName* property with the [Required](https://learn.microsoft.com/en-us/dotnet/api/system.componentmodel.dataannotations.requiredattribute) attribute (the marked property cannot be empty):
 
 ```cs
 public class Contact : BindableBase {
@@ -166,7 +166,7 @@ public string FirstName {
 
 ### Additional Information: Handle a Remote Database Connection Error
 
-The changed data may not be saved to the database due to a connection error or another database constraint. To handle these errors, subscribe to the [DXCollectionView.ValidateAndSave](https://docs.devexpress.com/MAUI/DevExpress.Maui.CollectionView.DXCollectionView.ValidateAndSave?p=netframework) event. This event uses the *unit of work* pattern that creates a `DBContext` for each database operation (edit, add, or delete):
+The changed data may not be saved to the database due to a connection error or another database constraint. To handle these errors, subscribe to the [DXCollectionView.ValidateAndSave](https://docs.devexpress.com/MAUI/DevExpress.Maui.CollectionView.DXCollectionView.ValidateAndSave) event. This event uses the *unit of work* pattern that creates a `DBContext` for each database operation (edit, add, or delete):
 
 ```cs
 async void ValidateAndSave(ValidateItemEventArgs e) {
@@ -197,7 +197,7 @@ async void ValidateAndSave(ValidateItemEventArgs e) {
 }
 ```
 
-In the code snippet above, the *edit* operation uses the *ContactsContext* [DBContext](https://learn.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.dbcontext?view=efcore-7.0) that is created when item editing starts:
+In the code snippet above, the *edit* operation uses the *ContactsContext* [DBContext](https://learn.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.dbcontext) that is created when item editing starts:
 
 ```cs
 void CreateDetailFormViewModel(CreateDetailFormViewModelEventArgs e) {

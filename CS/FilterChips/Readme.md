@@ -2,12 +2,11 @@
 
 This example illustrates how to add chips with predefined filters (and apply pre-defined filters against data displayed in the DevExpress .NET MAUI [CollectionView](https://docs.devexpress.com/MAUI/403324) control).
 
-<img src="https://github.com/DevExpress-Examples/maui-collection-view/assets/12169834/17c8eb59-f0fd-4d65-a16d-b36d09eb12a3" width="30%"/>
+<img src="media/resulting-app.png" width="20%"/>
 
 **Related Controls and Their Properties**: 
 * [FilterChipGroup](https://docs.devexpress.com/MAUI/DevExpress.Maui.Editors.FilterChipGroup): [ItemsSource](https://docs.devexpress.com/MAUI/DevExpress.Maui.Editors.ChipGroup.ItemsSource), [SelectedItems](https://docs.devexpress.com/MAUI/DevExpress.Maui.Editors.FilterChipGroup.SelectedItems), [DisplayMember](https://docs.devexpress.com/MAUI/DevExpress.Maui.Editors.ChipGroup.DisplayMember)
 * [DXCollectionView](https://docs.devexpress.com/MAUI/403324): [ItemsSource](https://docs.devexpress.com/MAUI/DevExpress.Maui.CollectionView.DXCollectionView.ItemsSource), [FilterString](https://docs.devexpress.com/MAUI/DevExpress.Maui.CollectionView.DXCollectionView.FilterString), [ItemTemplate](https://docs.devexpress.com/MAUI/DevExpress.Maui.CollectionView.DXCollectionView.ItemTemplate)
-* [StatusBarBehavior](https://learn.microsoft.com/en-us/dotnet/communitytoolkit/maui/behaviors/statusbar-behavior)
 
 ## Implementation Details
 
@@ -46,7 +45,7 @@ This example illustrates how to add chips with predefined filters (and apply pre
     <dxcv:DXCollectionView FilterString="{Binding Filter, Mode=TwoWay}" ... 
     ```
 
-    ```
+    ```cs
     public class MainViewModel : BindableBase 
         string filter;
         public BindingList<FilterItem> SelectedFilters {
@@ -71,16 +70,3 @@ This example illustrates how to add chips with predefined filters (and apply pre
     }
     ```
 
-* [FilterChipGroup](https://docs.devexpress.com/MAUI/DevExpress.Maui.Editors.FilterChipGroup) appearance settings are defined within application resources:
-
-    ```
-    <Style TargetType="dxe:FilterChipGroup">
-        <Setter Property="ChipSelectedBackgroundColor" Value="{AppThemeBinding Light={StaticResource SecondaryContainer}, Dark={StaticResource SelectedChipBackgroundDark}}" />
-        <Setter Property="ChipCheckIconColor" Value="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource SecondaryContainer}}" />
-        <Setter Property="ChipTextColor" Value="{AppThemeBinding Light={StaticResource Gray600}, Dark=White}" />
-        <Setter Property="ChipSelectedBorderColor" Value="{AppThemeBinding Light={StaticResource SelectedChipBorderLight}, Dark={StaticResource SelectedChipBorderDark}}" />
-        <Setter Property="ChipBorderThickness" Value="2" />
-        <Setter Property="ChipSelectedTextColor" Value="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource SecondaryContainer}}" />
-        <Setter Property="ChipFontAttributes" Value="None" />
-    </Style>
-    ```
