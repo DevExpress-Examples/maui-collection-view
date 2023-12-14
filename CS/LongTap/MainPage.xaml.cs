@@ -1,4 +1,4 @@
-﻿using DevExpress.Data.Browsing.Design;
+using DevExpress.Data.Browsing.Design;
 using DevExpress.Maui.CollectionView;
 using System.Collections;
 using DevExpress.Maui.Core;

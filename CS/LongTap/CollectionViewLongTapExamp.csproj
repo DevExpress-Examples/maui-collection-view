@@ -32,8 +32,8 @@
     <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
     <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
     <PackageReference Include="CommunityToolkit.Maui" Version="5.0.0" />
-    <PackageReference Include="DevExpress.Maui.CollectionView" Version="23.2.4-pre-23338-18856" />
-    <PackageReference Include="DevExpress.Maui.Controls" Version="23.2.4-pre-23338-18856" />
+    <PackageReference Include="DevExpress.Maui.CollectionView" Version="23.2.*" />
+    <PackageReference Include="DevExpress.Maui.Controls" Version="23.2.*" />
   </ItemGroup>
   <ItemGroup>
     <TrimmableAssembly Include="DevExpress.Data.v23.2" />

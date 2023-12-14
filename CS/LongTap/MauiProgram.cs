@@ -1,4 +1,4 @@
-﻿using CommunityToolkit.Maui;
+using CommunityToolkit.Maui;
 using DevExpress.Maui;
 using DevExpress.Maui.Core;
 using Microsoft.Maui;
