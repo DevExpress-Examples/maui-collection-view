@@ -38,6 +38,7 @@ Samples in this repository demonstrate how to get started with the [DXCollection
 * [Create a Filter UI Form](./CS/CollectionViewFilteringUI/)
 * [Incorporate CRUD Operations](./CS/CrudOperations/)
 * [Display Filtering UI Elements in a BottomSheet](./CS/FilteringUIinBottomSheet/)
+* [Enable Multiple Selection and Implement the Contextual Action Bar](./CS/LongTap/)
 
 ## Documentation
 
