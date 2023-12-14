@@ -1,0 +1,67 @@
+<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:windows="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.WindowsSpecific;assembly=Microsoft.Maui.Controls"
+             xmlns:local="clr-namespace:CollectionViewLongTapExamp"
+             x:Class= "CollectionViewLongTapExamp.App"
+             windows:Application.ImageDirectory="Assets">
+    <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Primary">#6750A4</Color>
+            <Color x:Key="Secondary">#DFD8F7</Color>
+            <Color x:Key="Background_Dark">#1C1A22</Color>
+            <Color x:Key="White">White</Color>
+            <Color x:Key="Black">Black</Color>
+
+            <Color x:Key="Gray50">#F2F2F7</Color>
+            <Color x:Key="Gray200">#C8C8C8</Color>
+            <Color x:Key="Gray300">#ACACAC</Color>
+            <Color x:Key="Gray400">#919191</Color>
+            <Color x:Key="Gray500">#6E6E6E</Color>
+            <Color x:Key="Gray600">#404040</Color>
+            <Color x:Key="Gray900">#212121</Color>
+            <Color x:Key="Gray950">#1C1B1F</Color>
+
+
+            <Color x:Key="AltForeground">#49454F</Color>
+            <Color x:Key="AltForeground_Dark">#CAC4D0</Color>
+            <Color x:Key="OnSurfaceForeground">#1C1B1F</Color>
+            <Color x:Key="OnSurfaceForeground_Dark">#E3E4E0</Color>
+
+            <Style TargetType="Border" x:Key="separatorStyle">
+                <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Gray50}, Dark={StaticResource Gray600}}" />
+                <Setter Property="HeightRequest" Value="2"/>
+                <Setter Property="StrokeThickness" Value="0"/>
+            </Style>
+
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray300}}" />
+            </Style>
+
+            <Style x:Key="paleLabelStyle" TargetType="Label" BasedOn="{StaticResource Microsoft.Maui.Controls.Label}">
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray400}, Dark={StaticResource Gray400}}" />
+            </Style>
+
+            <Style x:Key="mediumPaleLabelStyle" TargetType="Label" BasedOn="{StaticResource Microsoft.Maui.Controls.Label}">
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray400}}" />
+            </Style>
+
+            <Style TargetType="Page" ApplyToDerivedTypes="True">
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Background_Dark}}" />
+            </Style>
+
+            <Style TargetType="Shell" ApplyToDerivedTypes="True">
+                <Setter Property="Shell.BackgroundColor" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource Gray950}}" />
+                <Setter Property="Shell.ForegroundColor" Value="{OnPlatform WinUI={StaticResource Primary}, Default={StaticResource White}}" />
+                <Setter Property="Shell.TitleColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource White}}" />
+                <Setter Property="Shell.DisabledColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray950}}" />
+                <Setter Property="Shell.UnselectedColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray200}}" />
+                <Setter Property="Shell.NavBarHasShadow" Value="False" />
+                <Setter Property="Shell.TabBarBackgroundColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" />
+                <Setter Property="Shell.TabBarForegroundColor" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource White}}" />
+                <Setter Property="Shell.TabBarTitleColor" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource White}}" />
+                <Setter Property="Shell.TabBarUnselectedColor" Value="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource Gray200}}" />
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
