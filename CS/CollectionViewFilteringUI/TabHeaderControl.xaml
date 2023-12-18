@@ -2,23 +2,24 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
+             xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
              xmlns:local="clr-namespace:CollectionViewFilteringUI"
              x:Class="CollectionViewFilteringUI.TabHeaderControl" x:Name="root">
-    <VerticalStackLayout Padding="0,10">
-        <Border StrokeShape="RoundRectangle 16,16,16,16" Padding="22,6" HorizontalOptions="Center" BackgroundColor="Transparent">
-            <Border.Triggers>
-                <DataTrigger Binding="{Binding IsSelected, Source={x:Reference root}}" Value="True" TargetType="Border">
+    <dx:DXStackLayout Orientation="Vertical" Padding="0,10">
+        <dx:DXBorder CornerRadius="16" Padding="22,6" HorizontalOptions="Center" BackgroundColor="Transparent">
+            <dx:DXBorder.Triggers>
+                <DataTrigger Binding="{Binding IsSelected, Source={x:Reference root}}" Value="True" TargetType="dx:DXBorder">
                     <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource SelectedTabHeaderBackgroundColor}, Dark={StaticResource SelectedTabHeaderBackgroundColorDark}}"/>
                 </DataTrigger>
-            </Border.Triggers>
-            <dxco:DXImage x:Name="iconImage" Source="{Binding IconPath, Source={x:Reference root}}" TintColor="{AppThemeBinding Light={StaticResource TabHeaderTextColor}, Dark={StaticResource TabHeaderTextColorDark}}">
-                <dxco:DXImage.Triggers>
-                    <DataTrigger Binding="{Binding IsSelected, Source={x:Reference root}}" Value="True" TargetType="dxco:DXImage">
+            </dx:DXBorder.Triggers>
+            <dx:DXImage x:Name="iconImage" Source="{Binding IconPath, Source={x:Reference root}}" TintColor="{AppThemeBinding Light={StaticResource TabHeaderTextColor}, Dark={StaticResource TabHeaderTextColorDark}}">
+                <dx:DXImage.Triggers>
+                    <DataTrigger Binding="{Binding IsSelected, Source={x:Reference root}}" Value="True" TargetType="dx:DXImage">
                         <Setter Property="TintColor" Value="{AppThemeBinding Light={StaticResource SelectedTabHeaderTextColor}, Dark={StaticResource SelectedTabHeaderTextColorDark}}"/>
                     </DataTrigger>
-                </dxco:DXImage.Triggers>
-            </dxco:DXImage>
-        </Border>
+                </dx:DXImage.Triggers>
+            </dx:DXImage>
+        </dx:DXBorder>
         <Label x:Name="captionLabel" Text="{Binding Caption, Source={x:Reference root}}" HorizontalOptions="Center" HorizontalTextAlignment="Center" 
                TextColor="{AppThemeBinding Light={StaticResource TabHeaderTextColor}, Dark={StaticResource TabHeaderTextColorDark}}" FontSize="{OnIdiom Phone=12, Tablet=14}">
             <Label.Triggers>
@@ -27,21 +28,5 @@
                 </DataTrigger>
             </Label.Triggers>
         </Label>
-    </VerticalStackLayout>
-
-    <!--<VerticalStackLayout Padding="0,10">
-        <Border StrokeShape="RoundRectangle 16,16,16,16"
-                                    Padding="22,6"
-                                    HorizontalOptions="Center"
-                                    BackgroundColor="{Binding IsHomeTabSelected, Converter={StaticResource selectedTabHeaderBackgroundConverter}}">
-            <dxco:DXImage Source="filteringui_home"
-                                    TintColor="{Binding IsHomeTabSelected, Converter={StaticResource selectedTabHeaderTextColorConverter}}">
-            </dxco:DXImage>
-        </Border>
-        <Label Text="Home"
-                                    HorizontalOptions="Center"
-                                    HorizontalTextAlignment="Center"
-                                    TextColor="{Binding IsHomeTabSelected, Converter={StaticResource selectedTabHeaderTextColorConverter}}"
-                                    FontSize="{OnIdiom Phone=12, Tablet=14}"/>
-    </VerticalStackLayout>-->
+    </dx:DXStackLayout>
 </ContentView>
