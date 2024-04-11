@@ -5,12 +5,24 @@ using DevExpress.Maui.Editors;
 
 namespace CollectionViewFilteringUI {
     public partial class MainPage : ContentPage {
+        FilteringUIViewModel ViewModel { get; }
+        EnumToDescriptionConverter EnumToDescriptionConverter { get; } = new EnumToDescriptionConverter();
         public MainPage() {
             InitializeComponent();
-            BindingContext = new FilteringUIViewModel();
+            ViewModel = new FilteringUIViewModel();
+            BindingContext = ViewModel;
+            UpdateColumnsCount();
+            ON.OrientationChanged(this, OnOrientationChanged);
+            OnOrientationChanged(this);
         }
-        EnumToDescriptionConverter EnumToDescriptionConverter { get; } = new EnumToDescriptionConverter();
 
+        void OnOrientationChanged(ContentPage view) {
+            UpdateColumnsCount();
+        }
+
+        void UpdateColumnsCount() {
+            ViewModel.ColumnsCount = ON.Idiom<int>(ON.Orientation<int>(1, 2), ON.Orientation<int>(2, Height < 600 ? 2 : 4));
+        }
 
         void OnCustomDisplayText(object sender, FilterElementCustomDisplayTextEventArgs e) {
             e.DisplayText = EnumToDescriptionConverter.Convert(e.Value).ToString();

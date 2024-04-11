@@ -1,8 +1,24 @@
-﻿using Microsoft.Maui.Layouts;
+﻿using DevExpress.Maui.Core;
+using Microsoft.Maui.Layouts;
 using System.ComponentModel;
 using System.Globalization;
 
 namespace CollectionViewFilteringUI.Utils {
+    public class BoolToImageSourceConverter : IValueConverter {
+        public ImageSource FalseSource { get; set; }
+        public ImageSource TrueSource { get; set; }
+
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
+            if (!(value is bool)) {
+                return null;
+            }
+            return (bool)value ? TrueSource : FalseSource;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) {
+            throw new NotImplementedException();
+        }
+    }
     public class BoolToColorConverter : IValueConverter {
         public Color FalseSource { get; set; }
         public Color TrueSource { get; set; }
@@ -13,6 +29,7 @@ namespace CollectionViewFilteringUI.Utils {
             }
             return (bool)value ? TrueSource : FalseSource;
         }
+
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) {
             throw new NotImplementedException();
         }
@@ -32,6 +49,18 @@ namespace CollectionViewFilteringUI.Utils {
         }
         public object ProvideValue(IServiceProvider serviceProvider) {
             return this;
+        }
+    }
+    public class ColumnsCountToTemplateConverter : IValueConverter {
+        public DataTemplate SmallCardTemplate { get; set; }
+        public DataTemplate CardTemplate { get; set; }
+
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
+            return ON.Idiom<DataTemplate>((int)value > 1 ? SmallCardTemplate : CardTemplate, CardTemplate);
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) {
+            throw new NotImplementedException();
         }
     }
 
