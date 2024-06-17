@@ -205,7 +205,11 @@
                     </dx:FilterRadioListPickerItem>
                     <dx:FilterChipGroupItem Text="I Want To" FieldName="Status" AllowDeselect="True"/>
                     <dx:FilterCheckedChipGroupItem Text="Property Type" FieldName="Type" CustomDisplayText="OnCustomDisplayText"/>
-                    <dx:FilterNumericRangeItem Text="Price" FieldName="Price" EditorDisplayFormat="c0"/>
+                    <dx:PredefinedFilterCheckedChipGroupItem Text="Price" FieldName="Price" ShowValueCounts="true">
+                        <dx:PredefinedFilter Text="$0 - $500K" FilterExpression="?p &lt; 500"/>
+                        <dx:PredefinedFilter Text="$500 - $2000" FilterExpression="?p >= 500 AND ?p &lt; 2000"/>
+                        <dx:PredefinedFilter Text="$2000+" FilterExpression="?p >= 2000"/>
+                    </dx:PredefinedFilterCheckedChipGroupItem>
                     <dx:FilterNumericRangeItem Text="Square Feet" FieldName="HouseSize"/>
                     <dx:FilterCheckedChipGroupItem Text="Bedrooms" ShowValuesOutOfFilter="true" FieldName="Beds"/>
                     <dx:FilterNumericRangeItem Text="Year Built" FieldName="YearBuilt"/>
