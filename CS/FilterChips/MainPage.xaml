@@ -1,8 +1,6 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
-             xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
-             xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+             xmlns:dx="http://schemas.devexpress.com/maui"
              xmlns:viewModel="clr-namespace:FilterChips.ViewModel"
              xmlns:model="clr-namespace:FilterChips.Model"
              xmlns:local="clr-namespace:FilterChips"
@@ -17,9 +15,9 @@
         <viewModel:MainViewModel/>
     </ContentPage.BindingContext>
     <Grid RowDefinitions="Auto, *">
-        <dxe:FilterChipGroup ItemsSource="{Binding PredefinedFilters}" SelectedItems="{Binding SelectedFilters, Mode=TwoWay}" x:Name="filtersChipGroup" IsMultiline="False" DisplayMember="DisplayText" Padding="10"/>
-        <dxcv:DXCollectionView ItemsSource="{Binding Invoices}" FilterString="{Binding Filter, Mode=TwoWay}" ItemSpacing="10" Grid.Row="1">
-            <dxcv:DXCollectionView.ItemTemplate>
+        <dx:FilterChipGroup ItemsSource="{Binding PredefinedFilters}" SelectedItems="{Binding SelectedFilters, Mode=TwoWay}" x:Name="filtersChipGroup" IsMultiline="False" DisplayMember="DisplayText" Padding="10"/>
+        <dx:DXCollectionView ItemsSource="{Binding Invoices}" FilterString="{Binding Filter, Mode=TwoWay}" ItemSpacing="10" Grid.Row="1">
+            <dx:DXCollectionView.ItemTemplate>
                 <DataTemplate x:DataType="{x:Type model:Invoice}">
                     <dx:DXBorder Style="{StaticResource cardStyle}" Margin="10,0">
                         <Grid ColumnDefinitions="*,Auto" RowSpacing="12" RowDefinitions="Auto,Auto" Padding="16" BackgroundColor="Transparent">
@@ -41,7 +39,7 @@
                         </Grid>
                     </dx:DXBorder>
                 </DataTemplate>
-            </dxcv:DXCollectionView.ItemTemplate>
-        </dxcv:DXCollectionView>
+            </dx:DXCollectionView.ItemTemplate>
+        </dx:DXCollectionView>
     </Grid>
 </ContentPage>

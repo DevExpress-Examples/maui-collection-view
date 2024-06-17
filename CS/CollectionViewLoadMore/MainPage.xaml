@@ -1,8 +1,6 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:dxc="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
-             xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
-             xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
+             xmlns:dx="http://schemas.devexpress.com/maui"
              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
              xmlns:local="clr-namespace:InfiniteScrollingExample"
              ios:Page.UseSafeArea="true"
@@ -11,8 +9,8 @@
         <local:MainViewModel/>
     </ContentPage.BindingContext>
     <Grid>
-        <dxcv:DXCollectionView ItemsSource="{Binding Blogs}" IsRefreshing="{Binding IsLoading, Mode=TwoWay}" IsLoadMoreEnabled="True" LoadMoreCommand="{Binding LoadMoreCommand}" TapCommand="{Binding OpenBlogCommand}">
-            <dxcv:DXCollectionView.ItemTemplate>
+        <dx:DXCollectionView ItemsSource="{Binding Blogs}" IsRefreshing="{Binding IsLoading, Mode=TwoWay}" IsLoadMoreEnabled="True" LoadMoreCommand="{Binding LoadMoreCommand}" TapCommand="{Binding OpenBlogCommand}">
+            <dx:DXCollectionView.ItemTemplate>
                 <DataTemplate x:DataType="{x:Type local:BlogPost}">
                     <dx:DXStackLayout Orientation="Vertical" Margin="0,8,0,8">
                         <dx:DXBorder CornerRadius="20" Margin="16,0,16,10">
@@ -36,7 +34,7 @@
                         <dx:DXBorder BackgroundColor="{AppThemeBinding Light={StaticResource Separator_Light}, Dark={StaticResource Separator_Dark}}" HeightRequest="2" BorderThickness="0" Margin="0,10,0,0"/>
                     </dx:DXStackLayout>
                 </DataTemplate>
-            </dxcv:DXCollectionView.ItemTemplate>
-        </dxcv:DXCollectionView>
+            </dx:DXCollectionView.ItemTemplate>
+        </dx:DXCollectionView>
     </Grid>
 </ContentPage>

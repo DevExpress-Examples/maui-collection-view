@@ -13,6 +13,9 @@ namespace CollectionViewFilteringUI {
             builder
                 .UseMauiApp<App>()
                 .UseDevExpress()
+                .UseDevExpressCollectionView()
+                .UseDevExpressEditors()
+                .UseDevExpressControls()
                 .UseMauiCommunityToolkit()
                 .ConfigureFonts(fonts => {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");

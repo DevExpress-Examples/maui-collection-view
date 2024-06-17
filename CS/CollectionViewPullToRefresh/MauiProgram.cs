@@ -7,6 +7,7 @@ namespace CollectionViewPullToRefresh {
             builder
                 .UseMauiApp<App>()
                 .UseDevExpress()
+                .UseDevExpressCollectionView()
                 .ConfigureFonts(fonts => {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");

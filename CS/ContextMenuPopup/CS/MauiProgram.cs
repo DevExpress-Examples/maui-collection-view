@@ -12,6 +12,8 @@ namespace PopupContextMenuActions {
             builder
                 .UseMauiApp<App>()
                 .UseDevExpress(useLocalization: true)
+                .UseDevExpressControls()
+                .UseDevExpressCollectionView()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");

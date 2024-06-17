@@ -1,9 +1,6 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
-             xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
-             xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
-             xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
+             xmlns:dx="http://schemas.devexpress.com/maui"
              xmlns:viewModels="clr-namespace:BottomSheetFilterUI.ViewModel"
              xmlns:model="clr-namespace:BottomSheetFilterUI.Model"
              xmlns:local="clr-namespace:BottomSheetFilterUI"
@@ -21,31 +18,31 @@
         <viewModels:MainViewModel/>
     </ContentPage.BindingContext>
     <Grid RowDefinitions="Auto, *">
-        <dxe:ChipGroup IsMultiline="False" ChipTap="OnFilterChipGroupTap" x:Name="filterChipGroup" Background="Transparent">
-            <dxe:Chip Text="Subject ▼">
-                <dxe:Chip.Triggers>
-                    <DataTrigger Binding="{Binding Source={x:Reference subjectRadioListItem}, Path=FilterModel.SelectedFilterValue, Converter={StaticResource isFilterEmptyConverter}}" Value="False" TargetType="dxe:Chip">
+        <dx:ChipGroup IsMultiline="False" ChipTap="OnFilterChipGroupTap" x:Name="filterChipGroup" Background="Transparent">
+            <dx:Chip Text="Subject ▼">
+                <dx:Chip.Triggers>
+                    <DataTrigger Binding="{Binding Source={x:Reference subjectRadioListItem}, Path=FilterModel.SelectedFilterValue, Converter={StaticResource isFilterEmptyConverter}}" Value="False" TargetType="dx:Chip">
                         <Setter Property="Text" Value="{Binding Source={x:Reference subjectRadioListItem}, Path=FilterModel.SelectedFilterValue.DisplayText, StringFormat='{0} ▼'}"/>
                     </DataTrigger>
-                </dxe:Chip.Triggers>
-            </dxe:Chip>
-            <dxe:Chip Text="City ▼">
-                <dxe:Chip.Triggers>
-                    <DataTrigger Binding="{Binding Source={x:Reference cityCheckedListItem}, Path=FilterModel.SelectedFilterValues.Count, Converter={StaticResource isFilterEmptyConverter}}" Value="False" TargetType="dxe:Chip">
+                </dx:Chip.Triggers>
+            </dx:Chip>
+            <dx:Chip Text="City ▼">
+                <dx:Chip.Triggers>
+                    <DataTrigger Binding="{Binding Source={x:Reference cityCheckedListItem}, Path=FilterModel.SelectedFilterValues.Count, Converter={StaticResource isFilterEmptyConverter}}" Value="False" TargetType="dx:Chip">
                         <Setter Property="Text" Value="{Binding Source={x:Reference cityCheckedListItem}, Path=FilterModel.SelectedFilterValues.Count, StringFormat='City ({0}) ▼'}"/>
                     </DataTrigger>
-                </dxe:Chip.Triggers>
-            </dxe:Chip>
-            <dxe:Chip Text="Tutor ▼">
-                <dxe:Chip.Triggers>
-                    <DataTrigger Binding="{Binding Source={x:Reference tutorCheckedListItem}, Path=FilterModel.SelectedFilterValues.Count, Converter={StaticResource isFilterEmptyConverter}}" Value="False" TargetType="dxe:Chip">
+                </dx:Chip.Triggers>
+            </dx:Chip>
+            <dx:Chip Text="Tutor ▼">
+                <dx:Chip.Triggers>
+                    <DataTrigger Binding="{Binding Source={x:Reference tutorCheckedListItem}, Path=FilterModel.SelectedFilterValues.Count, Converter={StaticResource isFilterEmptyConverter}}" Value="False" TargetType="dx:Chip">
                         <Setter Property="Text" Value="{Binding Source={x:Reference tutorCheckedListItem}, Path=FilterModel.SelectedFilterValues.Count, StringFormat='Tutor ({0}) ▼'}"/>
                     </DataTrigger>
-                </dxe:Chip.Triggers>
-            </dxe:Chip>
-        </dxe:ChipGroup>
-        <dxcv:DXCollectionView ItemsSource="{Binding Tutors}" x:Name="tutorsCollection" ItemSpacing="10" Grid.Row="1">
-            <dxcv:DXCollectionView.ItemTemplate>
+                </dx:Chip.Triggers>
+            </dx:Chip>
+        </dx:ChipGroup>
+        <dx:DXCollectionView ItemsSource="{Binding Tutors}" x:Name="tutorsCollection" ItemSpacing="10" Grid.Row="1">
+            <dx:DXCollectionView.ItemTemplate>
                 <DataTemplate x:DataType="{x:Type model:Tutor}">
                     <dx:DXBorder Style="{StaticResource cardStyle}" Margin="10,0" HeightRequest="90">
                         <Grid ColumnDefinitions="Auto,Auto, *,Auto" RowSpacing="0" RowDefinitions="Auto,Auto" BackgroundColor="Transparent">
@@ -62,32 +59,32 @@
                         </Grid>
                     </dx:DXBorder>
                 </DataTemplate>
-            </dxcv:DXCollectionView.ItemTemplate>
-        </dxcv:DXCollectionView>
-        <dxco:BottomSheet x:Name="filterBottomSheet">
+            </dx:DXCollectionView.ItemTemplate>
+        </dx:DXCollectionView>
+        <dx:BottomSheet x:Name="filterBottomSheet">
             <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,*">
                 <dx:DXButton Content="Reset" Command="{Binding Source={x:Reference tutorsCollection}, Path=FilteringContext.ResetFilterCommand}" HorizontalOptions="End" Style="{StaticResource bottomSheetButton}" Margin="0,20,20,20" Grid.Column="1"/>
-                <dxco:TabView x:Name="filterTabView" HeaderPanelBackgroundColor="Transparent" Grid.Row="1" Grid.ColumnSpan="2" Margin="0,10,0,0" ItemHeaderTapped="FilterTabHeaderTapped" HeaderPanelPadding="0" ItemHeaderPadding="0" HeaderPanelMinHeight="30">
-                    <dxco:TabViewItem HeaderText="Subject" HeaderWidth="*" HeaderPadding="0,0,0,20">
+                <dx:TabView x:Name="filterTabView" HeaderPanelBackgroundColor="Transparent" Grid.Row="1" Grid.ColumnSpan="2" Margin="0,10,0,0" ItemHeaderTapped="FilterTabHeaderTapped" HeaderPanelPadding="0" ItemHeaderPadding="0" HeaderPanelMinHeight="30">
+                    <dx:TabViewItem HeaderText="Subject" HeaderWidth="*" HeaderPadding="0,0,0,20">
                         <Grid RowDefinitions="Auto,*">
                             <dx:DXBorder Grid.ColumnSpan="2" ZIndex="1000"/>
-                            <dxe:FilterRadioListItem x:Name="subjectRadioListItem" Context="{Binding Source={x:Reference tutorsCollection}, Path=FilteringContext}" Margin="0,-12,0,0" FieldName="Subject" ShowSearchPanel="False" Grid.Row="1" />
+                            <dx:FilterRadioListItem x:Name="subjectRadioListItem" Context="{Binding Source={x:Reference tutorsCollection}, Path=FilteringContext}" Margin="0,-12,0,0" FieldName="Subject" ShowSearchPanel="False" Grid.Row="1" />
                         </Grid>
-                    </dxco:TabViewItem>
-                    <dxco:TabViewItem HeaderText="City" HeaderWidth="*" HeaderPadding="0,0,0,20">
+                    </dx:TabViewItem>
+                    <dx:TabViewItem HeaderText="City" HeaderWidth="*" HeaderPadding="0,0,0,20">
                         <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,*" >
                             <dx:DXBorder Grid.ColumnSpan="2" ZIndex="1000" />
-                            <dxe:FilterCheckedListItem x:Name="cityCheckedListItem" Context="{Binding Source={x:Reference tutorsCollection}, Path=FilteringContext}" FieldName="City" ShowSearchPanel="False" Grid.ColumnSpan="2" Grid.Row="1" Margin="0,-12,0,0"/>
+                            <dx:FilterCheckedListItem x:Name="cityCheckedListItem" Context="{Binding Source={x:Reference tutorsCollection}, Path=FilteringContext}" FieldName="City" ShowSearchPanel="False" Grid.ColumnSpan="2" Grid.Row="1" Margin="0,-12,0,0"/>
                         </Grid>
-                    </dxco:TabViewItem>
-                    <dxco:TabViewItem HeaderText="Tutor" HeaderWidth="*" HeaderPadding="0,0,0,20">
+                    </dx:TabViewItem>
+                    <dx:TabViewItem HeaderText="Tutor" HeaderWidth="*" HeaderPadding="0,0,0,20">
                         <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,*" >
                             <dx:DXBorder Grid.ColumnSpan="2" ZIndex="1000" />
-                            <dxe:FilterCheckedListItem x:Name="tutorCheckedListItem" Context="{Binding Source={x:Reference tutorsCollection}, Path=FilteringContext}" FieldName="FullName" ShowSearchPanel="True" ShowValueCounts="False" Grid.ColumnSpan="2" Grid.Row="1" Margin="0,-12,0,0"/>
+                            <dx:FilterCheckedListItem x:Name="tutorCheckedListItem" Context="{Binding Source={x:Reference tutorsCollection}, Path=FilteringContext}" FieldName="FullName" ShowSearchPanel="True" ShowValueCounts="False" Grid.ColumnSpan="2" Grid.Row="1" Margin="0,-12,0,0"/>
                         </Grid>
-                    </dxco:TabViewItem>
-                </dxco:TabView>
+                    </dx:TabViewItem>
+                </dx:TabView>
             </Grid>
-        </dxco:BottomSheet>
+        </dx:BottomSheet>
     </Grid>
 </ContentPage>

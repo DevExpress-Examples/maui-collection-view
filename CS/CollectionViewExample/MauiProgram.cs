@@ -14,6 +14,7 @@ namespace CollectionViewExample {
             builder
                 .UseMauiApp<App>()
                 .UseDevExpress()
+                .UseDevExpressCollectionView()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");

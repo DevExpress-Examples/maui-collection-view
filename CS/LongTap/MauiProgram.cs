@@ -16,6 +16,8 @@ namespace CollectionViewLongTapExamp {
             builder
                 .UseMauiApp<App>()
                 .UseMauiCommunityToolkit()
+                .UseDevExpressCollectionView()
+                .UseDevExpressControls()
                 .UseDevExpress(useLocalization: true)
                 .ConfigureFonts(fonts =>
                 {

@@ -1,9 +1,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
-    xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
-    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    xmlns:dx="http://schemas.devexpress.com/maui"
     xmlns:mmc="clr-namespace:Microsoft.Maui.Controls;assembly=Microsoft.Maui.Controls"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:local="clr-namespace:CollectionViewLongTapExamp" ios:Page.UseSafeArea="true" Padding="0" x:Name="rootPage" x:Class="CollectionViewLongTapExamp.MainPage">
     <ContentPage.Behaviors>
         <dx:SystemBarBehavior AndroidStatusBarBackground="{dx:ThemeColor Primary}" StatusBarForeground="{AppThemeBinding Dark=Light, Light=Dark}"/>
@@ -36,7 +35,7 @@
                 </dx:DXImage>
                 <Ellipse IsVisible="False" WidthRequest="40" Fill="{dx:ThemeColor Secondary}" HeightRequest="40" VerticalOptions="Center" HorizontalOptions="Center" Grid.RowSpan="2" Margin="0,10,0,0">
                     <Ellipse.Triggers>
-                        <DataTrigger Binding="{TemplateBinding Path=IsSelected}" Value="True" TargetType="{x:Type Ellipse}">
+                        <DataTrigger Binding="{TemplateBinding Path=IsSelected}" Value="True" TargetType="Ellipse">
                             <Setter Property="IsVisible" Value="True"/>
                             <Setter Property="IsVisible" Value="True" TargetName="checkmark"/>
                             <Setter Property="IsVisible" Value="False" TargetName="avatar"/>
@@ -55,16 +54,16 @@
     <ContentPage.BindingContext>
         <local:MainViewModel/>
     </ContentPage.BindingContext>
-    <dxcv:DXCollectionView ItemsSource="{Binding EmailMessages}" x:Name="collectionView" LongPress="DXCollectionView_LongPress" SelectionMode="None" SelectionChanged="CollectionViewSelectionChanged">
-        <dxcv:DXCollectionView.ItemTemplate>
+    <dx:DXCollectionView ItemsSource="{Binding EmailMessages}" x:Name="collectionView" LongPress="DXCollectionView_LongPress" SelectionMode="None" SelectionChanged="CollectionViewSelectionChanged">
+        <dx:DXCollectionView.ItemTemplate>
             <DataTemplate x:DataType="{x:Type local:EmailMessage}">
                 <local:SelectableItem IsSelected="False" ControlTemplate="{StaticResource itemBaseTemplate}"/>
             </DataTemplate>
-        </dxcv:DXCollectionView.ItemTemplate>
-        <dxcv:DXCollectionView.SelectedItemTemplate>
+        </dx:DXCollectionView.ItemTemplate>
+        <dx:DXCollectionView.SelectedItemTemplate>
             <DataTemplate x:DataType="{x:Type local:EmailMessage}">
                 <local:SelectableItem IsSelected="True" ControlTemplate="{StaticResource itemBaseTemplate}"/>
             </DataTemplate>
-        </dxcv:DXCollectionView.SelectedItemTemplate>
-    </dxcv:DXCollectionView>
+        </dx:DXCollectionView.SelectedItemTemplate>
+    </dx:DXCollectionView>
 </ContentPage>

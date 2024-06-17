@@ -1,9 +1,6 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
-             xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
-             xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
-             xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+             xmlns:dx="http://schemas.devexpress.com/maui"
              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
              xmlns:local="clr-namespace:CollectionViewFilteringUI"
              xmlns:utils="clr-namespace:CollectionViewFilteringUI.Utils"
@@ -185,14 +182,14 @@
         <DataTemplate x:Key="filteringUIFormTemplate">
             <utils:ScrollViewFix Background="{StaticResource ThemeBackgroundBrush}">
                 <dx:DXStackLayout Orientation="Vertical">
-                    <dxe:FilterRadioListPickerItem 
+                    <dx:FilterRadioListPickerItem 
                                 FieldName="City" 
                                 ShowValuesOutOfFilter="true"
                                 ShowValueCounts="false"
                                 ShowRadioButtons="false"
                                 ImageSource="filteringui_location" 
                                 ImageColor="{AppThemeBinding Light={StaticResource AccentColor}, Dark={StaticResource AccentColorDark}}">
-                        <dxe:FilterRadioListPickerItem.PickerTitleView>
+                        <dx:FilterRadioListPickerItem.PickerTitleView>
                             <Label FontSize="17"
                                    FontFamily="Roboto Medium"
                                    FontAttributes="Bold"
@@ -204,15 +201,15 @@
                                    Text="City"
                                    LineBreakMode="NoWrap">
                             </Label>
-                        </dxe:FilterRadioListPickerItem.PickerTitleView>
-                    </dxe:FilterRadioListPickerItem>
-                    <dxe:FilterChipGroupItem Text="I Want To" FieldName="Status" AllowDeselect="True"/>
-                    <dxe:FilterCheckedChipGroupItem Text="Property Type" FieldName="Type" CustomDisplayText="OnCustomDisplayText"/>
-                    <dxe:FilterNumericRangeItem Text="Price" FieldName="Price" EditorDisplayFormat="c0"/>
-                    <dxe:FilterNumericRangeItem Text="Square Feet" FieldName="HouseSize"/>
-                    <dxe:FilterCheckedChipGroupItem Text="Bedrooms" ShowValuesOutOfFilter="true" FieldName="Beds"/>
-                    <dxe:FilterNumericRangeItem Text="Year Built" FieldName="YearBuilt"/>
-                    <dxe:FilterCheckItem Text="Must have garage" FieldName="IsGarageExist"/>
+                        </dx:FilterRadioListPickerItem.PickerTitleView>
+                    </dx:FilterRadioListPickerItem>
+                    <dx:FilterChipGroupItem Text="I Want To" FieldName="Status" AllowDeselect="True"/>
+                    <dx:FilterCheckedChipGroupItem Text="Property Type" FieldName="Type" CustomDisplayText="OnCustomDisplayText"/>
+                    <dx:FilterNumericRangeItem Text="Price" FieldName="Price" EditorDisplayFormat="c0"/>
+                    <dx:FilterNumericRangeItem Text="Square Feet" FieldName="HouseSize"/>
+                    <dx:FilterCheckedChipGroupItem Text="Bedrooms" ShowValuesOutOfFilter="true" FieldName="Beds"/>
+                    <dx:FilterNumericRangeItem Text="Year Built" FieldName="YearBuilt"/>
+                    <dx:FilterCheckItem Text="Must have garage" FieldName="IsGarageExist"/>
                 </dx:DXStackLayout>
             </utils:ScrollViewFix>
         </DataTemplate>
@@ -223,14 +220,14 @@
         <ToolbarItem Command="{Binding Source={Reference collectionView}, Path=Commands.ShowFilteringUIForm}" IconImageSource="filteringui_filter"/>
     </ContentPage.ToolbarItems>
     <Grid BackgroundColor="{dx:ThemeColor SurfaceContainer}">
-        <dxco:TabView 
+        <dx:TabView 
                     HeaderPanelPosition="Bottom" 
                     ItemHeaderWidth="*" 
                     HeaderPanelPadding="0" 
                     IsSelectedItemIndicatorVisible="False" 
                     SelectedItemIndex="{Binding SelectedTabIndex}">
-            <dxco:TabViewItem>
-                <dxco:TabViewItem.HeaderContent>
+            <dx:TabViewItem>
+                <dx:TabViewItem.HeaderContent>
                     <VerticalStackLayout VerticalOptions="Center" Padding="{OnPlatform Android='0', iOS='0,8'}">
                         <Border 
                                     StrokeShape="RoundRectangle 16,16,16,16" 
@@ -249,9 +246,9 @@
                                 TextColor="{Binding IsHomeTabSelected, Converter={StaticResource selectedTabHeaderTextColorConverter}}" 
                                 FontSize="{OnIdiom Phone=12, Tablet=14}"/>
                     </VerticalStackLayout>
-                </dxco:TabViewItem.HeaderContent>
-                <dxco:TabViewItem.Content>
-                    <dxcv:DXCollectionView 
+                </dx:TabViewItem.HeaderContent>
+                <dx:TabViewItem.Content>
+                    <dx:DXCollectionView 
                             x:Name="collectionView" 
                             IsScrollBarVisible="false" 
                             Margin="18,9,18,0" 
@@ -262,11 +259,11 @@
                             ItemSpanSpacing="18" 
                             ItemSpacing="18" 
                             ItemSpanCount="{Binding ColumnsCount}">
-                    </dxcv:DXCollectionView>
-                </dxco:TabViewItem.Content>
-            </dxco:TabViewItem>
-            <dxco:TabViewItem>
-                <dxco:TabViewItem.HeaderContent>
+                    </dx:DXCollectionView>
+                </dx:TabViewItem.Content>
+            </dx:TabViewItem>
+            <dx:TabViewItem>
+                <dx:TabViewItem.HeaderContent>
                     <VerticalStackLayout Padding="{OnPlatform Android='0', iOS='0,8'}" VerticalOptions="Center">
                         <Border 
                              StrokeShape="RoundRectangle 16,16,16,16" 
@@ -285,9 +282,9 @@
                                 TextColor="{Binding IsFavoritesTabSelected, Converter={StaticResource selectedTabHeaderTextColorConverter}}" 
                                 FontSize="{OnIdiom Phone=12, Tablet=14}"/>
                     </VerticalStackLayout>
-                </dxco:TabViewItem.HeaderContent>
-                <dxco:TabViewItem.Content>
-                    <dxcv:DXCollectionView 
+                </dx:TabViewItem.HeaderContent>
+                <dx:TabViewItem.Content>
+                    <dx:DXCollectionView 
                             IsScrollBarVisible="false" 
                             Margin="18,9,18,0" 
                             FilterExpression="{Binding Source={Reference collectionView}, Path=FilterExpression}" 
@@ -296,9 +293,9 @@
                             ItemSpanSpacing="18" 
                             ItemSpacing="18" 
                             ItemSpanCount="{Binding ColumnsCount}">
-                    </dxcv:DXCollectionView>
-                </dxco:TabViewItem.Content>
-            </dxco:TabViewItem>
-        </dxco:TabView>
+                    </dx:DXCollectionView>
+                </dx:TabViewItem.Content>
+            </dx:TabViewItem>
+        </dx:TabView>
     </Grid>
 </ContentPage>

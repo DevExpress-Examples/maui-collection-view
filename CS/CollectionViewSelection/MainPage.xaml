@@ -1,18 +1,16 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
-             xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
+             xmlns:dx="http://schemas.devexpress.com/maui"
              xmlns:local="clr-namespace:CollectionViewSelection"
              x:Class="CollectionViewSelection.MainPage">
     <ContentPage.BindingContext>
         <local:ViewModel/>
     </ContentPage.BindingContext>
-    <dxcv:DXCollectionView ItemsSource="{Binding Contacts}"
+    <dx:DXCollectionView ItemsSource="{Binding Contacts}"
                            SelectionMode="Multiple"
                            SelectedItems="{Binding SelectedContacts}">
         <!--Define the item template.-->
-        <dxcv:DXCollectionView.ItemTemplate>
+        <dx:DXCollectionView.ItemTemplate>
             <DataTemplate>
                 <Grid Padding="10, 8, 18, 7">
                     <Grid.ColumnDefinitions>
@@ -45,9 +43,9 @@
                     </dx:DXStackLayout>
                 </Grid>
             </DataTemplate>
-        </dxcv:DXCollectionView.ItemTemplate>
+        </dx:DXCollectionView.ItemTemplate>
 
-        <dxcv:DXCollectionView.SelectedItemTemplate>
+        <dx:DXCollectionView.SelectedItemTemplate>
             <DataTemplate>
                 <dx:DXBorder Margin="10, 1"
                              Padding="0"
@@ -88,11 +86,11 @@
                     </Grid>
                 </dx:DXBorder>
             </DataTemplate>
-        </dxcv:DXCollectionView.SelectedItemTemplate>
+        </dx:DXCollectionView.SelectedItemTemplate>
 
         <!--Specify margins.-->
-        <dxcv:DXCollectionView.Margin>
+        <dx:DXCollectionView.Margin>
             <OnIdiom x:TypeArguments="Thickness" Phone="10,0,10,0" Tablet="71,0,0,0"/>
-        </dxcv:DXCollectionView.Margin>
-    </dxcv:DXCollectionView>
+        </dx:DXCollectionView.Margin>
+    </dx:DXCollectionView>
 </ContentPage>

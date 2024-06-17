@@ -1,19 +1,18 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
-             xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
+             xmlns:dx="http://schemas.devexpress.com/maui"
              xmlns:local="clr-namespace:CollectionViewExample"
              x:Class="CollectionViewExample.MainPage"
              BackgroundColor="{DynamicResource PageBackgroundColor}">
     <ContentPage.BindingContext>
         <local:ViewModel/>
     </ContentPage.BindingContext>
-    <dxcv:DXCollectionView ItemsSource="{Binding Data}"
+    <dx:DXCollectionView ItemsSource="{Binding Data}"
                            GroupItemSeparatorThickness="1" 
                            GroupItemSeparatorColor="#ebebeb" 
                            GroupItemSeparatorCapMargin="4,20">
         <!--Define the item template.-->
-        <dxcv:DXCollectionView.ItemTemplate>
+        <dx:DXCollectionView.ItemTemplate>
             <DataTemplate>
                 <Grid Padding="10, 8, 18, 7">
                     <Grid.ColumnDefinitions>
@@ -48,31 +47,31 @@
                     </dx:DXStackLayout>
                 </Grid>
             </DataTemplate>
-        </dxcv:DXCollectionView.ItemTemplate>
+        </dx:DXCollectionView.ItemTemplate>
 
         <!--Specify margins.-->
-        <dxcv:DXCollectionView.Margin>
+        <dx:DXCollectionView.Margin>
             <x:OnIdiom Phone="16,0,0,0" Tablet="71,0,0,0"/>
-        </dxcv:DXCollectionView.Margin>
+        </dx:DXCollectionView.Margin>
 
         <!--Sort items.-->
-        <dxcv:DXCollectionView.SortDescriptions>
-            <dxcv:SortDescription FieldName="Name" SortOrder="Descending"/>
-        </dxcv:DXCollectionView.SortDescriptions>
+        <dx:DXCollectionView.SortDescriptions>
+            <dx:SortDescription FieldName="Name" SortOrder="Descending"/>
+        </dx:DXCollectionView.SortDescriptions>
 
         <!--Group items.-->
-        <dxcv:DXCollectionView.GroupDescription>
-            <dxcv:GroupDescription FieldName="Name" GroupInterval="Alphabetical"/>
-        </dxcv:DXCollectionView.GroupDescription>
+        <dx:DXCollectionView.GroupDescription>
+            <dx:GroupDescription FieldName="Name" GroupInterval="Alphabetical"/>
+        </dx:DXCollectionView.GroupDescription>
 
         <!--Define the group header template.-->
-        <dxcv:DXCollectionView.GroupHeaderTemplate>
+        <dx:DXCollectionView.GroupHeaderTemplate>
             <DataTemplate>
                 <Label FontFamily="Roboto-Medium"
                        Margin="0,20,0,1"
                        TextColor="#55575c"
                        Text="{Binding GroupValueText}"/>
             </DataTemplate>
-        </dxcv:DXCollectionView.GroupHeaderTemplate>
-    </dxcv:DXCollectionView>
+        </dx:DXCollectionView.GroupHeaderTemplate>
+    </dx:DXCollectionView>
 </ContentPage>

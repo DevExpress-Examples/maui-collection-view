@@ -1,8 +1,7 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="CollectionViewFilteringUI.Resources.Styles"
-             xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors">
+             xmlns:dx="http://schemas.devexpress.com/maui"
+             x:Class="CollectionViewFilteringUI.Resources.Styles">
 
     <Color x:Key="BackgroundThemeColor">#F9F6FF</Color>
     <Color x:Key="NavigationBarColor" x:Uid="Neutral-100">#FFFFFF</Color>
@@ -63,16 +62,16 @@
     <SolidColorBrush x:Key="ThemeBackgroundBrush" Color="{AppThemeBinding Light={StaticResource BackgroundThemeColor}, Dark={StaticResource BackgroundThemeColorDark}}"/>
 
 
-    <Style TargetType="dxe:FilterNumericRangeItem" ApplyToDerivedTypes="True">
+    <Style TargetType="dx:FilterNumericRangeItem" ApplyToDerivedTypes="True">
         <Setter Property="EditorBackgroundColor" Value="{AppThemeBinding Light={StaticResource FilterFormItemEditorBackgroundColor}, Dark={StaticResource FavoriteIconBackgroundColorDark}}"/>
     </Style>
-    <Style TargetType="dxe:FilterChipGroupItem" ApplyToDerivedTypes="True">
+    <Style TargetType="dx:FilterChipGroupItem" ApplyToDerivedTypes="True">
         <Setter Property="ChipBackgroundColor" Value="{AppThemeBinding Light={StaticResource FilterFormItemEditorBackgroundColor}, Dark={StaticResource FavoriteIconBackgroundColorDark}}"/>
         <Setter Property="ChipSelectedBackgroundColor" Value="{AppThemeBinding Light={StaticResource FilterFormItemSelectedChipBackgroundColor}, Dark={StaticResource FilterFormItemSelectedChipBackgroundColorDark}}"/>
         <Setter Property="ShowValuesOutOfFilter" Value="true"/>
         <Setter Property="ShowValueCounts" Value="true"/>
     </Style>
-    <Style TargetType="dxe:FilterCheckedChipGroupItem" ApplyToDerivedTypes="True">
+    <Style TargetType="dx:FilterCheckedChipGroupItem" ApplyToDerivedTypes="True">
         <Setter Property="ChipBackgroundColor" Value="{AppThemeBinding Light={StaticResource FilterFormItemEditorBackgroundColor}, Dark={StaticResource FilterFormItemEditorBackgroundColorDark}}"/>
         <Setter Property="ChipSelectedBackgroundColor" Value="{AppThemeBinding Light={StaticResource FilterFormItemSelectedChipBackgroundColor}, Dark={StaticResource FilterFormItemSelectedChipBackgroundColorDark}}"/>
         <Setter Property="ShowValuesOutOfFilter" Value="true"/>

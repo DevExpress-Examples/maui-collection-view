@@ -1,8 +1,6 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
-    xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
-    xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
+    xmlns:dx="http://schemas.devexpress.com/maui"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:local="clr-namespace:PopupContextMenuActions" ios:Page.UseSafeArea="true" x:Class= "PopupContextMenuActions.MainPage" BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}">
     <ContentPage.BindingContext>
@@ -32,12 +30,12 @@
         </DataTemplate>
     </ContentPage.Resources>
     <Grid BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundThemeColor}, Dark={StaticResource Black}}">
-        <dxcv:DXCollectionView x:Name="collectionView" AllowGroupCollapse="False" ItemTemplate="{StaticResource contactTemplate}" ItemsSource="{Binding Contacts}" SelectionMode="None">
-            <dxcv:DXCollectionView.GroupDescription>
-                <dxcv:GroupDescription FieldName="FirstName" GroupInterval="Alphabetical"/>
-            </dxcv:DXCollectionView.GroupDescription>
+        <dx:DXCollectionView x:Name="collectionView" AllowGroupCollapse="False" ItemTemplate="{StaticResource contactTemplate}" ItemsSource="{Binding Contacts}" SelectionMode="None">
+            <dx:DXCollectionView.GroupDescription>
+                <dx:GroupDescription FieldName="FirstName" GroupInterval="Alphabetical"/>
+            </dx:DXCollectionView.GroupDescription>
 
-            <dxcv:DXCollectionView.GroupHeaderTemplate>
+            <dx:DXCollectionView.GroupHeaderTemplate>
                 <DataTemplate>
                     <dx:DXStackLayout Orientation="Vertical" Margin="20,0,18,10">
                         <dx:DXStackLayout.Margin>
@@ -50,14 +48,14 @@
                         <BoxView BackgroundColor="{AppThemeBinding Light=White, Dark=Black}" HeightRequest="1"/>
                     </dx:DXStackLayout>
                 </DataTemplate>
-            </dxcv:DXCollectionView.GroupHeaderTemplate>
-        </dxcv:DXCollectionView>
+            </dx:DXCollectionView.GroupHeaderTemplate>
+        </dx:DXCollectionView>
 
-        <dxco:DXPopup x:Name="actionsPopup" Placement="Bottom" CornerRadius="8" BackgroundColor="{AppThemeBinding Light={StaticResource Popup_Background_Light}, Dark={StaticResource Popup_Background_Dark}}" HorizontalAlignment="Left" ShadowColor="{AppThemeBinding Light={StaticResource Gray500}, Dark=Black}" ShadowRadius="5">
+        <dx:DXPopup x:Name="actionsPopup" Placement="Bottom" CornerRadius="8" BackgroundColor="{AppThemeBinding Light={StaticResource Popup_Background_Light}, Dark={StaticResource Popup_Background_Dark}}" HorizontalAlignment="Left" ShadowColor="{AppThemeBinding Light={StaticResource Gray500}, Dark=Black}" ShadowRadius="5">
             <dx:DXStackLayout Orientation="Vertical" Padding="8,6">
                 <dx:DXButton Command="{Binding PopupActionCommand}" Content="Copy number" Icon="copy" Style="{StaticResource popupButtonStyle}" PressedIconColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource Popup_Icon_Dark}}" PressedTextColor="{AppThemeBinding Light=Black, Dark={StaticResource Popup_Icon_Dark}}"/>
                 <dx:DXButton Command="{Binding PopupActionCommand}" Content="Delete" Icon="delete" Style="{StaticResource popupButtonStyle}" PressedIconColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource Popup_Icon_Dark}}" PressedTextColor="{AppThemeBinding Light=Black, Dark={StaticResource Popup_Icon_Dark}}"/>
             </dx:DXStackLayout>
-        </dxco:DXPopup>
+        </dx:DXPopup>
     </Grid>
 </ContentPage>

@@ -1,10 +1,7 @@
-<?xml version = "1.0" encoding = "UTF-8" ?>
 <Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dx="http://schemas.devexpress.com/maui"
              xmlns:local="clr-namespace:CrudOperations"
-             xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
-             xmlns:dxcn="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
-             xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
              x:Class="CrudOperations.App">
     <Application.Resources>
 
@@ -155,7 +152,7 @@
             <Setter Property="Shell.TitleColor" Value="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray200}}"/>
             <Setter Property="Shell.ForegroundColor" Value="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray200}}"/>
         </Style>
-        <Style TargetType="dxe:TextEdit" x:Key="searchEditorStyle">
+        <Style TargetType="dx:TextEdit" x:Key="searchEditorStyle">
             <Setter Property="ClearIconColor" Value="{AppThemeBinding Light={StaticResource iconColor}, Dark={StaticResource iconColorDark}}"/>
             <Setter Property="TextVerticalAlignment" Value="Center"/>
             <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource cardColor}, Dark={StaticResource cardColorDark}}"/>

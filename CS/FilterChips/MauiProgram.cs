@@ -16,6 +16,9 @@ namespace FilterChips {
             builder
                 .UseMauiApp<App>()
                 .UseMauiCommunityToolkit()
+                .UseDevExpressCollectionView()
+                .UseDevExpressControls()
+                .UseDevExpressEditors()
                 .UseDevExpress(useLocalization: true)
                 .ConfigureFonts(fonts =>
                 {

@@ -12,6 +12,8 @@ namespace InfiniteScrollingExample {
             builder
                 .UseMauiApp<App>()
                 .UseDevExpress(useLocalization: true)
+                .UseDevExpressCollectionView()
+                .UseDevExpressControls()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
