@@ -36,7 +36,7 @@
                 </dx:DXImage>
                 <Ellipse IsVisible="False" WidthRequest="40" Fill="{dx:ThemeColor Secondary}" HeightRequest="40" VerticalOptions="Center" HorizontalOptions="Center" Grid.RowSpan="2" Margin="0,10,0,0">
                     <Ellipse.Triggers>
-                        <DataTrigger Binding="{TemplateBinding Path=IsSelected}" Value="True" TargetType="{x:Type Ellipse}">
+                        <DataTrigger Binding="{TemplateBinding Path=IsSelected}" Value="True" TargetType="Ellipse">
                             <Setter Property="IsVisible" Value="True"/>
                             <Setter Property="IsVisible" Value="True" TargetName="checkmark"/>
                             <Setter Property="IsVisible" Value="False" TargetName="avatar"/>
