@@ -13,10 +13,10 @@
         </Style>
 
         <Style TargetType="Shell" ApplyToDerivedTypes="True">
-            <Setter Property="Shell.BackgroundColor" Value="{dx:ThemeColor Surface}" />
-            <Setter Property="Shell.ForegroundColor" Value="{dx:ThemeColor OnSurfaceVariant}" />
+            <Setter Property="Shell.BackgroundColor" Value="{dx:ThemeColor Primary}" />
+            <Setter Property="Shell.ForegroundColor" Value="{dx:ThemeColor OnPrimary}" />
             <Setter Property="Shell.FlyoutBackground" Value="{dx:ThemeColor SurfaceContainerLow}" />
-            <Setter Property="Shell.TitleColor" Value="{dx:ThemeColor OnSurface}" />
+            <Setter Property="Shell.TitleColor" Value="{dx:ThemeColor OnPrimary}" />
             <Setter Property="Shell.NavBarHasShadow" Value="False" />
             <Setter Property="Shell.TabBarBackgroundColor" Value="{dx:ThemeColor SurfaceContainer}" />
             <Setter Property="Shell.TabBarForegroundColor" Value="{dx:ThemeColor Primary}" />
@@ -24,7 +24,7 @@
             <Setter Property="Shell.TabBarUnselectedColor" Value="{dx:ThemeColor OnSurfaceVariant}" />
         </Style>
 
-        <Style TargetType="NavigationPage">
+        <Style TargetType="NavigationPage" ApplyToDerivedTypes="True">
             <Setter Property="BarBackgroundColor" Value="{dx:ThemeColor Surface}" />
             <Setter Property="BarTextColor" Value="{dx:ThemeColor OnSurface}" />
             <Setter Property="IconColor" Value="{dx:ThemeColor OnSurfaceVariant}" />

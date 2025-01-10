@@ -8,7 +8,12 @@ namespace PopupContextMenuActions {
 
         void ContactActionsClick(object sender, EventArgs e) {
             actionsPopup.PlacementTarget = (View)sender;
-            actionsPopup.IsOpen = !actionsPopup.IsOpen;
+            actionsPopup.IsOpen = true;
+        }
+
+        private void PopupButtonClick(object sender, EventArgs e)
+        {
+            actionsPopup.IsOpen = false;
         }
     }
 }

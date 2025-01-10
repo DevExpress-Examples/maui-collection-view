@@ -20,15 +20,12 @@ namespace PopupContextMenuActions {
         [ObservableProperty]
         object placementTarget;
 
-        [ObservableProperty]
-        bool isOpenPopup;
-
         public MainViewModel(IContactDataService dataService) {
             Contacts = dataService.CreateContacts();
         }
 
         [RelayCommand]
-        public async Task PopupActionAsync(string parameter) {
+        async Task PopupActionAsync(string parameter) {
             await Shell.Current.DisplayAlert("Popup item is clicked", parameter, "OK");
         }
     }

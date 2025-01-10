@@ -1,4 +1,5 @@
 ﻿using DevExpress.Maui;
+using DevExpress.Maui.Core;
 
 namespace PopupContextMenuActions {
     public static class MauiProgram {

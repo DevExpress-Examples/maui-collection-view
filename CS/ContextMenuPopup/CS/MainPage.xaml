@@ -7,6 +7,9 @@
     x:Class="PopupContextMenuActions.MainPage"
     BindingContext="{dx:Ioc Type={x:Type local:MainViewModel}}"
     x:DataType="{x:Type local:MainViewModel}">
+    <ContentPage.Behaviors>
+        <dx:SystemBarBehavior AndroidStatusBarBackground="{dx:ThemeColor Primary}"/>
+    </ContentPage.Behaviors>
     <ContentPage.Resources>
         <DataTemplate x:Key="contactTemplate"
                       x:DataType="{x:Type local:ContactPerson}">
@@ -39,7 +42,7 @@
                              TextColor="{dx:ThemeColor OnSurface}"
                              BackgroundColor="Transparent"
                              PressedBackgroundColor="{dx:ThemeNeutralColor Light=90, Dark=10}"
-                             Clicked="ContactActionsClick" 
+                             Clicked="ContactActionsClick"
                              VerticalOptions="Center"
                              Grid.RowSpan="2"
                              Grid.Column="2"/>
@@ -74,17 +77,21 @@
                     Placement="Bottom" 
                     CornerRadius="8" 
                     BackgroundColor="{dx:ThemeColor SurfaceContainer}" 
-                    HorizontalAlignment="Left" >
+                    HorizontalAlignment="Left">
             <dx:DXStackLayout Orientation="Vertical" 
                               Padding="8,6">
-                <dx:DXButton Command="{Binding PopupActionCommand}" 
+                <dx:DXButton Command="{Binding PopupActionCommand}"
+                             CommandParameter="Copy"
                              Content="Copy number" 
                              Icon="copy" 
-                             Style="{StaticResource popupButtonStyle}"/>
+                             Style="{StaticResource popupButtonStyle}"
+                             Clicked="PopupButtonClick"/>
                 <dx:DXButton Command="{Binding PopupActionCommand}" 
+                             CommandParameter="Delete"
                              Content="Delete" 
                              Icon="delete" 
-                             Style="{StaticResource popupButtonStyle}"/>
+                             Style="{StaticResource popupButtonStyle}"
+                             Clicked="PopupButtonClick"/>
             </dx:DXStackLayout>
         </dx:DXPopup>
     </Grid>
