@@ -7,7 +7,6 @@ namespace BottomSheetFilterUI {
     public partial class MainPage : ContentPage {
         public MainPage() {
             InitializeComponent();
-            //tutorsCollection.FilteringContext.ResetFilterCommand
         }
 
         private void OnFilterChipGroupTap(object sender, ChipEventArgs e) {

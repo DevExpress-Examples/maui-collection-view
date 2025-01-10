@@ -1,17 +1,26 @@
-﻿using System;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using DevExpress.Maui.Core;
+using DevExpress.Maui.Mvvm;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace CollectionViewSwipe {
-    public class ViewModel {
-        public List<Task> Data { get; }
+namespace CollectionViewSwipe
+{
+    public partial class ViewModel : DXObservableObject
+    {
+        [ObservableProperty]
+        ObservableCollection<Task> data;
 
-        public ViewModel() {
-            Data = new List<Task>() {
+        public ViewModel()
+        {
+            Data = new ObservableCollection<Task>() {
                 new Task("Prepare Financial"),
                 new Task("Prepare Marketing Plan"),
                 new Task("QA Strategy Report"),
@@ -25,59 +34,45 @@ namespace CollectionViewSwipe {
                 new Task("Deliver R&D Plans"),
             };
         }
+
+        [RelayCommand]
+        void DeleteTask(Task taskToDelete)
+        {
+            Data.Remove(taskToDelete);
+        }
     }
 
-    public class Task : INotifyPropertyChanged {
-        public string Description { get; private set; }
-
+    public partial class Task : DXObservableObject
+    {
+        [ObservableProperty]
         bool isTaskCompleted;
-        public bool IsTaskCompleted {
-            get => isTaskCompleted;
-            set {
-                isTaskCompleted = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsTaskCompleted)));
-                UpdateState();
-            }
-        }
 
+        [ObservableProperty]
+        string description;
+
+        [ObservableProperty]
         Color itemColor;
-        public Color ItemColor {
-            get => itemColor;
-            private set {
-                itemColor = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ItemColor)));
-            }
-        }
 
+        [ObservableProperty]
         string actionText;
-        public string ActionText {
-            get => actionText;
-            private set {
-                actionText = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ActionText)));
-            }
-        }
 
+        [ObservableProperty]
         string actionIcon;
-        public string ActionIcon {
-            get => actionIcon;
-            private set {
-                actionIcon = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ActionIcon)));
-            }
-        }
 
-        public ICommand ChangeStateCommand { get; }
+        partial void OnIsTaskCompletedChanged(bool oldValue, bool newValue)
+         => UpdateState();
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        [RelayCommand]
+        void ChangeState() => IsTaskCompleted = !IsTaskCompleted;
 
-        public Task(string description) {
-            ChangeStateCommand = new Command(() => IsTaskCompleted = !IsTaskCompleted);
+        public Task(string description)
+        {
             Description = description;
             UpdateState();
         }
 
-        void UpdateState() {
+        void UpdateState()
+        {
             ItemColor = IsTaskCompleted ? Color.FromArgb("#c6eccb") : Color.FromArgb("#e6e6e6");
             ActionText = IsTaskCompleted ? "To Do" : "Done";
             ActionIcon = IsTaskCompleted ? "uncompletetask" : "completetask";

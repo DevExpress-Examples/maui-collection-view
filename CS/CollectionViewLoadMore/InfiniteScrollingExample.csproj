@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net8.0-android;net8.0-ios</TargetFrameworks>
+	<TargetFrameworks>net9.0-android;net9.0-ios</TargetFrameworks>
     <OutputType>Exe</OutputType>
     <UseMaui>true</UseMaui>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -29,12 +29,13 @@
     <MauiFont Include="Resources\Fonts\*" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
-    <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
-    <PackageReference Include="DevExpress.Maui.CollectionView" Version="24.1.*" />
-    <PackageReference Include="DevExpress.Maui.Controls" Version="24.1.*" />
-    <PackageReference Include="DevExpress.Maui.Core" Version="24.1.*" />
-    <TrimmableAssembly Include="DevExpress.Data.v24.1" />
+	<PackageReference Include="Microsoft.Maui.Controls" Version="[9.0.10,)" PrivateAssets="all" />
+    <PackageReference Include="DevExpress.Maui.Mvvm" Version="24.2.*" />
+    <PackageReference Include="DevExpress.Maui.CollectionView" Version="24.2.*" />
+    <PackageReference Include="DevExpress.Maui.Controls" Version="24.2.*" />
+    <PackageReference Include="DevExpress.Maui.Core" Version="24.2.*" />
+    <TrimmableAssembly Include="DevExpress.Data.v24.2" />
+	<PackageReference Include="CommunityToolkit.Maui" Version="4.0.0" />
   </ItemGroup>
   <ItemGroup>
     <MauiXaml Update="AppShell.xaml">

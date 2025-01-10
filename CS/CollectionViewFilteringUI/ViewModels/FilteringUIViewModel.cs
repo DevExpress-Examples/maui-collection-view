@@ -1,9 +1,11 @@
 ﻿using CollectionViewFilteringUI.DataSource;
+using DevExpress.Maui.Mvvm;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
 namespace CollectionViewFilteringUI.ViewModels {
-    public class FilteringUIViewModel : NotificationObject {
+    public class FilteringUIViewModel : DXObservableObject
+    {
         readonly HouseSalesRepository repository;
 
         public FilteringUIViewModel() {

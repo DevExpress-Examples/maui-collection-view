@@ -8,7 +8,7 @@ namespace CollectionViewSwipe {
         }
 
         void SwipeItem_Tapped(System.Object sender, SwipeItemTapEventArgs e) {
-            this.collectionView.DeleteItem(e.ItemHandle);
+            collectionView.DeleteItem(e.ItemHandle);
         }
     }
 }

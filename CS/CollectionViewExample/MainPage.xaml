@@ -2,15 +2,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:dx="http://schemas.devexpress.com/maui"
              xmlns:local="clr-namespace:CollectionViewExample"
-             x:Class="CollectionViewExample.MainPage"
-             BackgroundColor="{DynamicResource PageBackgroundColor}">
+             x:Class="CollectionViewExample.MainPage">
     <ContentPage.BindingContext>
         <local:ViewModel/>
     </ContentPage.BindingContext>
     <dx:DXCollectionView ItemsSource="{Binding Data}"
-                           GroupItemSeparatorThickness="1" 
-                           GroupItemSeparatorColor="#ebebeb" 
-                           GroupItemSeparatorCapMargin="4,20">
+                         GroupItemSeparatorThickness="1" 
+                         GroupItemSeparatorColor="#ebebeb" 
+                         GroupItemSeparatorCapMargin="4,20">
         <!--Define the item template.-->
         <dx:DXCollectionView.ItemTemplate>
             <DataTemplate>
@@ -19,11 +18,19 @@
                         <ColumnDefinition Width="50"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Grid Margin="0" Padding="0" ColumnSpacing="0" RowSpacing="0">
-                        <dx:DXImage Source="{Binding Photo}" VerticalOptions="Center"
-                                    HorizontalOptions="Center" WidthRequest="48" HeightRequest="48">
+                    <Grid Margin="0" 
+                          Padding="0" 
+                          ColumnSpacing="0" 
+                          RowSpacing="0">
+                        <dx:DXImage Source="{Binding Photo}" 
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Center" 
+                                    WidthRequest="48" 
+                                    HeightRequest="48">
                             <dx:DXImage.Clip>
-                                <EllipseGeometry RadiusX="24" RadiusY="24" Center="24, 24" />
+                                <EllipseGeometry RadiusX="24" 
+                                                 RadiusY="24" 
+                                                 Center="24, 24" />
                             </dx:DXImage.Clip>
                         </dx:DXImage>
                         <Ellipse Margin="0"
@@ -51,17 +58,20 @@
 
         <!--Specify margins.-->
         <dx:DXCollectionView.Margin>
-            <x:OnIdiom Phone="16,0,0,0" Tablet="71,0,0,0"/>
+            <x:OnIdiom Phone="16,0,0,0" 
+                       Tablet="71,0,0,0"/>
         </dx:DXCollectionView.Margin>
 
         <!--Sort items.-->
         <dx:DXCollectionView.SortDescriptions>
-            <dx:SortDescription FieldName="Name" SortOrder="Descending"/>
+            <dx:SortDescription FieldName="Name" 
+                                SortOrder="Descending"/>
         </dx:DXCollectionView.SortDescriptions>
 
         <!--Group items.-->
         <dx:DXCollectionView.GroupDescription>
-            <dx:GroupDescription FieldName="Name" GroupInterval="Alphabetical"/>
+            <dx:GroupDescription FieldName="Name" 
+                                 GroupInterval="Alphabetical"/>
         </dx:DXCollectionView.GroupDescription>
 
         <!--Define the group header template.-->
@@ -69,7 +79,7 @@
             <DataTemplate>
                 <Label FontFamily="Roboto-Medium"
                        Margin="0,20,0,1"
-                       TextColor="#55575c"
+                       TextColor="{dx:ThemeColor OnSurfaceVariant}"
                        Text="{Binding GroupValueText}"/>
             </DataTemplate>
         </dx:DXCollectionView.GroupHeaderTemplate>

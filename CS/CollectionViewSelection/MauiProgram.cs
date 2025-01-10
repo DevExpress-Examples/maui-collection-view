@@ -1,8 +1,11 @@
 ﻿using DevExpress.Maui;
+using DevExpress.Maui.Core;
 
 namespace CollectionViewSelection {
     public static class MauiProgram {
         public static MauiApp CreateMauiApp() {
+            ThemeManager.ApplyThemeToSystemBars = true;
+            ThemeManager.Theme = new Theme(ThemeSeedColor.Red);
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()

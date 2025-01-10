@@ -13,18 +13,6 @@
                 <Setter Property="StrokeThickness" Value="0"/>
             </Style>
 
-            <Style TargetType="Label">
-                <Setter Property="TextColor" Value="{dx:ThemeColor Primary}" />
-            </Style>
-
-            <Style x:Key="paleLabelStyle" TargetType="Label" BasedOn="{StaticResource Microsoft.Maui.Controls.Label}">
-                <Setter Property="TextColor" Value="{dx:ThemeColor OnSurface}" />
-            </Style>
-
-            <Style x:Key="mediumPaleLabelStyle" TargetType="Label" BasedOn="{StaticResource Microsoft.Maui.Controls.Label}">
-                <Setter Property="TextColor" Value="{dx:ThemeColor Secondary}" />
-            </Style>
-
             <Style TargetType="Page" ApplyToDerivedTypes="True">
                 <Setter Property="Padding" Value="0"/>
                 <Setter Property="BackgroundColor" Value="{dx:ThemeColor Surface}" />

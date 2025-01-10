@@ -1,15 +1,19 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:dx="http://schemas.devexpress.com/maui"
-             x:Class="CollectionViewPullToRefresh.MainPage">
-    <dx:DXCollectionView x:Name="collectionView"
-                           ItemsSource="{Binding ItemSource}"
-                           IsPullToRefreshEnabled="True"
-                           IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
-                           PullToRefreshCommand="{Binding PullToRefreshCommand}"
-                           IndicatorColor="Lime">
+             xmlns:vm="clr-namespace:CollectionViewPullToRefresh"
+             x:Class="CollectionViewPullToRefresh.MainPage"
+             BindingContext="{dx:Ioc Type={x:Type vm:ViewModel}}"
+             x:DataType="{x:Type vm:ViewModel}">
+    <ContentPage.Behaviors>
+        <dx:SystemBarBehavior AndroidStatusBarBackground="{dx:ThemeColor Primary}"/>
+    </ContentPage.Behaviors>
+    <dx:DXCollectionView ItemsSource="{Binding ItemSource}"
+                         IsPullToRefreshEnabled="True"
+                         IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
+                         PullToRefreshCommand="{Binding PullToRefreshCommand}">
         <dx:DXCollectionView.ItemTemplate>
-            <DataTemplate>
+            <DataTemplate x:DataType="{x:Type vm:MailData}">
                 <Grid ColumnSpacing="16" Padding="16, 14">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -21,17 +25,17 @@
                         <Label Text="{Binding SenderName}"
                                MaxLines="1"
                                FontAttributes="Bold"
-                               TextColor="#55575c"/>
+                               TextColor="{dx:ThemeColor OnSurface}"/>
                         <Label Text="{Binding Subject}"
                                MaxLines="1"
-                               TextColor="#55575c"/>
+                               TextColor="{dx:ThemeColor OnSurface}"/>
                         <Label Text="{Binding Body}"
                                MaxLines="7"
-                               TextColor="#959aa0"/>
+                               TextColor="{dx:ThemeColor OnSurfaceVariant}"/>
                     </dx:DXStackLayout>
                     <Label Grid.Column="1"
                            Text="{Binding MailTime, StringFormat='{0:HH:mm}'}"
-                           TextColor="#959aa0"
+                           TextColor="{dx:ThemeColor OnSurface}"
                            VerticalOptions="StartAndExpand" />
                 </Grid>
             </DataTemplate>

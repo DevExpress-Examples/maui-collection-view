@@ -61,17 +61,6 @@
             <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource pale2TextColor}, Dark={StaticResource pale2TextColorDark}}" />
         </Style>
 
-        <Style TargetType="Shell" ApplyToDerivedTypes="True">
-            <Setter Property="Shell.BackgroundColor" Value="{AppThemeBinding Light={StaticResource pageBackground}, Dark={StaticResource pageBackgroundDark}}" />
-            <Setter Property="Shell.TitleColor" Value="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray200}}" />
-            <Setter Property="Shell.NavBarHasShadow" Value="False" />
-        </Style>
-        <Style TargetType="ContentPage">
-            <Setter Property="Shell.BackgroundColor" Value="{AppThemeBinding Light={StaticResource pageBackground}, Dark={StaticResource pageBackgroundDark}}" />
-            <Setter Property="Shell.ForegroundColor" Value="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray200}}" />
-            <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource pageBackground}, Dark={StaticResource pageBackgroundDark}}"/>
-        </Style>
-
         <Style x:Key="SeparatorStyle" TargetType="dx:DXBorder">
             <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource separatorColor}, Dark={StaticResource separatorColorDark}}" />
             <Setter Property="HeightRequest" Value="1" />
@@ -147,11 +136,6 @@
             <Setter Property="CornerRadius" Value="0"/>
             <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource PrimaryDark}}"/>
         </Style>
-        <Style TargetType="ContentPage" x:Key="detailPageStyle">
-            <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource pageBackground}, Dark={StaticResource pageBackgroundDark}}"/>
-            <Setter Property="Shell.TitleColor" Value="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray200}}"/>
-            <Setter Property="Shell.ForegroundColor" Value="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray200}}"/>
-        </Style>
         <Style TargetType="dx:TextEdit" x:Key="searchEditorStyle">
             <Setter Property="ClearIconColor" Value="{AppThemeBinding Light={StaticResource iconColor}, Dark={StaticResource iconColorDark}}"/>
             <Setter Property="TextVerticalAlignment" Value="Center"/>
@@ -168,20 +152,20 @@
             <Setter Property="EndIcon" Value="search"/>
         </Style>
 
-        <Style TargetType="dx:DXButton" x:Key="fabStyle">
-            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource onPrimary}, Dark={StaticResource onPrimaryDark}}"/>
-            <Setter Property="WidthRequest" Value="56"/>
-            <Setter Property="HeightRequest" Value="56"/>
+        <Style TargetType="Page" ApplyToDerivedTypes="True">
             <Setter Property="Padding" Value="0"/>
-            <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource fabColor}, Dark={StaticResource fabColorDark}}"/>
-            <Setter Property="FontSize" Value="28"/>
-            <Setter Property="CornerRadius" Value="14"/>
-            <Setter Property="FontAttributes" Value="None"/>
-            <Setter Property="Shadow">
-                <Setter.Value>
-                    <Shadow Brush="{AppThemeBinding Light={StaticResource fabShadowColor}, Dark=Transparent}" Offset="4,8" Radius="10" />
-                </Setter.Value>
-            </Setter>
+            <Setter Property="BackgroundColor" Value="{dx:ThemeColor Surface}" />
+        </Style>
+        <Style TargetType="Shell" ApplyToDerivedTypes="True">
+            <Setter Property="Shell.BackgroundColor" Value="{dx:ThemeColor Surface}" />
+            <Setter Property="Shell.ForegroundColor" Value="{dx:ThemeColor OnSurfaceVariant}" />
+            <Setter Property="Shell.FlyoutBackground" Value="{dx:ThemeColor SurfaceContainerLow}" />
+            <Setter Property="Shell.TitleColor" Value="{dx:ThemeColor OnSurface}" />
+            <Setter Property="Shell.NavBarHasShadow" Value="False" />
+            <Setter Property="Shell.TabBarBackgroundColor" Value="{dx:ThemeColor SurfaceContainer}" />
+            <Setter Property="Shell.TabBarForegroundColor" Value="{dx:ThemeColor Primary}" />
+            <Setter Property="Shell.TabBarTitleColor" Value="{dx:ThemeColor Primary}" />
+            <Setter Property="Shell.TabBarUnselectedColor" Value="{dx:ThemeColor OnSurfaceVariant}" />
         </Style>
 
     </Application.Resources>

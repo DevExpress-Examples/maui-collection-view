@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net8.0-android;net8.0-ios</TargetFrameworks>
+    <TargetFrameworks>net9.0-android;net9.0-ios</TargetFrameworks>
     <OutputType>Exe</OutputType>
     <UseMaui>true</UseMaui>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -8,6 +8,7 @@
     <RootNamespace>CollectionViewFilteringUI</RootNamespace>
     <!-- Display name -->
     <ApplicationTitle>CollectionViewFilteringUI</ApplicationTitle>
+	<MauiEnableXamlCBindingWithSourceCompilation>true</MauiEnableXamlCBindingWithSourceCompilation>
     <!-- App Identifier -->
     <ApplicationId>com.companyname.CollectionViewFilteringUI</ApplicationId>
     <ApplicationIdGuid>DB72A12B-8772-49BD-8A1F-A1235CEAC3A0</ApplicationIdGuid>
@@ -56,14 +57,14 @@
     <MauiImage Include="Resources\Images\Houses\house9.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
-    <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
+	<PackageReference Include="Microsoft.Maui.Controls" Version="[9.0.10,)" PrivateAssets="all" />
+    <PackageReference Include="DevExpress.Maui.Mvvm" Version="24.2.*" />
     <PackageReference Include="CommunityToolkit.Maui" Version="5.2.0" />
-    <PackageReference Include="DevExpress.Maui.CollectionView" Version="24.1.*" />
-    <PackageReference Include="DevExpress.Maui.Editors" Version="24.1.*" />
-    <PackageReference Include="DevExpress.Maui.Core" Version="24.1.*" />
-    <PackageReference Include="DevExpress.Maui.Controls" Version="24.1.*" />
-    <TrimmableAssembly Include="DevExpress.Data.v24.1" />
+    <PackageReference Include="DevExpress.Maui.CollectionView" Version="24.2.*" />
+    <PackageReference Include="DevExpress.Maui.Editors" Version="24.2.*" />
+    <PackageReference Include="DevExpress.Maui.Core" Version="24.2.*" />
+    <PackageReference Include="DevExpress.Maui.Controls" Version="24.2.*" />
+    <TrimmableAssembly Include="DevExpress.Data.v24.2" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="AppShell.xaml.cs">
@@ -72,9 +73,6 @@
   </ItemGroup>
   <ItemGroup>
     <MauiXaml Update="AppShell.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </MauiXaml>
-    <MauiXaml Update="Resources\Styles.xaml">
       <Generator>MSBuild:Compile</Generator>
     </MauiXaml>
     <MauiXaml Update="TabHeaderControl.xaml">

@@ -1,4 +1,6 @@
-﻿using Microsoft.Maui.Controls;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using DevExpress.Maui.Mvvm;
+using Microsoft.Maui.Controls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -6,35 +8,10 @@ using System.Runtime.CompilerServices;
 
 namespace CollectionViewExample
 {
-    public class Contact
+    public partial class ViewModel : DXObservableObject
     {
-        string name;
-        public string Name
-        {
-            get => this.name;
-            set
-            {
-                this.name = value;
-                if (Photo == null)
-                {
-                    string resourceName = value.Replace(" ", "").ToLower() + ".jpg";
-                    Photo = ImageSource.FromFile(resourceName);
-                }
-            }
-        }
-
-        public Contact(string name, string phone)
-        {
-            Name = name;
-            Phone = phone;
-        }
-        public ImageSource Photo { get; set; }
-        public string Phone { get; set; }
-    }
-
-    public class ViewModel : INotifyPropertyChanged
-    {
-        public List<Contact> Data { get; }
+        [ObservableProperty]
+        List<Contact> data;
         public ViewModel()
         {
             Data = new List<Contact>() {
@@ -49,11 +26,33 @@ namespace CollectionViewExample
                 new Contact("Anne Dodsworth", "(71) 555-4444"),
             };
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void OnPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
     }
+
+    public class Contact
+    {
+        public Contact(string name, string phone)
+        {
+            Name = name;
+            Phone = phone;
+        }
+
+        string name;
+        public string Name
+        {
+            get => name;
+            set
+            {
+                name = value;
+                if (Photo == null)
+                {
+                    string resourceName = value.Replace(" ", "").ToLower() + ".jpg";
+                    Photo = ImageSource.FromFile(resourceName);
+                }
+            }
+        }
+        public ImageSource Photo { get; set; }
+        public string Phone { get; set; }
+    }
+
+
 }

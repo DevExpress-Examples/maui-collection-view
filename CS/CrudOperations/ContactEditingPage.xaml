@@ -1,69 +1,87 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:dx="http://schemas.devexpress.com/maui"
-             x:Class="CrudOperations.ContactEditingPage" Title="Edit contact"
-             Style="{StaticResource detailPageStyle}">
+             xmlns:model="clr-namespace:CrudOperations.Model"
+             x:Class="CrudOperations.ContactEditingPage" 
+             Title="Edit contact">
     <ContentPage.Triggers>
         <DataTrigger Binding="{Binding IsNew}" Value="True" TargetType="ContentPage">
             <Setter Property="Title" Value="Add new contact"/>
-            <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource cardColor}, Dark={StaticResource cardColorDark}}"/>
+            <Setter Property="IsVisible" Value="False" TargetName="image"/>
         </DataTrigger>
     </ContentPage.Triggers>
     <ContentPage.ToolbarItems>
-        <ToolbarItem IconImageSource="{AppThemeBinding Light=savechanges, Dark=savechanges_dark}" Clicked="SaveItemClick" />
+        <ToolbarItem IconImageSource="savechanges" 
+                     Clicked="SaveItemClick" />
     </ContentPage.ToolbarItems>
-    <Grid>
-        <ScrollView>
-            <dx:DXStackLayout Orientation="Vertical">
-                <dx:DXStackLayout Orientation="Vertical">
-                    <dx:DXStackLayout.Triggers>
-                        <DataTrigger Binding="{Binding IsNew}" Value="True" TargetType="dx:DXStackLayout">
-                            <Setter Property="IsVisible" Value="False"/>
-                        </DataTrigger>
-                    </dx:DXStackLayout.Triggers>
-                    <dx:DXBorder HeightRequest="1" BorderThickness="1" BackgroundColor="{AppThemeBinding Light={StaticResource separatorColor}, Dark={StaticResource separatorColorDark}}"/>
-                    <dx:DXImage Source="{Binding Item.PhotoImageSource}" WidthRequest="100" HeightRequest="100" Margin="0,10,0,10">
-                        <dx:DXImage.Clip>
-                            <EllipseGeometry RadiusX="50" RadiusY="50" Center="50, 50" />
-                        </dx:DXImage.Clip>
-                    </dx:DXImage>
-                </dx:DXStackLayout>
-                <dx:DXBorder BackgroundColor="{AppThemeBinding Light={StaticResource cardColor}, Dark={StaticResource cardColorDark}}" BorderThickness="0" CornerRadius="10">
-                    <dx:DataFormView x:Name="dataForm" DataObject="{Binding Item}"
-                                       EditorLabelColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource PrimaryDark}}" IsAutoGenerationEnabled="False"
-                                       EditorLabelWidth="40" ValidateProperty="dataForm_ValidateProperty"
-                                       Margin="0,10,0,0" Background="Transparent">
-                        <dx:DataFormTextItem FieldName="FirstName" LabelIcon="editorsname" LabelWidth="40" ReturnType="Next"
-                                               LabelText="" InplaceLabelText="First Name" IsInplaceLabelFloating="True" />
-                        <dx:DataFormTextItem FieldName="LastName" IsLabelVisible="True" LabelText="" ReturnType="Next"
-                                               InplaceLabelText="Last Name" IsInplaceLabelFloating="True" />
-                        <dx:DataFormMaskedItem FieldName="HomePhone" Keyboard="Telephone" Mask="+1 (000) 000-0000" ReturnType="Next"
-                                                 IsLabelVisible="True" LabelIcon="editorsphone"
-                                                 InplaceLabelText="Phone" IsInplaceLabelFloating="True" />
-                        <dx:DataFormTextItem FieldName="Email" IsLabelVisible="True" LabelIcon="editorsemail" ReturnType="Next"
-                                               InplaceLabelText="Email" IsInplaceLabelFloating="True" />
-                        <dx:DataFormComboBoxItem FieldName="Company" IsLabelVisible="True" LabelIcon="editorscompany" ReturnType="Next"
-                                               InplaceLabelText="Company" IsInplaceLabelFloating="True" ItemsSource="{Binding DataControlContext.Companies}" PickerShowMode="BottomSheet"/>
-                        <dx:DataFormTextItem FieldName="State" IsLabelVisible="True" LabelIcon="editorslocation" ReturnType="Next" 
-                                               InplaceLabelText="State" IsInplaceLabelFloating="True" />
-                        <dx:DataFormTextItem FieldName="City" IsLabelVisible="True" LabelText="" ReturnType="Next" 
-                                               InplaceLabelText="City" IsInplaceLabelFloating="True" />
-                        <dx:DataFormTextItem FieldName="Address" IsLabelVisible="True" LabelText=""
-                                               InplaceLabelText="Street" IsInplaceLabelFloating="True" ReturnType="Next"/>
-                        <dx:DataFormNumericItem FieldName="ZipCode" IsLabelVisible="True" LabelText=""
-                                                  InplaceLabelText="Zip" IsInplaceLabelFloating="True" />
-                    </dx:DataFormView>
-                    <dx:DXBorder.Triggers>
-                        <DataTrigger Binding="{Binding IsNew}" Value="False" TargetType="dx:DXBorder">
-                            <Setter Property="Shadow">
-                                <Setter.Value>
-                                    <Shadow Brush="Gray" Offset="2,2" Radius="4" />
-                                </Setter.Value>
-                            </Setter>
-                        </DataTrigger>
-                    </dx:DXBorder.Triggers>
-                </dx:DXBorder>
-            </dx:DXStackLayout>
-        </ScrollView>
-    </Grid>
+    <dx:DXScrollView>
+        <dx:DXStackLayout BackgroundColor="{dx:ThemeColor Surface}"
+                          Padding="0, 10, 0, 0">
+            <dx:DXImage Source="{Binding Item.PhotoImageSource}"
+                        x:Name="image"
+                        WidthRequest="100"
+                        HeightRequest="100"
+                        Margin="0,0,0,20">
+                <dx:DXImage.Clip>
+                    <EllipseGeometry RadiusX="50" 
+                                     RadiusY="50" 
+                                     Center="50, 50" />
+                </dx:DXImage.Clip>
+            </dx:DXImage>
+            <dx:DataFormView x:Name="dataForm" 
+                             DataObject="{Binding Item}"
+                             EditorLabelColor="{dx:ThemeColor Primary}" 
+                             IsAutoGenerationEnabled="False"
+                             EditorLabelWidth="40" 
+                             ValidateProperty="OnDataFormValidateProperty"
+                             Margin="0,10,0,0">
+                <dx:DataFormTextItem FieldName="FirstName" 
+                                     LabelIcon="collectionview_crud_name"
+                                     LabelWidth="40"
+                                     LabelText="" 
+                                     InplaceLabelText="First Name" 
+                                     IsInplaceLabelFloating="True" />
+                <dx:DataFormTextItem FieldName="LastName" 
+                                     IsLabelVisible="True" 
+                                     LabelText=""
+                                     InplaceLabelText="Last Name" 
+                                     IsInplaceLabelFloating="True" />
+                <dx:DataFormMaskedItem FieldName="HomePhone" 
+                                       Keyboard="Telephone" 
+                                       Mask="+1 (000) 000-0000"
+                                       IsLabelVisible="True" 
+                                       LabelIcon="editorsphone"
+                                       InplaceLabelText="Phone" 
+                                       IsInplaceLabelFloating="True" />
+                <dx:DataFormTextItem FieldName="Email" 
+                                     IsLabelVisible="True"
+                                     LabelIcon="editorsemail"
+                                     InplaceLabelText="Email" 
+                                     IsInplaceLabelFloating="True" />
+                <dx:DataFormTextItem FieldName="Company" IsLabelVisible="True"
+                                     LabelIcon="editorscompany"
+                                     InplaceLabelText="Company" IsInplaceLabelFloating="True" />
+                <dx:DataFormTextItem FieldName="State" 
+                                     IsLabelVisible="True"
+                                     LabelIcon="editorslocation"
+                                     InplaceLabelText="State" 
+                                     IsInplaceLabelFloating="True" />
+                <dx:DataFormTextItem FieldName="City" 
+                                     IsLabelVisible="True" 
+                                     LabelText=""
+                                     InplaceLabelText="City" 
+                                     IsInplaceLabelFloating="True" />
+                <dx:DataFormTextItem FieldName="Address" 
+                                     IsLabelVisible="True" 
+                                     LabelText=""
+                                     InplaceLabelText="Street" 
+                                     IsInplaceLabelFloating="True" />
+                <dx:DataFormNumericItem FieldName="ZipCode" 
+                                        IsLabelVisible="True" 
+                                        LabelText=""
+                                        InplaceLabelText="Zip" 
+                                        IsInplaceLabelFloating="True" />
+            </dx:DataFormView>
+        </dx:DXStackLayout>
+    </dx:DXScrollView>
 </ContentPage>

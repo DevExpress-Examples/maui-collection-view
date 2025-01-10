@@ -1,12 +1,15 @@
 ﻿using CommunityToolkit.Maui;
 using DevExpress.Maui;
+using DevExpress.Maui.Core;
 using static CrudOperations.App;
 
 namespace CrudOperations;
 
 public static class MauiProgram {
 	public static MauiApp CreateMauiApp() 	{
-		var builder = MauiApp.CreateBuilder();
+        ThemeManager.ApplyThemeToSystemBars = true;
+        ThemeManager.Theme = new Theme(ThemeSeedColor.Purple);
+        var builder = MauiApp.CreateBuilder();
 		builder
 			.UseMauiApp<App>()
             .UseMauiCommunityToolkit()
@@ -18,7 +21,7 @@ public static class MauiProgram {
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
-		return builder.Build();
+        return builder.Build();
 	}
 }
 

@@ -4,18 +4,6 @@
              xmlns:local="clr-namespace:FilterChips"
              x:Class= "FilterChips.App">
     <Application.Resources>
-        <Style TargetType="Label">
-            <Setter Property="TextColor" Value="{dx:ThemeNeutralColor Light=10, Dark=99}" />
-        </Style>
-        <Style x:Key="CardHeader" TargetType="Label" >
-            <Setter Property="TextColor" Value="{dx:ThemeColor OnPrimaryContainer}" />
-        </Style>
-
-        <Style x:Key="cardStyle" TargetType="dx:DXBorder">
-            <Setter Property="BackgroundColor" Value="{dx:ThemeColor SurfaceContainer}" />
-            <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="CornerRadius" Value="10" />
-        </Style>
         <Style TargetType="Shell" ApplyToDerivedTypes="True">
             <Setter Property="Shell.BackgroundColor" Value="{dx:ThemeColor Primary}" />
             <Setter Property="Shell.TitleColor" Value="{dx:ThemeColor OnPrimary}" />

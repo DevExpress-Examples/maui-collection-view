@@ -1,38 +1,25 @@
-﻿using System.ComponentModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using static System.Net.Mime.MediaTypeNames;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using DevExpress.Maui.Mvvm;
+using System.Collections.ObjectModel;
 
-namespace InfiniteScrollingExample {
-    public class MainViewModel : ViewModelBase {
+namespace InfiniteScrollingExample
+{
+    public partial class MainViewModel (DataStorage dataStorage) : DXObservableObject
+    {
         int lastLoadedIndex = 0;
         int loadBatchSize = 5;
-        int sourceSize = 0;
+        DataStorage DataStorage = dataStorage;
+
+        [ObservableProperty]
         bool isLoading;
-        public List<BlogPost> Blogs { get; set; }
-        public ICommand LoadMoreCommand { get; set; }
-        public ICommand ShareCommand { get; set; }
-        public ICommand OpenBlogCommand { get; set; }
-        public bool IsLoading {
-            get => isLoading;
-            set {
-                isLoading = value;
-                RaisePropertyChanged();
-            }
-        }
-        public MainViewModel() {
-            Blogs = new List<BlogPost>();
-            sourceSize = DataStorage.GetTotalCount();
-            LoadBatch();
-            LoadMoreCommand = new Command(LoadMore, CanLoadMore);
-            ShareCommand = new Command<BlogPost>(ShareBlog);
-            OpenBlogCommand = new Command<BlogPost>(OpenBlog);
-        }
-        public async void LoadBatch() {
+
+        [ObservableProperty]
+        ObservableCollection<BlogPost> blogs = new();
+
+        [RelayCommand]
+        async Task LoadBatchAsync()
+        {
             IEnumerable<BlogPost> newBlogsBatch = null;
             IsLoading = true;
             await Task.Run(() =>
@@ -40,63 +27,75 @@ namespace InfiniteScrollingExample {
                 Thread.Sleep(1000);
                 newBlogsBatch = DataStorage.GetBlogs(lastLoadedIndex, loadBatchSize);
             });
-            Blogs.AddRange(newBlogsBatch);
+            foreach (var blogPost in newBlogsBatch)
+                Blogs.Add(blogPost);
             IsLoading = false;
         }
-        public void LoadMore() {
-            LoadBatch();
+
+        [RelayCommand(CanExecute = nameof(CanLoadMore))]
+        async Task LoadMore()
+        {
+            await LoadBatchAsync();
             lastLoadedIndex += loadBatchSize;
         }
-        public bool CanLoadMore() {
-            return Blogs.Count < sourceSize;
+        bool CanLoadMore()
+        {
+            return Blogs.Count < DataStorage.GetTotalCount();
         }
-        public async void ShareBlog(BlogPost blog) {
-            await Share.Default.RequestAsync(new ShareTextRequest {
+
+        [RelayCommand]
+        public async Task ShareBlogAsync(BlogPost blog)
+        {
+            await Share.Default.RequestAsync(new ShareTextRequest
+            {
                 Text = blog.Url,
                 Title = "Share the Blog With your Friends"
             });
         }
-        public async void OpenBlog(BlogPost blog) {
-            try {
+
+        [RelayCommand]
+        async Task OpenBlogAsync(BlogPost blog)
+        {
+            try
+            {
                 await Browser.Default.OpenAsync(new Uri(blog.Url), BrowserLaunchMode.SystemPreferred);
             }
-            catch (Exception) {
-                await App.Current.MainPage.DisplayAlert("Error", "Couldn't open the URL", "OK");
+            catch (Exception)
+            {
+
+                await AppShell.Current.DisplayAlert("Error", "Couldn't open the URL", "OK");
             }
         }
     }
-    public class BlogPost {
-        public BlogPost(int id, string title, string authorName, DateTime publicationDate, string imagePath, string url) {
-            Id = id;
-            Title = title;
-            AuthorName = authorName;
-            PublicationDate = publicationDate;
-            ImagePath = imagePath;
-            Url = url;
-        }
-        public int Id { get; set; }
-        public string Title { get; set; }
-        public string AuthorName { get; set; }
-        public DateTime PublicationDate { get; set; }
-        public string ImagePath { get; set; }
-        public string Url { get; set; }
-        public string AvatarPath => AuthorName?.ToLower()+".jpg";
+    public class BlogPost(int id, string title, string authorName, DateTime publicationDate, string imagePath, string url)
+    {
+        public int Id { get; set; } = id;
+        public string Title { get; set; } = title;
+        public string AuthorName { get; set; } = authorName;
+        public DateTime PublicationDate { get; set; } = publicationDate;
+        public string ImagePath { get; set; } = imagePath;
+        public string Url { get; set; } = url;
+        public string AvatarPath => AuthorName?.ToLower() + ".jpg";
 
     }
 
-    public static class DataStorage {
-        static DataStorage() {
+    public class DataStorage
+    {
+        public DataStorage()
+        {
             allBlogs = CreateBlogs();
         }
-
-        public static IEnumerable<BlogPost> GetBlogs(int startIndex, int batchSize) {
+        public IEnumerable<BlogPost> GetBlogs(int startIndex, int batchSize)
+        {
             return allBlogs.Skip(startIndex).Take(batchSize);
         }
-        public static int GetTotalCount() {
+        public int GetTotalCount()
+        {
             return allBlogs.Count;
         }
         static List<BlogPost> allBlogs;
-        static List<BlogPost> CreateBlogs() {
+        static List<BlogPost> CreateBlogs()
+        {
             return new List<BlogPost>() {
                 new BlogPost(1, "DevExtreme Roadmap (Angular, React, Vue, jQuery)", "Vlada", new DateTime(2023,2,22), "devextreme_roadmap", "https://community.devexpress.com/blogs/javascript/archive/2023/02/22/devextreme-components-roadmap-2023-1.aspx"),
                 new BlogPost(1, "Blazor Editors — Command Buttons", "Margarita", new DateTime(2023,2,22), "blazor_editors_buttons","https://community.devexpress.com/blogs/aspnet/archive/2023/02/22/Blazor-Editors-Command-Buttons-v22-2.aspx"),
@@ -124,14 +123,6 @@ namespace InfiniteScrollingExample {
                 new BlogPost(1, "Blazor Grid — Search Box", "Lana", new DateTime(2023,1,4), "blazor_searchbox","https://community.devexpress.com/blogs/aspnet/archive/2023/01/04/blazor-grid-search-box-v22-2.aspx"),
                 new BlogPost(1, "Blazor — Hybrid Support", "Margarita", new DateTime(2023,1,4), "blazor_hybrid","https://community.devexpress.com/blogs/aspnet/archive/2023/01/04/blazor-hybrid-support-v22.2.aspx"),
             };
-
         }
-    }
-
-    public class ViewModelBase : INotifyPropertyChanged {
-        protected void RaisePropertyChanged([CallerMemberName] string propertyName = null) {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

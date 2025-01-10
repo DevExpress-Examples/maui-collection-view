@@ -1,71 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using DevExpress.Maui.Mvvm;
 
 namespace CollectionViewPullToRefresh {
-    public class ViewModel : INotifyPropertyChanged {
+    public partial class ViewModel : DXObservableObject {
         readonly MailMessageRepository repository;
 
         public ViewModel(MailMessageRepository repository) {
             this.repository = repository;
-            ItemSource = GetSortedMessages(this.repository);
-            PullToRefreshCommand = new Command(ExecutePullToRefreshCommand);
+            ItemSource = GetSortedMessages(repository);
         }
 
+        [ObservableProperty]
         IList<MailData> itemSource;
-        public IList<MailData> ItemSource {
-            get { return itemSource; }
-            set {
-                if (itemSource != value) {
-                    itemSource = value;
-                    OnPropertyChanged("ItemSource");
-                }
-            }
-        }
 
+        [ObservableProperty]
         bool isRefreshing = false;
-        public bool IsRefreshing {
-            get { return isRefreshing; }
-            set {
-                if (isRefreshing != value) {
-                    isRefreshing = value;
-                    OnPropertyChanged("IsRefreshing");
-                }
-            }
-        }
 
-        ICommand pullToRefreshCommand = null;
-        public ICommand PullToRefreshCommand {
-            get { return pullToRefreshCommand; }
-            set {
-                if (pullToRefreshCommand != value) {
-                    pullToRefreshCommand = value;
-                    OnPropertyChanged("PullToRefreshCommand");
-                }
-            }
-        }
-
-        void ExecutePullToRefreshCommand() {
+        [RelayCommand]
+        void PullToRefresh() {
             Task.Run(() => {
                 Thread.Sleep(1000);
-                this.repository.GenerateMessages();
-                ItemSource = GetSortedMessages(this.repository);
+                repository.GenerateMessages();
+                ItemSource = GetSortedMessages(repository);
                 IsRefreshing = false;
             });
         }
 
         IList<MailData> GetSortedMessages(MailMessageRepository repository) {
             return repository.MailMessages.OrderByDescending(x => x.MailTime).ToList();
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = "") {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

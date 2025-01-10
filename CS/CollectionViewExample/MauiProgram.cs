@@ -8,8 +8,8 @@ using DevExpress.Maui.Core;
 namespace CollectionViewExample {
     public static class MauiProgram {
         public static MauiApp CreateMauiApp() {
-            ThemeManager.UseAndroidSystemColor = false;
-            ThemeManager.Theme = new Theme(ThemeSeedColor.Purple);
+            ThemeManager.ApplyThemeToSystemBars = true;
+            ThemeManager.Theme = new Theme(ThemeSeedColor.Green);
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()

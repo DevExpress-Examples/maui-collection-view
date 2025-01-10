@@ -2,6 +2,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CollectionViewFilteringUI.AppShell"
              xmlns:local="clr-namespace:CollectionViewFilteringUI"
-             Title="AppShell" ForegroundColor="{AppThemeBinding Light={StaticResource TextThemeColor}, Dark={StaticResource TextThemeColorDark}}" BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundThemeColor}, Dark={StaticResource BackgroundThemeColorDark}}">
+             Title="AppShell">
     <ShellContent ContentTemplate="{DataTemplate local:MainPage}" Route="MainPage"/>
 </Shell>

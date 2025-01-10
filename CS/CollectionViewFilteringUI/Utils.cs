@@ -34,6 +34,7 @@ namespace CollectionViewFilteringUI.Utils {
             throw new NotImplementedException();
         }
     }
+    [AcceptEmptyServiceProvider]
     public class EnumToDescriptionConverter : IMarkupExtension, IValueConverter {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
             return Convert(value);

@@ -1,9 +1,4 @@
 ﻿using DevExpress.Maui;
-using Microsoft.Maui;
-using Microsoft.Maui.Controls.Compatibility;
-using Microsoft.Maui.Controls.Compatibility.Hosting;
-using Microsoft.Maui.Controls.Hosting;
-using Microsoft.Maui.Hosting;
 
 namespace PopupContextMenuActions {
     public static class MauiProgram {
@@ -21,6 +16,9 @@ namespace PopupContextMenuActions {
                     fonts.AddFont("roboto-bold.ttf", "Roboto-Bold");
                     fonts.AddFont("roboto-regular.ttf", "Roboto");
                 });
+            builder.Services.AddSingleton<MainViewModel>();
+            builder.Services.AddSingleton<MainPage>();
+            builder.Services.AddSingleton<IContactDataService, ContactDataService>();
 
             return builder.Build();
         }

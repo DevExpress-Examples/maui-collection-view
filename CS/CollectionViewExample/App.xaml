@@ -1,20 +1,25 @@
 <Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:dx="http://schemas.devexpress.com/maui"
-             xmlns:windows="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.WindowsSpecific;assembly=Microsoft.Maui.Controls"
              xmlns:local="clr-namespace:CollectionViewExample"
-             x:Class="CollectionViewExample.App"
-             windows:Application.ImageDirectory="Assets">
+             x:Class="CollectionViewExample.App">
     <Application.Resources>
         <Style TargetType="Shell" ApplyToDerivedTypes="True">
             <Setter Property="Shell.BackgroundColor" Value="{dx:ThemeColor Surface}" />
             <Setter Property="Shell.ForegroundColor" Value="{dx:ThemeColor OnSurfaceVariant}" />
+            <Setter Property="Shell.FlyoutBackground" Value="{dx:ThemeColor SurfaceContainerLow}" />
             <Setter Property="Shell.TitleColor" Value="{dx:ThemeColor OnSurface}" />
             <Setter Property="Shell.NavBarHasShadow" Value="False" />
             <Setter Property="Shell.TabBarBackgroundColor" Value="{dx:ThemeColor SurfaceContainer}" />
             <Setter Property="Shell.TabBarForegroundColor" Value="{dx:ThemeColor Primary}" />
             <Setter Property="Shell.TabBarTitleColor" Value="{dx:ThemeColor Primary}" />
             <Setter Property="Shell.TabBarUnselectedColor" Value="{dx:ThemeColor OnSurfaceVariant}" />
+        </Style>
+
+        <Style TargetType="NavigationPage">
+            <Setter Property="BarBackgroundColor" Value="{dx:ThemeColor Surface}" />
+            <Setter Property="BarTextColor" Value="{dx:ThemeColor OnSurface}" />
+            <Setter Property="IconColor" Value="{dx:ThemeColor OnSurfaceVariant}" />
         </Style>
     </Application.Resources>
 </Application>

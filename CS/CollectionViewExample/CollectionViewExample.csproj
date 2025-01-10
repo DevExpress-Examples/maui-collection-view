@@ -1,9 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <!-- iOS, Android, MacCatalyst -->
-    <TargetFrameworks>net8.0-ios;net8.0-android</TargetFrameworks>
+    <TargetFrameworks>net9.0-ios;net9.0-android</TargetFrameworks>
     <OutputType>Exe</OutputType>
     <UseMaui>true</UseMaui>
+	<ImplicitUsings>enable</ImplicitUsings>
     <SingleProject>true</SingleProject>
     <RootNamespace>CollectionViewExample</RootNamespace>
     <EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
@@ -29,9 +30,9 @@
     <MauiFont Include="Resources\Fonts\*" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
-    <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
-    <PackageReference Include="DevExpress.Maui.CollectionView" Version="24.1.*" />
+	<PackageReference Include="Microsoft.Maui.Controls" Version="[9.0.10,)" PrivateAssets="all" />
+	<PackageReference Include="DevExpress.Maui.Mvvm" Version="24.2.*" />
+    <PackageReference Include="DevExpress.Maui.CollectionView" Version="24.2.*" />
   </ItemGroup>
   <PropertyGroup>
     <RuntimeIdentifier Condition="$(TargetFramework.Contains('-ios'))">iossimulator-x64</RuntimeIdentifier>

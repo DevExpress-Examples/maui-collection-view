@@ -1,38 +1,14 @@
-﻿using DevExpress.Maui.Core;
-using DevExpress.Maui.Core.Internal;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using DevExpress.Maui.Mvvm;
 using FilterChips.Model;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FilterChips.ViewModel {
-    public class MainViewModel : BindableBase {
-        string filter;
-        public ObservableCollection<Invoice> Invoices {
-            get;
-            set;
-        }
-        public ObservableCollection<FilterItem> PredefinedFilters {
-            get;
-            set;
-        }
-        public BindingList<FilterItem> SelectedFilters {
-            get;
-            set;
-        }
-        public string Filter {
-            get {
-                return filter;
-            }
-            set {
-                filter = value;
-                RaisePropertiesChanged();
-            }
-        }
+    public partial class MainViewModel : DXObservableObject
+    {
+        [ObservableProperty]
+        ObservableCollection<Invoice> invoices;
+        
         public MainViewModel() {
             Invoices = new ObservableCollection<Invoice>() {
                 new Invoice(){ ID = 40202, Company="Around the Horn", CreatedDate = DateTime.Now.AddDays(-2), Price = 930, IsDraft = true },
@@ -62,27 +38,6 @@ namespace FilterChips.ViewModel {
                 new Invoice(){ ID = 18050, Company="Hill Corporation", CreatedDate = DateTime.Now.AddDays(-5), Price = 1102 },
                 new Invoice(){ ID = 19303, Company="Doe Enterprises", CreatedDate = DateTime.Now.AddDays(-1), Price = 4650 , IsDraft = true},
             };
-            SelectedFilters = new BindingList<FilterItem>();
-            PredefinedFilters = new ObservableCollection<FilterItem>() {
-                new FilterItem(){ DisplayText= "Today", Filter = "IsOutlookIntervalToday([CreatedDate])" },
-                new FilterItem(){ DisplayText= "Last Week", Filter = "IsThisWeek([CreatedDate])" },
-                new FilterItem(){ DisplayText= "Drafts", Filter = "[IsDraft] == True" },
-                new FilterItem(){ DisplayText= "< $1000", Filter = "[Price] < 1000" },
-                new FilterItem(){ DisplayText= "> $4000", Filter = "[Price] > 4000" },
-            };
-            SelectedFilters.ListChanged += SelectedFiltersChanged;
         }
-
-        private void SelectedFiltersChanged(object sender, ListChangedEventArgs e) {
-            if (SelectedFilters.Count > 0)
-                Filter = String.Join(" AND ", SelectedFilters.Select(f => f.Filter));
-            else
-                Filter = string.Empty;
-        }
-    }
-
-    public class FilterItem {
-        public string DisplayText { get; set; }
-        public string Filter { get; set; }
     }
 }

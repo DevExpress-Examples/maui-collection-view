@@ -2,44 +2,49 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:dx="http://schemas.devexpress.com/maui"
              xmlns:local="clr-namespace:CollectionViewSwipe"
-             x:Class="CollectionViewSwipe.MainPage" Shell.NavBarIsVisible="False">
+             x:Class="CollectionViewSwipe.MainPage"
+             BackgroundColor="{dx:ThemeColor Surface}"
+             x:DataType="local:ViewModel">
     <ContentPage.BindingContext>
         <local:ViewModel/>
     </ContentPage.BindingContext>
     <ContentPage.Resources>
-        <Style TargetType="dx:SwipeItem">
-            <Setter Property="FontColor" Value="White"/>
-            <Setter Property="FontSize" Value="Medium"/>
-        </Style>
-        <Style x:Key="SeparatorStyle" TargetType="BoxView">
-            <Setter Property="Color" Value="DarkGray"/>
-            <Setter Property="HeightRequest" Value="1"/>
+        <Style TargetType="dx:SwipeContainerItem">
+            <Setter Property="FontColor" Value="{dx:ThemeColor OnPrimary}"/>
+            <Setter Property="ImageColor" Value="{dx:ThemeColor OnPrimary}"/>
         </Style>
     </ContentPage.Resources>
 
-    <dx:DXCollectionView x:Name="collectionView" ItemsSource="{Binding Data}">
+    <dx:DXCollectionView x:Name="collectionView" 
+                         ItemsSource="{Binding Data}"
+                         ItemSeparatorThickness="1">
         <dx:DXCollectionView.ItemTemplate>
-            <DataTemplate>
+            <DataTemplate x:DataType="local:Task">
                 <dx:SwipeContainer>
+                    <dx:SwipeContainer.Triggers>
+                        <DataTrigger Binding="{Binding IsTaskCompleted}" 
+                                     Value="True" 
+                                     TargetType="dx:SwipeContainer">
+                            <Setter Property="BackgroundColor" 
+                                    Value="{dx:ThemeColor SurfaceVariant}"/>
+                        </DataTrigger>
+                    </dx:SwipeContainer.Triggers>
                     <dx:SwipeContainer.ItemView>
-                        <dx:DXStackLayout Margin="0" ItemSpacing="0" BackgroundColor="{Binding ItemColor}">
-                            <Label Margin="20" Text="{Binding Description}"/>
-                            <BoxView Style="{StaticResource SeparatorStyle}"/>
-                        </dx:DXStackLayout>
+                        <Label Margin="20" 
+                               Text="{Binding Description}"
+                               TextColor="{dx:ThemeColor OnSurface}"/>
                     </dx:SwipeContainer.ItemView>
-
                     <dx:SwipeContainer.StartSwipeItems>
-                        <dx:SwipeItem Caption="{Binding ActionText}"
-                                        BackgroundColor="Green"
-                                        Image="{Binding ActionIcon}"
-                                        Command="{Binding ChangeStateCommand}"/>
+                        <dx:SwipeContainerItem Caption="{Binding ActionText}"
+                                               BackgroundColor="{dx:ThemeColor Primary}"
+                                               Image="check"
+                                               Command="{Binding ChangeStateCommand}"/>
                     </dx:SwipeContainer.StartSwipeItems>
-
                     <dx:SwipeContainer.EndSwipeItems>
-                        <dx:SwipeItem Caption="Delete"
-                                        BackgroundColor="Red"
-                                        Image="deletetask"
-                                        Tap="SwipeItem_Tapped"/>
+                        <dx:SwipeContainerItem Caption="Delete"
+                                               BackgroundColor="{dx:ThemeColor Error}"
+                                               Image="delete"
+                                               Command="{Binding Source={x:Reference collectionView}, Path=BindingContext.DeleteTaskCommand}"/>
                     </dx:SwipeContainer.EndSwipeItems>
                 </dx:SwipeContainer>
             </DataTemplate>

@@ -94,15 +94,9 @@ namespace CrudOperations.Model {
         }
 
         [NotMapped]
-        //public string PhotoImagePath {
-        //    get {
-        //        if (!string.IsNullOrEmpty(photoImagePath))
-        //            return photoImagePath;
-        //        if (id is < 0 or > 20)
-        //            return noPhotoImagePath;
-        //        return photoImagePath = $"id{id}.png";
-        //    }
-        //}
+        public string FullName => $"{FirstName} {LastName}";
+
+        [NotMapped]
         public ImageSource PhotoImageSource {
             get {
                 if (imageSource is not null)

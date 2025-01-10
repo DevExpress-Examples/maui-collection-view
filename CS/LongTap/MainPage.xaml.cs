@@ -11,7 +11,6 @@ namespace CollectionViewLongTapExamp {
         public MainPage() {
             InitializeComponent();
             TitleAreaColor = ThemeColor.Primary;
-            //SetDefaultTitleColor();
         }
 
         public ThemeColor TitleAreaColor {
@@ -44,7 +43,6 @@ namespace CollectionViewLongTapExamp {
             collectionView.SelectionMode = SelectionMode.None;
             defaultTitle.IsVisible = true;
             multipleSelectionPanel.IsVisible = false;
-            //SetDefaultTitleColor();
         }
 
         private void SelectAllButtonClick(object sender, EventArgs e) {
@@ -57,9 +55,6 @@ namespace CollectionViewLongTapExamp {
         private void CancelButtonClick(object sender, EventArgs e) {
             DisableMultipleSelectionMode();
         }
-        //void SetDefaultTitleColor() {
-        //    this.SetAppThemeColor(TitleAreaColorProperty, (Color)App.Current.Resources["Primary"], (Color)App.Current.Resources["Gray950"]);
-        //}
     }
     public class SelectableItem : ContentView {
         public bool IsSelected {

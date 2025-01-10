@@ -1,14 +1,12 @@
 ﻿using CommunityToolkit.Maui;
 using DevExpress.Maui;
-using Microsoft.Maui;
-using Microsoft.Maui.Controls.Compatibility;
-using Microsoft.Maui.Controls.Compatibility.Hosting;
-using Microsoft.Maui.Controls.Hosting;
-using Microsoft.Maui.Hosting;
+using DevExpress.Maui.Core;
 
 namespace CollectionViewFilteringUI {
     public static class MauiProgram {
         public static MauiApp CreateMauiApp() {
+            ThemeManager.ApplyThemeToSystemBars = true;
+            ThemeManager.Theme = new Theme(ThemeSeedColor.DarkGreen);
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()

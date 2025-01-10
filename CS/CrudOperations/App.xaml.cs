@@ -8,7 +8,11 @@ public partial class App : Application {
     public App() {
         InitializeComponent();
         CopyWorkingFilesToAppData(DbFileName).Wait();
-        MainPage = new AppShell();
+    }
+
+    protected override Window CreateWindow(IActivationState activationState)
+    {
+        return new Window(new AppShell());
     }
 
     public async Task<string> CopyWorkingFilesToAppData(string fileName) {

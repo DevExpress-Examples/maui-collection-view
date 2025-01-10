@@ -3,66 +3,181 @@
     xmlns:dx="http://schemas.devexpress.com/maui"
     xmlns:mmc="clr-namespace:Microsoft.Maui.Controls;assembly=Microsoft.Maui.Controls"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-    xmlns:local="clr-namespace:CollectionViewLongTapExamp" ios:Page.UseSafeArea="true" Padding="0" x:Name="rootPage" x:Class="CollectionViewLongTapExamp.MainPage">
+    xmlns:local="clr-namespace:CollectionViewLongTapExamp"
+    x:DataType="local:MainViewModel"
+    ios:Page.UseSafeArea="true" 
+    x:Name="rootPage" 
+    x:Class="CollectionViewLongTapExamp.MainPage">
     <ContentPage.Behaviors>
-        <dx:SystemBarBehavior AndroidStatusBarBackground="{dx:ThemeColor Primary}" StatusBarForeground="{AppThemeBinding Dark=Light, Light=Dark}"/>
+        <dx:SystemBarBehavior AndroidStatusBarBackground="{dx:ThemeColor Primary}"/>
     </ContentPage.Behaviors>
     <Shell.TitleView>
         <local:TitleViewFix>
             <Grid BackgroundColor="{dx:ThemeColor Primary}">
-                <Label x:Name="defaultTitle" Text="Inbox" TextColor="{dx:ThemeColor OnPrimary}" HorizontalTextAlignment="Center" VerticalOptions="Center" FontSize="18"/>
-                <Grid x:Name="multipleSelectionPanel" IsVisible="False" ColumnDefinitions="Auto,*,Auto,Auto,Auto">
-                    <dx:DXButton BackgroundColor="{dx:ThemeColor Primary}" Content="Select all" FontSize="18" TextColor="{dx:ThemeColor OnPrimary}" Padding="5" VerticalOptions="Center" Clicked="SelectAllButtonClick"/>
-                    <Label x:Name="selectionLabel" TextColor="{dx:ThemeColor OnPrimary}" VerticalOptions="Center" FontSize="18" Margin="15,0,0,0" Grid.Column="1"/>
-                    <dx:DXButton Grid.Column="2" Padding="0" VerticalOptions="Center" BackgroundColor="{dx:ThemeColor Primary}" MinimumWidthRequest="0" WidthRequest="34">
-                        <dx:DXImage WidthRequest="24" HeightRequest="18" Source="delete" VerticalOptions="Center" TintColor="{dx:ThemeColor OnPrimary}"/>
+                <Label x:Name="defaultTitle" 
+                       Text="Inbox" 
+                       TextColor="{dx:ThemeColor OnPrimary}" 
+                       HorizontalTextAlignment="Center" 
+                       VerticalOptions="Center" 
+                       FontSize="18"/>
+                <Grid x:Name="multipleSelectionPanel" 
+                      IsVisible="False" 
+                      ColumnDefinitions="Auto,*,Auto,Auto,Auto">
+                    <dx:DXButton BackgroundColor="{dx:ThemeColor Primary}" 
+                                 Content="Select all" 
+                                 FontSize="18" 
+                                 TextColor="{dx:ThemeColor OnPrimary}" 
+                                 Padding="5" 
+                                 VerticalOptions="Center" 
+                                 Clicked="SelectAllButtonClick"/>
+                    <Label x:Name="selectionLabel" 
+                           TextColor="{dx:ThemeColor OnPrimary}" 
+                           VerticalOptions="Center" 
+                           FontSize="18" 
+                           Margin="15,0,0,0" 
+                           Grid.Column="1"/>
+                    <dx:DXButton Grid.Column="2" 
+                                 Padding="0" 
+                                 VerticalOptions="Center" 
+                                 BackgroundColor="{dx:ThemeColor Primary}" 
+                                 MinimumWidthRequest="0" 
+                                 WidthRequest="34">
+                        <dx:DXImage WidthRequest="24" 
+                                    HeightRequest="18" 
+                                    Source="delete" 
+                                    VerticalOptions="Center" 
+                                    TintColor="{dx:ThemeColor OnPrimary}"/>
                     </dx:DXButton>
-                    <dx:DXButton Grid.Column="3" Padding="0" VerticalOptions="Center" MinimumWidthRequest="0" WidthRequest="34" BackgroundColor="{dx:ThemeColor Primary}" Margin="15,0,15,0">
-                        <dx:DXImage WidthRequest="24" HeightRequest="18" Source="archive" VerticalOptions="Center" TintColor="{dx:ThemeColor OnPrimary}"/>
+                    <dx:DXButton Grid.Column="3" 
+                                 Padding="0" 
+                                 VerticalOptions="Center" 
+                                 MinimumWidthRequest="0" 
+                                 WidthRequest="34" 
+                                 BackgroundColor="{dx:ThemeColor Primary}" 
+                                 Margin="15,0,15,0">
+                        <dx:DXImage WidthRequest="24" 
+                                    HeightRequest="18" 
+                                    Source="archive" 
+                                    VerticalOptions="Center" 
+                                    TintColor="{dx:ThemeColor OnPrimary}"/>
                     </dx:DXButton>
-                    <dx:DXButton BackgroundColor="{dx:ThemeColor Primary}" Content="Cancel" FontSize="18" TextColor="{dx:ThemeColor OnPrimary}" Padding="5" VerticalOptions="Center" Grid.Column="4" Clicked="CancelButtonClick" Margin="0,0,10,0"/>
+                    <dx:DXButton BackgroundColor="{dx:ThemeColor Primary}" 
+                                 Content="Cancel" 
+                                 FontSize="18" 
+                                 TextColor="{dx:ThemeColor OnPrimary}" 
+                                 Padding="5" 
+                                 VerticalOptions="Center" 
+                                 Grid.Column="4" 
+                                 Clicked="CancelButtonClick" 
+                                 Margin="0,0,10,0"/>
                 </Grid>
             </Grid>
         </local:TitleViewFix>
     </Shell.TitleView>
     <ContentPage.Resources>
-        <ControlTemplate x:Key="itemBaseTemplate">
-            <Grid ColumnDefinitions="72 ,*" RowDefinitions="20,20,20, Auto" Padding="5,10,10,0" BindingContext="{TemplateBinding Path=BindingContext}">
-                <dx:DXImage HeightRequest="40" WidthRequest="40" Source="{Binding SenderAvatarPath}" VerticalOptions="Center" HorizontalOptions="Center" x:Name="avatar" Grid.RowSpan="2" Margin="0,10,0,0">
+        <ControlTemplate x:Key="itemBaseTemplate"
+                         x:DataType="{x:Type local:EmailMessage}">
+            <Grid ColumnDefinitions="72 ,*" 
+                  RowDefinitions="20,20,20" 
+                  Padding="5,10,10,15" 
+                  BindingContext="{TemplateBinding Path=BindingContext}">
+                <dx:DXImage HeightRequest="40" 
+                            WidthRequest="40" 
+                            Source="{Binding SenderAvatarPath}" 
+                            VerticalOptions="Center" 
+                            HorizontalOptions="Center" 
+                            x:Name="avatar" 
+                            Grid.RowSpan="2" 
+                            Margin="0,10,0,0">
                     <dx:DXImage.Clip>
-                        <EllipseGeometry Center="20,20" RadiusX="20" RadiusY="20"/>
+                        <EllipseGeometry Center="20,20" 
+                                         RadiusX="20" 
+                                         RadiusY="20"/>
                     </dx:DXImage.Clip>
                 </dx:DXImage>
-                <Ellipse IsVisible="False" WidthRequest="40" Fill="{dx:ThemeColor Secondary}" HeightRequest="40" VerticalOptions="Center" HorizontalOptions="Center" Grid.RowSpan="2" Margin="0,10,0,0">
+                <Ellipse IsVisible="False" 
+                         WidthRequest="40" 
+                         Fill="{dx:ThemeColor Secondary}" 
+                         HeightRequest="40" 
+                         VerticalOptions="Center" 
+                         HorizontalOptions="Center" 
+                         Grid.RowSpan="2" 
+                         Margin="0,10,0,0">
                     <Ellipse.Triggers>
-                        <DataTrigger Binding="{TemplateBinding Path=IsSelected}" Value="True" TargetType="Ellipse">
-                            <Setter Property="IsVisible" Value="True"/>
-                            <Setter Property="IsVisible" Value="True" TargetName="checkmark"/>
-                            <Setter Property="IsVisible" Value="False" TargetName="avatar"/>
+                        <DataTrigger Binding="{TemplateBinding Path=IsSelected}" 
+                                     Value="True" 
+                                     TargetType="Ellipse">
+                            <Setter Property="IsVisible" 
+                                    Value="True"/>
+                            <Setter Property="IsVisible" 
+                                    Value="True" 
+                                    TargetName="checkmark"/>
+                            <Setter Property="IsVisible" 
+                                    Value="False" 
+                                    TargetName="avatar"/>
                         </DataTrigger>
                     </Ellipse.Triggers>
                 </Ellipse>
-                <Label Text="&#x2713;" IsVisible="False" Padding="0" x:Name="checkmark" FontAttributes="Bold" TextColor="{dx:ThemeColor OnSecondary}" VerticalOptions="Center" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.RowSpan="2" Margin="0,10,0,0"/>
-                <Label Text="{Binding Sender}" FontAttributes="Bold" FontSize="16" Grid.Column="1"/>
-                <Label Text="{Binding Title}" Grid.Column="1" MaxLines="1" LineBreakMode="CharacterWrap" Style="{StaticResource mediumPaleLabelStyle}" Margin="0,0,20,0" Grid.Row="1"/>
-                <Label Text="{Binding Body}" Style="{StaticResource paleLabelStyle}" MaxLines="1" LineBreakMode="TailTruncation" Margin="0,0,20,0" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2"/>
-                <Label Text="{Binding Date, StringFormat='{0:m}'}" Style="{StaticResource paleLabelStyle}" VerticalOptions="End" HorizontalOptions="End" Grid.Column="1"/>
-                <dx:DXBorder Margin="0,10,0,0" Style="{StaticResource separatorStyle}" Grid.Row="3" Grid.Column="1"/>
+                <Label Text="&#x2713;" 
+                       IsVisible="False" 
+                       Padding="0" 
+                       x:Name="checkmark" 
+                       FontAttributes="Bold" 
+                       TextColor="{dx:ThemeColor OnSurface}"
+                       VerticalOptions="Center" 
+                       HorizontalOptions="Center" 
+                       HorizontalTextAlignment="Center" 
+                       VerticalTextAlignment="Center" 
+                       Grid.RowSpan="2" 
+                       Margin="0,10,0,0"/>
+                <Label Text="{Binding Sender}" 
+                       TextColor="{dx:ThemeColor OnSurface}"
+                       FontAttributes="Bold" 
+                       FontSize="16" 
+                       Grid.Column="1"/>
+                <Label Text="{Binding Title}" 
+                       Grid.Column="1" 
+                       MaxLines="1" 
+                       LineBreakMode="CharacterWrap" 
+                       TextColor="{dx:ThemeColor OnSurface}"
+                       Margin="0,0,20,0" 
+                       Grid.Row="1"/>
+                <Label Text="{Binding Body}" 
+                       TextColor="{dx:ThemeColor OnSurfaceVariant}"
+                       MaxLines="1" 
+                       LineBreakMode="TailTruncation" 
+                       Margin="0,0,20,0" 
+                       Grid.Column="2" 
+                       Grid.Row="2" 
+                       Grid.ColumnSpan="2"/>
+                <Label Text="{Binding Date, StringFormat='{0:m}'}" 
+                       TextColor="{dx:ThemeColor OnSurfaceVariant}"
+                       VerticalOptions="End" 
+                       HorizontalOptions="End" 
+                       Grid.Column="1"/>
             </Grid>
         </ControlTemplate>
     </ContentPage.Resources>
     <ContentPage.BindingContext>
         <local:MainViewModel/>
     </ContentPage.BindingContext>
-    <dx:DXCollectionView ItemsSource="{Binding EmailMessages}" x:Name="collectionView" LongPress="DXCollectionView_LongPress" SelectionMode="None" SelectionChanged="CollectionViewSelectionChanged">
+    <dx:DXCollectionView ItemsSource="{Binding EmailMessages}" 
+                         x:Name="collectionView"
+                         ItemSeparatorThickness="1"
+                         ItemSeparatorCapMargin="72,0"
+                         LongPress="DXCollectionView_LongPress"
+                         SelectionMode="None" 
+                         SelectionChanged="CollectionViewSelectionChanged">
         <dx:DXCollectionView.ItemTemplate>
             <DataTemplate x:DataType="{x:Type local:EmailMessage}">
-                <local:SelectableItem IsSelected="False" ControlTemplate="{StaticResource itemBaseTemplate}"/>
+                <local:SelectableItem IsSelected="False" 
+                                      ControlTemplate="{StaticResource itemBaseTemplate}"/>
             </DataTemplate>
         </dx:DXCollectionView.ItemTemplate>
         <dx:DXCollectionView.SelectedItemTemplate>
             <DataTemplate x:DataType="{x:Type local:EmailMessage}">
-                <local:SelectableItem IsSelected="True" ControlTemplate="{StaticResource itemBaseTemplate}"/>
+                <local:SelectableItem IsSelected="True" 
+                                      ControlTemplate="{StaticResource itemBaseTemplate}"/>
             </DataTemplate>
         </dx:DXCollectionView.SelectedItemTemplate>
     </dx:DXCollectionView>

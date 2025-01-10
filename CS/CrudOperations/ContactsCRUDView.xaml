@@ -3,71 +3,129 @@
              x:Class="CrudOperations.ContactsCRUDView"
              xmlns:dx="http://schemas.devexpress.com/maui"
              xmlns:local="clr-namespace:CrudOperations"
+             xmlns:model="clr-namespace:CrudOperations.Model"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:viewModels="clr-namespace:CrudOperations.ViewModels"
-             BackgroundColor="{AppThemeBinding Light={StaticResource pageBackground}, Dark={StaticResource pageBackgroundDark}}"
-             Title="Contacts" Shell.NavBarIsVisible="False">
+             Title="Contacts" 
+             Shell.NavBarIsVisible="False"
+             x:DataType="viewModels:ContactsCRUDViewModel"
+             x:Name="page">
     <ContentPage.BindingContext>
         <viewModels:ContactsCRUDViewModel />
     </ContentPage.BindingContext>
-    <ContentPage.ToolbarItems>
-        <ToolbarItem IconImageSource="search" />
-    </ContentPage.ToolbarItems>
     <ContentPage.Behaviors>
-        <dx:SystemBarBehavior AndroidStatusBarBackground="{AppThemeBinding Light={StaticResource pageBackground}, Dark={StaticResource pageBackgroundDark}}" StatusBarForeground="{AppThemeBinding Light=DarkContent, Dark=LightContent}" />
+        <toolkit:EventToCommandBehavior EventName="Appearing" 
+                                        Command="{Binding LoadDataCommand}"
+                                        BindingContext="{Binding Source={x:Reference page}, Path=BindingContext}"/>
     </ContentPage.Behaviors>
-    <Grid RowDefinitions="Auto,*">
-        <dx:DXBorder BorderThickness="0" BorderColor="Transparent" Background="Transparent">
-            <dx:TextEdit PlaceholderText="Search contacts" Text="{Binding UserSearchString, Mode=TwoWay}" Style="{StaticResource searchEditorStyle}" Margin="15,10,15,10"/>
+    <dx:DXDockLayout>
+        <dx:DXBorder dx:DXDockLayout.Dock="Top" 
+                     BackgroundColor="{dx:ThemeColor SurfaceContainer}"
+                     CornerRadius="100" 
+                     Margin="16,16,16,10" 
+                     Padding="16">
+            <dx:TextEdit EndIcon="search" 
+                         IconIndent="16"
+                         PlaceholderText="Search" 
+                         TextFontSize="16"
+                         TextVerticalAlignment="Center"
+                         BackgroundColor="Transparent"
+                         BorderThickness="0" 
+                         BoxPadding="0"
+                         BoxMinHeight="0" 
+                         PlaceholderColor="{dx:ThemeColor OnSurfaceVariant}"
+                         ClearIconColor="{dx:ThemeColor OnSurfaceVariant}" 
+                         EndIconColor="{dx:ThemeColor OnSurfaceVariant}"
+                         FocusedBorderThickness="0" 
+                         Text="{Binding UserSearchString, Mode=TwoWay}"  />
         </dx:DXBorder>
-        <dx:DXCollectionView x:Name="collectionView" ItemsSource="{Binding Contacts}" IsPullToRefreshEnabled="True" SelectionMode="None" Grid.Row="1"
-                               PullToRefreshCommand="{Binding RefreshDataCommand}" FilterString="{Binding FilterString, Mode=TwoWay}"
-                               IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}" AllowLiveDataShaping="True"
-                               DetailFormTemplate="{DataTemplate local:DetailInfoPage}"
-                               DetailEditFormTemplate="{DataTemplate local:ContactEditingPage}"
-                               DetailNewItemFormTemplate="{DataTemplate local:ContactEditingPage}">
+        <dx:DXCollectionView x:Name="collectionView" 
+                             ItemsSource="{Binding Contacts}" 
+                             IsPullToRefreshEnabled="True" 
+                             SelectionMode="None" 
+                             PullToRefreshCommand="{Binding RefreshDataCommand}" FilterString="{Binding FilterString, Mode=TwoWay}"
+                             IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}" AllowLiveDataShaping="True"
+                             DetailFormTemplate="{DataTemplate local:DetailInfoPage}"
+                             DetailEditFormTemplate="{DataTemplate local:ContactEditingPage}"
+                             DetailNewItemFormTemplate="{DataTemplate local:ContactEditingPage}"
+                             UseRippleEffect="True"
+                             ItemSeparatorThickness="0"
+                             GroupItemSeparatorThickness="0"
+                             GroupItemSeparatorColor="Transparent"
+                             TapCommand="{Binding Source={RelativeSource Mode=Self}, Path=Commands.ShowDetailForm}">
             <dx:DXCollectionView.GroupItemAppearance>
-                <dx:CollectionViewGroupItemAppearance BackgroundColor="Transparent" BorderColor="Transparent"
-                                                        BorderThickness="0" TextColor="{AppThemeBinding Light={StaticResource itemFontColor}, Dark={StaticResource itemFontColorDark}}" FontSize="17" CaptionMargin="8, 0" />
+                <dx:CollectionViewGroupItemAppearance BackgroundColor="Transparent" 
+                                                      TextColor="{AppThemeBinding Light={StaticResource itemFontColor}, Dark={StaticResource itemFontColorDark}}" 
+                                                      FontSize="17" 
+                                                      CaptionMargin="8, 0" />
             </dx:DXCollectionView.GroupItemAppearance>
-            <dx:DXCollectionView.ItemAppearance>
-                <dx:CollectionViewItemAppearance BorderThickness="0" />
-            </dx:DXCollectionView.ItemAppearance>
             <dx:DXCollectionView.SortDescriptions>
-                <dx:SortDescription FieldName="FirstName" SortOrder="Ascending" />
+                <dx:SortDescription FieldName="FirstName" 
+                                    SortOrder="Ascending" />
             </dx:DXCollectionView.SortDescriptions>
             <dx:DXCollectionView.GroupDescription>
-                <dx:GroupDescription FieldName="FirstName" GroupInterval="Alphabetical" />
+                <dx:GroupDescription FieldName="FirstName" 
+                                     GroupInterval="Alphabetical" />
             </dx:DXCollectionView.GroupDescription>
+            <dx:DXCollectionView.GroupHeaderTemplate>
+                <DataTemplate x:DataType="dx:GroupInfo">
+                    <Label Text="{Binding GroupValueText}"
+                           TextColor="{dx:ThemeColor OnSurface}"
+                           Margin="16,10"
+                           FontSize="18"/>
+                </DataTemplate>
+            </dx:DXCollectionView.GroupHeaderTemplate>
             <dx:DXCollectionView.ItemTemplate>
-                <DataTemplate>
-                    <dx:DXButton Padding="5" BackgroundColor="Transparent" CornerRadius="0" HorizontalContentAlignment="Start" PressedBackgroundColor="Transparent"
-                                 Command="{Binding Source={x:Reference collectionView}, Path=Commands.ShowDetailForm}" CommandParameter="{Binding}">
-                        <Grid ColumnDefinitions="Auto, *, Auto" RowDefinitions="*, *">
-                            <dx:DXImage HeightRequest="40" WidthRequest="40"
-                                   Source="{Binding PhotoImageSource}" VerticalOptions="Center"
-                                   Margin="10" Grid.RowSpan="2">
-                                <dx:DXImage.Clip>
-                                    <EllipseGeometry RadiusX="20" RadiusY="20" Center="20, 20" />
-                                </dx:DXImage.Clip>
-                            </dx:DXImage>
-                            <dx:DXStackLayout Grid.Column="1" VerticalOptions="End" Orientation="Horizontal">
-                                <Label Text="{Binding FirstName}" FontAttributes="Bold" />
-                                <Label Text="{Binding LastName}" Margin="5,0,0,0" FontAttributes="Bold" />
-                            </dx:DXStackLayout>
-                            <Label Text="{Binding Company}" Style="{StaticResource paleLabelStyle}"
-                                   LineBreakMode="TailTruncation" VerticalOptions="Start" Grid.Column="1" Grid.Row="1" />
-                        </Grid>
-                    </dx:DXButton>
+                <DataTemplate x:DataType="model:Contact">
+                    <Grid ColumnDefinitions="60, *" 
+                          RowDefinitions="*, *">
+                        <dx:DXImage HeightRequest="40" 
+                                    WidthRequest="40"
+                                    Source="{Binding PhotoImageSource}" 
+                                    VerticalOptions="Center"
+                                    Margin="10" 
+                                    Grid.RowSpan="2">
+                            <dx:DXImage.Clip>
+                                <EllipseGeometry RadiusX="20" 
+                                                 RadiusY="20" 
+                                                 Center="20, 20" />
+                            </dx:DXImage.Clip>
+                        </dx:DXImage>
+                        <Label Text="{Binding FullName}"
+                               TextColor="{dx:ThemeColor OnSurface}"
+                               VerticalOptions="End"
+                               Grid.Column="1"/>
+                        <Label Text="{Binding Company}" 
+                               TextColor="{dx:ThemeColor OnSurfaceVariant}"
+                               LineBreakMode="TailTruncation"
+                               VerticalOptions="Start"
+                               Grid.Column="1" 
+                               Grid.Row="1" />
+                    </Grid>
                 </DataTemplate>
             </dx:DXCollectionView.ItemTemplate>
             <dx:DXCollectionView.Behaviors>
-                <toolkit:EventToCommandBehavior EventName="ValidateAndSave" Command="{Binding ValidateAndSaveCommand}" x:TypeArguments="dx:ValidateItemEventArgs"/>
-                <toolkit:EventToCommandBehavior EventName="CreateDetailFormViewModel" Command="{Binding CreateDetailFormViewModelCommand}" x:TypeArguments="dx:CreateDetailFormViewModelEventArgs"/>
+                <toolkit:EventToCommandBehavior EventName="ValidateAndSave" 
+                                                Command="{Binding ValidateAndSaveCommand}" 
+                                                x:TypeArguments="dx:ValidateItemEventArgs"
+                                                BindingContext="{Binding Source={x:Reference page}, Path=BindingContext}"/>
+                <toolkit:EventToCommandBehavior EventName="CreateDetailFormViewModel" 
+                                                Command="{Binding CreateDetailFormViewModelCommand}" 
+                                                x:TypeArguments="dx:CreateDetailFormViewModelEventArgs"
+                                                BindingContext="{Binding Source={x:Reference page}, Path=BindingContext}"/>
             </dx:DXCollectionView.Behaviors>
         </dx:DXCollectionView>
-        <dx:DXButton Command="{Binding Source={x:Reference collectionView}, Path=Commands.ShowDetailNewItemForm}" Content="+"
-                     Margin="18" Grid.RowSpan="2" VerticalOptions="End" HorizontalOptions="End" Style="{StaticResource fabStyle}">
-        </dx:DXButton>
-    </Grid>
+        <dx:DXButton Command="{Binding Source={x:Reference collectionView}, Path=Commands.ShowDetailNewItemForm}"
+                     Icon="add" 
+                     ButtonType="Filled" 
+                     Margin="16" 
+                     IconWidth="16" 
+                     IconHeight="16" 
+                     CornerRadius="16" 
+                     HorizontalOptions="End" 
+                     VerticalOptions="End" 
+                     HeightRequest="56"  
+                     WidthRequest="56" 
+                     Padding="16" />
+    </dx:DXDockLayout>
 </ContentPage>

@@ -4,9 +4,9 @@
              xmlns:viewModel="clr-namespace:FilterChips.ViewModel"
              xmlns:model="clr-namespace:FilterChips.Model"
              xmlns:local="clr-namespace:FilterChips"
-             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-             ios:Page.UseSafeArea="true" BackgroundColor="{dx:ThemeColor Surface}"
+             ios:Page.UseSafeArea="true" 
+             BackgroundColor="{dx:ThemeColor Surface}"
              x:Class= "FilterChips.MainPage">
     <ContentPage.Behaviors>
         <dx:SystemBarBehavior AndroidStatusBarBackground="{dx:ThemeColor Primary}" StatusBarForeground="{AppThemeBinding Dark=Light, Light=Dark}"/>
@@ -14,32 +14,77 @@
     <ContentPage.BindingContext>
         <viewModel:MainViewModel/>
     </ContentPage.BindingContext>
-    <Grid RowDefinitions="Auto, *">
-        <dx:FilterChipGroup ItemsSource="{Binding PredefinedFilters}" SelectedItems="{Binding SelectedFilters, Mode=TwoWay}" x:Name="filtersChipGroup" IsMultiline="False" DisplayMember="DisplayText" Padding="10"/>
-        <dx:DXCollectionView ItemsSource="{Binding Invoices}" FilterString="{Binding Filter, Mode=TwoWay}" ItemSpacing="10" Grid.Row="1">
+    <dx:DXDockLayout>
+        <dx:PredefinedFilterCheckedChipGroupItem BoxMode="Filled"
+                                                 FieldName="ID"
+                                                 IsMultiline="False"
+                                                 Context="{Binding Source={x:Reference collectionView}, Path=FilteringContext}" 
+                                                 ShowSeparator="False"
+                                                 dx:DXDockLayout.Dock="Top">
+            <dx:PredefinedFilter Text="Today" FilterExpression="IsOutlookIntervalToday([CreatedDate])"/>
+            <dx:PredefinedFilter Text="Last Week" FilterExpression="IsThisWeek([CreatedDate])"/>
+            <dx:PredefinedFilter Text="Drafts" FilterExpression="[IsDraft] == True"/>
+            <dx:PredefinedFilter Text="&lt; $1000" FilterExpression="[Price] &lt; 1000"/>
+            <dx:PredefinedFilter Text="&gt; $4000" FilterExpression="[Price] &gt; 4000"/>
+        </dx:PredefinedFilterCheckedChipGroupItem>
+        <dx:DXCollectionView ItemsSource="{Binding Invoices}" 
+                             ItemSpacing="10"
+                             x:Name="collectionView"
+                             Grid.Row="1">
             <dx:DXCollectionView.ItemTemplate>
                 <DataTemplate x:DataType="{x:Type model:Invoice}">
-                    <dx:DXBorder Style="{StaticResource cardStyle}" Margin="10,0">
-                        <Grid ColumnDefinitions="*,Auto" RowSpacing="12" RowDefinitions="Auto,Auto" Padding="16" BackgroundColor="Transparent">
-                            <Label Text="{Binding Company}" FontSize="16" FontAttributes="Bold" Style="{StaticResource CardHeader}"/>
-                            <HorizontalStackLayout Grid.Row="1">
-                                <Label Text="{Binding ID, StringFormat='I{0}'}" Grid.Row="1"/>
-                                <dx:DXImage Source="clock" WidthRequest="16" HeightRequest="16" Margin="10,0,0,0" TintColor="{dx:ThemeColor OnPrimaryContainer}"/>
-                                <Label Text="{Binding CreatedDate, StringFormat='{0:m}'}" Style="{dx:ThemeNeutralColor Light=10, Dark=99}" Margin="10,0,0,0" Grid.Row="1" Grid.Column="1"/>
-                            </HorizontalStackLayout>
-                            <dx:DXBorder IsVisible="False" CornerRadius="4" Padding="6,2" BackgroundColor="#f5ac95" HorizontalOptions="End" Grid.Column="1">
+                    <dx:DXBorder BackgroundColor="{dx:ThemeColor SurfaceContainer}" 
+                                 BorderThickness="0"
+                                 CornerRadius="10"
+                                 Margin="10,0">
+                        <Grid ColumnDefinitions="*,Auto" 
+                              RowSpacing="12" 
+                              RowDefinitions="Auto,Auto" 
+                              Padding="16">
+                            <Label Text="{Binding Company}"
+                                   TextColor="{dx:ThemeColor OnPrimaryContainer}"
+                                   FontSize="16" 
+                                   FontAttributes="Bold"/>
+                            <dx:DXStackLayout Orientation="Horizontal" 
+                                              Grid.Row="1">
+                                <Label Text="{Binding ID, StringFormat='I{0}'}"
+                                       TextColor="{dx:ThemeNeutralColor Light=10, Dark=99}"/>
+                                <dx:DXImage Source="clock" 
+                                            WidthRequest="16" 
+                                            HeightRequest="16" 
+                                            Margin="10,0,0,0" 
+                                            TintColor="{dx:ThemeColor OnPrimaryContainer}"/>
+                                <Label Text="{Binding CreatedDate, StringFormat='{0:m}'}" 
+                                       TextColor="{dx:ThemeNeutralColor Light=10, Dark=99}" 
+                                       Margin="10,0,0,0" />
+                            </dx:DXStackLayout>
+                            <dx:DXBorder IsVisible="False" 
+                                         CornerRadius="4" 
+                                         Padding="6,2" 
+                                         BackgroundColor="{dx:ThemeColor Tertiary}" 
+                                         HorizontalOptions="End" 
+                                         Grid.Column="1">
                                 <dx:DXBorder.Triggers>
-                                    <DataTrigger Binding="{Binding IsDraft}" Value="True" TargetType="dx:DXBorder">
-                                        <Setter Property="IsVisible" Value="True"/>
+                                    <DataTrigger Binding="{Binding IsDraft}" 
+                                                 Value="True" 
+                                                 TargetType="dx:DXBorder">
+                                        <Setter Property="IsVisible" 
+                                                Value="True"/>
                                     </DataTrigger>
                                 </dx:DXBorder.Triggers>
-                                <Label Text="Draft" HorizontalOptions="Center" TextColor="{dx:ThemeColor OnPrimaryFixed}"/>
+                                <Label Text="Draft" 
+                                       HorizontalOptions="Center" 
+                                       TextColor="{dx:ThemeColor OnTertiary}"/>
                             </dx:DXBorder>
-                            <Label Text="{Binding Price,StringFormat='{0:c}'}" HorizontalOptions="End" Grid.Column="1" Grid.Row="1"/>
+                            <Label Text="{Binding Price,StringFormat='{0:c}'}"
+                                   TextColor="{dx:ThemeNeutralColor Light=10, Dark=99}"
+                                   HorizontalOptions="End" 
+                                   Grid.Column="1" 
+                                   Grid.Row="1"/>
                         </Grid>
                     </dx:DXBorder>
                 </DataTemplate>
             </dx:DXCollectionView.ItemTemplate>
         </dx:DXCollectionView>
-    </Grid>
+    </dx:DXDockLayout>
 </ContentPage>

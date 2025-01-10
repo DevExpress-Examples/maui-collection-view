@@ -2,95 +2,77 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:dx="http://schemas.devexpress.com/maui"
              xmlns:local="clr-namespace:CollectionViewSelection"
-             x:Class="CollectionViewSelection.MainPage">
+             x:Class="CollectionViewSelection.MainPage"
+             BackgroundColor="{dx:ThemeColor Surface}"
+             x:DataType="local:ViewModel">
     <ContentPage.BindingContext>
         <local:ViewModel/>
     </ContentPage.BindingContext>
-    <dx:DXCollectionView ItemsSource="{Binding Contacts}"
-                           SelectionMode="Multiple"
-                           SelectedItems="{Binding SelectedContacts}">
-        <!--Define the item template.-->
-        <dx:DXCollectionView.ItemTemplate>
-            <DataTemplate>
-                <Grid Padding="10, 8, 18, 7">
+    <ContentPage.Resources>
+        <Style TargetType="dx:DXImage"
+               x:Key="avatarImageStyle">
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="{Binding Photo}"/>
+            <Setter Property="WidthRequest" Value="{Binding Photo}"/>
+            <Setter Property="HeightRequest" Value="{Binding Photo}"/>
+            <Setter Property="Clip">
+                <Setter.Value>
+                    <EllipseGeometry RadiusX="24" 
+                 RadiusY="24" 
+                 Center="24, 24" />
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <DataTemplate x:Key="itemTemplate"
+                      x:DataType="local:Contact">
+            <Grid Padding="10, 8, 18, 8">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <dx:DXImage Source="{Binding Photo}"
+                            Style="{StaticResource avatarImageStyle}"/>
+                <dx:DXStackLayout Grid.Column="1"
+                                  Padding="18,1,18,7"
+                                  Orientation="Vertical">
+                    <Label Text="{Binding Name}"
+                           Margin="0,2"
+                           TextColor="{dx:ThemeColor OnSurface}"/>
+                    <Label Text="{Binding Phone}"
+                           TextColor="{dx:ThemeColor OnSurfaceVariant}"/>
+                </dx:DXStackLayout>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="selectedItemTemplate"
+                      x:DataType="local:Contact">
+            <dx:DXBorder Margin="10, 1"
+                         BorderThickness="0"
+                         BackgroundColor="{dx:ThemeNeutralColor Light=95, Dark=25}"
+                         HorizontalOptions="FillAndExpand"
+                         CornerRadius="10">
+                <Grid Padding="10,7">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="50"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Ellipse Margin="0"
-                             Fill="White"
-                             Stroke="{DynamicResource AvatarBorderColor}" 
-                             StrokeThickness="1"
-                             HeightRequest="50"
-                             WidthRequest="50"
-                             VerticalOptions="Center"
-                             HorizontalOptions="Center">
-                    </Ellipse>
-                    <dx:DXImage Source="{Binding Photo}" VerticalOptions="Center"
-                           HorizontalOptions="Center" WidthRequest="48" HeightRequest="48">
-                        <dx:DXImage.Clip>
-                            <EllipseGeometry RadiusX="24" RadiusY="24" Center="24, 24" />
-                        </dx:DXImage.Clip>
-                    </dx:DXImage>
+                    <dx:DXImage Source="{Binding Photo}"
+                                Style="{StaticResource avatarImageStyle}"/>
                     <dx:DXStackLayout Grid.Column="1"
-                             Padding="18,1,18,7"
-                             Orientation="Vertical">
+                                      Padding="18,1,18,7"
+                                      Orientation="Vertical">
                         <Label Text="{Binding Name}"
-                           Margin="0,2"
-                           TextColor="#55575c"/>
+                               Margin="0,2"
+                               TextColor="{dx:ThemeColor OnSurfaceVariant}"/>
                         <Label Text="{Binding Phone}"
-                               TextColor="#959aa0"/>
+                               TextColor="{dx:ThemeColor OnSurfaceVariant}"/>
                     </dx:DXStackLayout>
                 </Grid>
-            </DataTemplate>
-        </dx:DXCollectionView.ItemTemplate>
-
-        <dx:DXCollectionView.SelectedItemTemplate>
-            <DataTemplate>
-                <dx:DXBorder Margin="10, 1"
-                             Padding="0"
-                             BorderColor="Orange"
-                             HorizontalOptions="FillAndExpand"
-                             BackgroundColor="{AppThemeBinding Light=White, Dark=Black}"
-                             BorderThickness="2"
-                             CornerRadius="10">
-                    <Grid Padding="10">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="50"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Ellipse Margin="0"
-                                Fill="White"
-                                Stroke="{DynamicResource AvatarBorderColor}" 
-                                StrokeThickness="1"
-                                HeightRequest="50"
-                                WidthRequest="50"
-                                VerticalOptions="Center"
-                                HorizontalOptions="Center">
-                        </Ellipse>
-                        <dx:DXImage Source="{Binding Photo}" VerticalOptions="Center"
-                                    HorizontalOptions="Center" WidthRequest="48" HeightRequest="48">
-                            <dx:DXImage.Clip>
-                                <EllipseGeometry RadiusX="24" RadiusY="24" Center="24, 24" />
-                            </dx:DXImage.Clip>
-                        </dx:DXImage>
-                        <dx:DXStackLayout Grid.Column="1"
-                                 Padding="18,1,18,7"
-                                 Orientation="Vertical">
-                            <Label Text="{Binding Name}"
-                               Margin="0,2"
-                               TextColor="#55575c"/>
-                            <Label Text="{Binding Phone}"
-                               TextColor="#959aa0"/>
-                        </dx:DXStackLayout>
-                    </Grid>
-                </dx:DXBorder>
-            </DataTemplate>
-        </dx:DXCollectionView.SelectedItemTemplate>
-
-        <!--Specify margins.-->
-        <dx:DXCollectionView.Margin>
-            <OnIdiom x:TypeArguments="Thickness" Phone="10,0,10,0" Tablet="71,0,0,0"/>
-        </dx:DXCollectionView.Margin>
-    </dx:DXCollectionView>
+            </dx:DXBorder>
+        </DataTemplate>
+    </ContentPage.Resources>
+    <dx:DXCollectionView ItemsSource="{Binding Contacts}"
+                         SelectedItems="{Binding SelectedContacts}"
+                         ItemTemplate="{StaticResource itemTemplate}"
+                         SelectedItemTemplate="{StaticResource selectedItemTemplate}"
+                         SelectionMode="Multiple"/>
 </ContentPage>

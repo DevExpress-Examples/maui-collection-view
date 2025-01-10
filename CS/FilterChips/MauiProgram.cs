@@ -1,11 +1,6 @@
 ﻿using CommunityToolkit.Maui;
 using DevExpress.Maui;
 using DevExpress.Maui.Core;
-using Microsoft.Maui;
-using Microsoft.Maui.Controls.Compatibility;
-using Microsoft.Maui.Controls.Compatibility.Hosting;
-using Microsoft.Maui.Controls.Hosting;
-using Microsoft.Maui.Hosting;
 
 namespace FilterChips {
     public static class MauiProgram {

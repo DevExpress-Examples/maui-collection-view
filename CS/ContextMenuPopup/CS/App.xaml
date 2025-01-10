@@ -48,6 +48,17 @@
             <SolidColorBrush x:Key="Gray900Brush" Color="{StaticResource Gray900}"/>
             <SolidColorBrush x:Key="Gray950Brush" Color="{StaticResource Gray950}"/>
 
+            <Style TargetType="dx:DXButton" x:Key="popupButtonStyle">
+                <Setter Property="CornerRadius" Value="0"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="IconColor" Value="{dx:ThemeColor OnSurfaceVariant}"/>
+                <Setter Property="TextColor" Value="{dx:ThemeColor OnSurfaceVariant}"/>
+                <Setter Property="Command" Value="{Binding PopupActionCommand}"/>
+                <Setter Property="CommandParameter" Value="{Binding Source={RelativeSource Mode=Self}, Path=Text}"/>
+                <Setter Property="HorizontalOptions" Value="Start"/>
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+            </Style>
+            
             <Style TargetType="NavigationPage">
                 <Setter Property="BarBackgroundColor" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource Gray950}}" />
                 <Setter Property="BarTextColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Black}}" />

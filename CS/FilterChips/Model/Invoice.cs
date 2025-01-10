@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace FilterChips.Model {
-    public class Invoice : BindableBase {
+    public class Invoice {
         public int ID {
             get;
             set;

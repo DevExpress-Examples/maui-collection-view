@@ -1,17 +1,12 @@
 ﻿using BottomSheetFilterUI.Model;
-using DevExpress.Maui.Core;
-using DevExpress.Maui.Editors;
-using System;
-using System.Collections.Generic;
+using CommunityToolkit.Mvvm.ComponentModel;
+using DevExpress.Maui.Mvvm;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
 
 namespace BottomSheetFilterUI.ViewModel {
-    public class MainViewModel : BindableBase {
-        public ObservableCollection<Tutor> Tutors { get; set; }
+    public partial class MainViewModel : DXObservableObject {
+        [ObservableProperty]
+        ObservableCollection<Tutor> tutors;
         public MainViewModel() {
             Tutors = new ObservableCollection<Tutor>() {
                 new Tutor() { FirstName = "Albert", LastName="Menendez", Experience = 3, Rating=5f, HourRate=39, Subject="Mathematics", City = "New York", AvatarPath="albertmenendez" },

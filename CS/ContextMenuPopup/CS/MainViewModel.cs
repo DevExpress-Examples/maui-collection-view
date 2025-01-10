@@ -1,4 +1,7 @@
-﻿using System;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using DevExpress.Maui.Mvvm;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -10,59 +13,31 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace PopupContextMenuActions {
-    public class MainViewModel : BindableBase {
+    public partial class MainViewModel : DXObservableObject {
+        [ObservableProperty]
         ObservableCollection<ContactPerson> contacts;
 
+        [ObservableProperty]
         object placementTarget;
+
+        [ObservableProperty]
         bool isOpenPopup;
-        public ObservableCollection<ContactPerson> Contacts {
-            get => this.contacts;
-            set {
-                contacts = value;
-                RaisePropertyChanged();
-            }
+
+        public MainViewModel(IContactDataService dataService) {
+            Contacts = dataService.CreateContacts();
         }
 
-        public bool IsOpenPopup {
-            get => this.isOpenPopup;
-            set {
-                isOpenPopup = value;
-                RaisePropertyChanged();
-            }
-        }
-
-
-        public object PlacementTarget {
-            get => this.placementTarget;
-            set {
-                placementTarget = value;
-                RaisePropertyChanged();
-            }
-        }
-        public ICommand PopupActionCommand {
-            get;
-            set;
-        }
-
-        public MainViewModel() {
-            PopupActionCommand = new Command<string>(PopupAction);
-            Contacts = ContactDataGenerator.CreateContacts();
-        }
-        public async void PopupAction(string parameter) {
-            await Application.Current.MainPage.DisplayAlert("Popup item is clicked", parameter, "OK");
+        [RelayCommand]
+        public async Task PopupActionAsync(string parameter) {
+            await Shell.Current.DisplayAlert("Popup item is clicked", parameter, "OK");
         }
     }
 
-    public class ContactPerson {
-        public ContactPerson(string firstName, string lastName, string email) {
-            FirstName = firstName;
-            LastName = lastName;
-            Email = email;
-        }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+    public class ContactPerson (string firstName, string lastName, string email) {
+        public string FirstName { get; set; } = firstName;
+        public string LastName { get; set; } = lastName;
         public string FullName { get => $"{FirstName} {LastName}"; }
-        public string Email { get; set; }
+        public string Email { get; set; } = email;
 
         public string Initials {
             get {
@@ -81,15 +56,9 @@ namespace PopupContextMenuActions {
             }
         }
     }
-    public class BindableBase : INotifyPropertyChanged {
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void RaisePropertyChanged([CallerMemberName] string propertyName = null) {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-    }
-    public static class ContactDataGenerator {
-        public static ObservableCollection<ContactPerson> CreateContacts() {
+    public class ContactDataService : IContactDataService
+    {
+        public ObservableCollection<ContactPerson> CreateContacts() {
             return new ObservableCollection<ContactPerson>() {
                 new ContactPerson("John", "Doe", "john.doe@doeent.com"),
                 new ContactPerson("Sam", "Hill", "sam.hill@hillcorp.com"),
@@ -109,6 +78,10 @@ namespace PopupContextMenuActions {
                 new ContactPerson("Aaron", "Mathewson", "michael.j@jeffersclinic.com"),
             };
         }
+    }
+    public interface IContactDataService
+    {
+        ObservableCollection<ContactPerson> CreateContacts();
     }
     public class ContactColors {
         public static Color GetRandomColor() {

@@ -2,98 +2,190 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:dx="http://schemas.devexpress.com/maui"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-             x:Class="CrudOperations.DetailInfoPage" Style="{StaticResource detailPageStyle}">
-    <ContentPage.Behaviors>
-        <toolkit:StatusBarBehavior StatusBarColor="{AppThemeBinding Light={StaticResource pageBackground}, Dark={StaticResource pageBackgroundDark}}" StatusBarStyle="{AppThemeBinding Light=DarkContent, Dark=LightContent}" />
-    </ContentPage.Behaviors>
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Command="{Binding EditCommand}" Text="Edit" IconImageSource="{AppThemeBinding Light=edit, Dark=edit_dark}"/>
-        <ToolbarItem Clicked="DeleteItemClick" Text="Delete" IconImageSource="{AppThemeBinding Light=delete, Dark=delete_dark}" />
-    </ContentPage.ToolbarItems>
+             xmlns:dxcore="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
+             x:Class="CrudOperations.DetailInfoPage">
+    <ContentPage.Resources>
+        <Style TargetType="Label">
+            <Setter Property="TextColor" 
+                    Value="{dx:ThemeColor OnSurface}"/>
+        </Style>
+        <Style x:Key="AltText" 
+               TargetType="Label">
+            <Setter Property="TextColor" 
+                    Value="{dx:ThemeColor OnSurfaceVariant}"/>
+            <Setter Property="Margin" 
+                    Value="0, 5, 0, 0"/>
+            <Setter Property="FontSize" 
+                    Value="16"/>
+        </Style>
+        <Style TargetType="dx:DXBorder">
+            <Setter Property="Margin" 
+                    Value="10,8,10,8" />
+            <Setter Property="BackgroundColor" 
+                    Value="{dx:ThemeColor SurfaceVariant}" />
+            <Setter Property="CornerRadius" 
+                    Value="10" />
+            <Setter Property="Padding" 
+                    Value="16" />
+        </Style>
+    </ContentPage.Resources>
 
-    <ScrollView>
-        <dx:DXStackLayout Orientation="Vertical" Padding="0, 10, 0, 0">
-            <dx:DXImage Source="{Binding Item.PhotoImageSource}" WidthRequest="100" HeightRequest="100" Margin="0,0,0,10">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding EditCommand}"
+                     Text="Edit"
+                     IconImageSource="edit"/>
+        <ToolbarItem Clicked="DeleteItemClick" 
+                     Text="Delete"
+                     IconImageSource="delete" />
+    </ContentPage.ToolbarItems>
+    <dx:DXScrollView>
+        <dx:DXStackLayout Padding="0, 10, 0, 0">
+            <dx:DXImage Source="{Binding Item.PhotoImageSource}"
+                        WidthRequest="100"
+                        HeightRequest="100"
+                        Margin="0,0,0,10">
                 <dx:DXImage.Clip>
-                    <EllipseGeometry RadiusX="50" RadiusY="50" Center="50, 50" />
+                    <EllipseGeometry RadiusX="50" 
+                                     RadiusY="50" 
+                                     Center="50, 50" />
                 </dx:DXImage.Clip>
             </dx:DXImage>
-            <dx:DXStackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                <Label Text="{Binding Item.FirstName}" FontSize="24" FontAttributes="Bold"/>
-                <Label Text="{Binding Item.LastName}" Margin="10,0,0,0" FontSize="24" FontAttributes="Bold"/>
+            <Label Text="{Binding Item.FullName}" 
+                   FontSize="24" 
+                   FontAttributes="Bold" 
+                   HorizontalTextAlignment="Center"/>
+            <dx:DXStackLayout Orientation="Horizontal"
+                              ItemSpacing="16"
+                              HorizontalOptions="Center" 
+                              Margin="0,10">
+                <dx:DXButton ButtonType="Filled" 
+                             MinimumWidthRequest="70" 
+                             IconPlacement="Top" 
+                             Icon="message" 
+                             Clicked="MessageClick"
+                             Content="Message" 
+                             CornerRadius="8" 
+                             FontAttributes="None" 
+                             BackgroundColor="{dx:ThemeColor SurfaceVariant}"
+                             IconColor="{dx:ThemeColor Primary}" 
+                             FontSize="12" 
+                             IconWidth="24" 
+                             IconHeight="24" 
+                             IconIndent="2"/>
+                <dx:DXButton ButtonType="Filled" 
+                             MinimumWidthRequest="70" 
+                             IconPlacement="Top" 
+                             Icon="phone" 
+                             Clicked="CallClick"
+                             Content="Call" 
+                             CornerRadius="8" 
+                             FontAttributes="None" 
+                             BackgroundColor="{dx:ThemeColor SurfaceVariant}"
+                             IconColor="{dx:ThemeColor Primary}" 
+                             FontSize="12" 
+                             IconWidth="24" 
+                             IconHeight="24" 
+                             IconIndent="2"/>
+                <dx:DXButton ButtonType="Filled" 
+                             MinimumWidthRequest="70" 
+                             IconPlacement="Top" 
+                             Icon="mail" 
+                             Clicked="MailClick"
+                             Content="Mail" 
+                             CornerRadius="8" 
+                             FontAttributes="None" 
+                             BackgroundColor="{dx:ThemeColor SurfaceVariant}"
+                             IconColor="{dx:ThemeColor Primary}" 
+                             FontSize="12" 
+                             IconWidth="24" 
+                             IconHeight="24" 
+                             IconIndent="2"/>
             </dx:DXStackLayout>
-            <dx:DXStackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0,10,0,0">
-                <dx:DXButton Style="{StaticResource actionButton}" Clicked="MessageClick">
-                    <dx:DXStackLayout Orientation="Vertical">
-                        <dx:DXImage Source="message" Style="{StaticResource primaryActionImage}"/>
-                        <Label Text="Message" FontSize="12" HorizontalOptions="Center" />
-                    </dx:DXStackLayout>
-                </dx:DXButton>
-                <dx:DXButton Style="{StaticResource actionButton}" Clicked="CallClick">
-                    <dx:DXStackLayout Orientation="Vertical">
-                        <dx:DXImage Source="phone" Style="{StaticResource primaryActionImage}"/>
-                        <Label Text="Call" FontSize="12" HorizontalOptions="Center" />
-                    </dx:DXStackLayout>
-                </dx:DXButton>
-                <dx:DXButton Style="{StaticResource actionButton}" Clicked="MailClick">
-                    <dx:DXStackLayout Orientation="Vertical">
-                        <dx:DXImage Source="mail" Style="{StaticResource primaryActionImage}"/>
-                        <Label Text="Mail" FontSize="12" HorizontalOptions="Center" />
-                    </dx:DXStackLayout>
-                </dx:DXButton>
-            </dx:DXStackLayout>
-            <dx:DXBorder Style="{StaticResource propertyBorder}">
-                <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="*,Auto">
-                    <Label Text="Phone" FontAttributes="Bold" />
-                    <dx:DXButton Grid.Row="1" Clicked="CallClick" Content="{Binding Item.HomePhone}" Style="{StaticResource detailActionButtonStyle}"/>
-                    <dx:DXButton Grid.Column="1" Clicked="CopyPhoneClick" Grid.RowSpan="2" Style="{StaticResource detailSecondaryActionButtonStyle}">
-                        <dx:DXImage Source="copy" Style="{StaticResource detailSecondaryActionImageStyle}"/>
-                    </dx:DXButton>
+            <dx:DXBorder>
+                <Grid RowDefinitions="Auto,Auto" 
+                      ColumnDefinitions="*,Auto">
+                    <Label Text="Phone" 
+                           FontAttributes="Bold" />
+                    <Label Text="{Binding Item.HomePhone}" 
+                           TextColor="{dx:ThemeColor Primary}" 
+                           FontSize="16"
+                           Margin="0,5,0,0" 
+                           Grid.Row="1">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="CallClick" />
+                        </Label.GestureRecognizers>
+                    </Label>
+
+                    <dx:DXImage Source="copy"
+                                TintColor="{dx:ThemeColor Primary}" 
+                                WidthRequest="20" 
+                                HeightRequest="20"
+                                Grid.Column="1"
+                                Grid.RowSpan="2">
+                        <dx:DXImage.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="CopyPhoneClick" />
+                        </dx:DXImage.GestureRecognizers>
+                    </dx:DXImage>
                 </Grid>
             </dx:DXBorder>
-            <dx:DXBorder Style="{StaticResource propertyBorder}">
+            <dx:DXBorder>
                 <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="*,Auto">
-                    <Label Text="Email" FontAttributes="Bold" />
-                    <dx:DXButton Grid.Row="1" Clicked="MailClick" Content="{Binding Item.Email}"  Style="{StaticResource detailActionButtonStyle}"/>
-                    <dx:DXButton Grid.Column="1" Clicked="CopyEmailClick" Grid.RowSpan="2" Style="{StaticResource detailSecondaryActionButtonStyle}">
-                        <dx:DXImage Source="copy" Style="{StaticResource detailSecondaryActionImageStyle}"/>
-                    </dx:DXButton>
+                    <Label Text="Email" 
+                           FontAttributes="Bold" />
+                    <Label Grid.Row="1" 
+                           Margin="0,5,0,0" 
+                           Text="{Binding Item.Email}" 
+                           TextColor="{dx:ThemeColor Primary}" 
+                           FontSize="16">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="MailClick" />
+                        </Label.GestureRecognizers>
+                    </Label>
+
+                    <dx:DXImage Source="copy" 
+                                TintColor="{dx:ThemeColor Primary}" 
+                                WidthRequest="20" 
+                                HeightRequest="20"
+                                Grid.Column="1" 
+                                Grid.RowSpan="2">
+                        <dx:DXImage.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="CopyEmailClick" />
+                        </dx:DXImage.GestureRecognizers>
+                    </dx:DXImage>
                 </Grid>
             </dx:DXBorder>
-            <dx:DXBorder Style="{StaticResource propertyBorder}">
-                <dx:DXStackLayout Orientation="Vertical">
-                    <Label Text="Company" FontAttributes="Bold" />
-                    <Label Text="{Binding Item.Company}" Style="{StaticResource AltText}" />
-                </dx:DXStackLayout>
+            <dx:DXBorder>
+                <VerticalStackLayout>
+                    <Label Text="Company" 
+                           FontAttributes="Bold" />
+                    <Label Text="{Binding Item.Company}" 
+                           Style="{StaticResource AltText}" />
+                </VerticalStackLayout>
             </dx:DXBorder>
-            <dx:DXBorder Style="{StaticResource propertyBorder}">
-                <dx:DXStackLayout Orientation="Vertical">
-                    <Label Text="City" FontAttributes="Bold" />
-                    <Label Text="{Binding Item.City}" Style="{StaticResource AltText}" />
-                </dx:DXStackLayout>
+            <dx:DXBorder>
+                <VerticalStackLayout>
+                    <Label Text="City" 
+                           FontAttributes="Bold" />
+                    <Label Text="{Binding Item.City}" 
+                           Style="{StaticResource AltText}" />
+                </VerticalStackLayout>
             </dx:DXBorder>
-            <dx:DXBorder Style="{StaticResource propertyBorder}">
-                <dx:DXStackLayout Orientation="Vertical">
-                    <Label Text="Address" FontAttributes="Bold" />
-                    <Label Text="{Binding Item.Address}" Style="{StaticResource AltText}" />
-                </dx:DXStackLayout>
+            <dx:DXBorder>
+                <VerticalStackLayout>
+                    <Label Text="Address" 
+                           FontAttributes="Bold" />
+                    <Label Text="{Binding Item.Address}" 
+                           Style="{StaticResource AltText}" />
+                </VerticalStackLayout>
             </dx:DXBorder>
-            <dx:DXBorder Style="{StaticResource propertyBorder}">
-                <dx:DXStackLayout Orientation="Vertical">
-                    <Label Text="Zip" FontAttributes="Bold" />
-                    <Label Text="{Binding Item.ZipCode}" Style="{StaticResource AltText}" />
-                </dx:DXStackLayout>
+            <dx:DXBorder>
+                <VerticalStackLayout>
+                    <Label Text="Zip" 
+                           FontAttributes="Bold" />
+                    <Label Text="{Binding Item.ZipCode}" 
+                           Style="{StaticResource AltText}" />
+                </VerticalStackLayout>
             </dx:DXBorder>
-            <dx:DXPopup x:Name="popup" AllowScrim="True" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="16" CornerRadius="16"
-                          BackgroundColor="{AppThemeBinding Light={StaticResource pageBackground}, Dark={StaticResource pageBackgroundDark}}">
-                <dx:DXStackLayout Orientation="Vertical" Padding="10">
-                    <Label Text="Do you want to delete the record?" Margin="0,20" HorizontalTextAlignment="Center" FontAttributes="Bold" />
-                    <dx:DXBorder Style="{StaticResource SeparatorStyle}" />
-                    <dx:DXButton Content="Delete" Clicked="DeleteConfirmedClick" Style="{StaticResource popupActionButtonStyle}"/>
-                    <dx:DXBorder Style="{StaticResource SeparatorStyle}" />
-                    <dx:DXButton Content="Cancel" Clicked="CancelDeleteClick" Style="{StaticResource popupActionButtonStyle}"/>
-                </dx:DXStackLayout>
-            </dx:DXPopup>
         </dx:DXStackLayout>
-    </ScrollView>
+    </dx:DXScrollView>
 </ContentPage>

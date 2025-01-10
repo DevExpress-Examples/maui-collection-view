@@ -1,9 +1,5 @@
-﻿using DevExpress.Maui;
-using Microsoft.Maui;
-using Microsoft.Maui.Controls.Compatibility;
-using Microsoft.Maui.Controls.Compatibility.Hosting;
-using Microsoft.Maui.Controls.Hosting;
-using Microsoft.Maui.Hosting;
+﻿using CommunityToolkit.Maui;
+using DevExpress.Maui;
 
 namespace InfiniteScrollingExample {
     public static class MauiProgram {
@@ -11,6 +7,7 @@ namespace InfiniteScrollingExample {
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .UseMauiCommunityToolkit()
                 .UseDevExpress(useLocalization: true)
                 .UseDevExpressCollectionView()
                 .UseDevExpressControls()
@@ -21,7 +18,9 @@ namespace InfiniteScrollingExample {
                     fonts.AddFont("roboto-bold.ttf", "Roboto-Bold");
                     fonts.AddFont("roboto-regular.ttf", "Roboto");
                 });
-
+            builder.Services.AddSingleton<MainViewModel>();
+            builder.Services.AddSingleton<MainPage>();
+            builder.Services.AddSingleton<DataStorage>();
             return builder.Build();
         }
     }
